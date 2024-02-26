@@ -24,6 +24,15 @@ npm run dev
 # or start the server and open the app in a new browser tab
 npm run dev -- --open
 ```
+If you can access a local host great - you are ready to continue.
+
+## Installations
+
+https://tailwindcss.com/docs/guides/sveltekit
+
+npm install -D tailwindcss postcss autoprefixer
+npx tailwindcss init -p
+
 
 ## Building
 
