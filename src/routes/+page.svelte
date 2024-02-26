@@ -1,1 +1,5 @@
-<h1>HELLO WORLD</h1>
+<script language="ts">
+    import Auth from '../components/Auth.svelte';
+</script>
+
+<Auth/>

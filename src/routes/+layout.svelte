@@ -1,5 +1,8 @@
 <script>
     import "../app.css";
   </script>
-  
-  <slot />
+
+<div>
+    <h1>Navigation Bar</h1>
+    <slot />
+</div>
