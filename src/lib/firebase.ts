@@ -1,5 +1,5 @@
 // Import the functions you need from the SDKs you need
-import { initializeApp, type FirebaseApp, getApps, deleteApp } from "firebase/app";
+import { initializeApp, getApps, deleteApp, type FirebaseApp} from "firebase/app";
 import { GoogleAuthProvider, getAuth } from "firebase/auth";
 import { getFirestore } from "firebase/firestore";
 import { getStorage } from "firebase/storage";
@@ -32,5 +32,4 @@ if(!getApps().length) {
 export const db = getFirestore(firebaseApp);
 export const auth = getAuth(firebaseApp);
 export const storage = getStorage(firebaseApp);
-
 export const googleProvider = new GoogleAuthProvider();
