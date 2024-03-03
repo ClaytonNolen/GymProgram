@@ -1,4 +1,23 @@
 <script lang="ts">
+    import { doc, setDoc } from 'firebase/firestore';
+    import { db, storage } from '$lib/firebase';
+    import type { User } from 'firebase/auth';
+    import { authStore } from '$lib/assets/gym/gym';
+    import { ref, uploadBytes, getDownloadURL } from 'firebase/storage';
+    import { goto } from '$app/navigation';
+
+    let eventName: string;
+    let eventDescription: string;
+    let eventDate: string;
+    let guestName: string;
+    let guestPhoto: string;
+    let guestDesignation: string;
+    let loading = false;
+    let currentUser: User | null = null;
+
+    function createEvent() {
+        console.log(eventName);
+    }
 
 </script>
 
@@ -12,7 +31,8 @@
                 <label for="event-name">Event Name</label>
                 <input 
                     id="event-name" 
-                    type="text" 
+                    type="text"
+                    bind:value={eventName}
                     placeholder="Enter Event Name"
                     class="py-4 pl-5 pr-24 bg-24 bg-transparent border border-borderclr"
                 />
@@ -71,7 +91,9 @@
                     class="py-4 pl-5 pr-24 bg-24 bg-transparent border border-borderclr"
                 />
             </div>
-            <button class="py-2 px-8 bg-white text-black mt-8 disabled:bg-white/25 disabled:cursor-not-allowed">Create</button>
+            <button 
+            on:click={createEvent}
+            class="py-2 px-8 bg-white text-black mt-8 disabled:bg-white/25 disabled:cursor-not-allowed">Create</button>
         </div>
     </div>
 </main>

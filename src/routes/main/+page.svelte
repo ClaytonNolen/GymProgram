@@ -1,4 +1,6 @@
 <script lang="ts">
+	import { goto } from "$app/navigation";
+
     // import picName from '$lib/assets/picName.svg'; -- How to add pictures
 </script>
 <main>
@@ -9,9 +11,13 @@
                 Welcome to The Gym Program
             </h1>
             <div class="flex flex-col px-10 sm:flex-row mt-20 gap-14">
-                <button class="py-[23px] px-[86px] bg-black text-xl text-white w-[299px] hover:bg-white hover:text-black duration-300 transittion-colors">
-                    Start a Rob Workout</button>
-                <button class="py-[23px] px-[86px] bg-black text-xl text-white w-[299px] hover:bg-white hover:text-black duration-300 transittion-colors">
+                <button 
+                on:click={() => goto("/create")}
+                class="py-[23px] px-[86px] bg-black text-xl text-white w-[299px] hover:bg-white hover:text-black duration-300 transittion-colors">
+                    CREATE</button>
+                <button 
+                on:click={() => goto("/gyms")}
+                class="py-[23px] px-[86px] bg-black text-xl text-white w-[299px] hover:bg-white hover:text-black duration-300 transittion-colors">
                     Track Your Progress</button>
             </div>
         </div>

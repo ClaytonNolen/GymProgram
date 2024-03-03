@@ -1,5 +1,5 @@
 <script lang="ts">
-    import EventCard from '../../../components/EventCard.svelte'
+    import EventCard from '../../components/EventCard.svelte'
 </script>
 
 <main class="text-gray-100 mt-10 max-w-5xl mx-auto">
