@@ -1,4 +1,6 @@
-<script lang="ts"></script>
+<script lang="ts">
+    // import picName from '$lib/assets/picName.svg'; -- How to add pictures
+</script>
 <main>
         <!--Main Page-->
     <div class="relative mt-[150px] p-2 lg:ml-[133px] flex"> 
@@ -13,5 +15,6 @@
                     Track Your Progress</button>
             </div>
         </div>
+        <!-- <img src={picName} alt="logo" class="absolute -top[90px] left-[800px] h-[376px] w-[706px] hidden xl:block" />-->
     </div>
 </main>
