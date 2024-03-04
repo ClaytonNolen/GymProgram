@@ -16,7 +16,7 @@
                 class="py-[23px] px-[86px] bg-black text-xl text-white w-[299px] hover:bg-white hover:text-black duration-300 transittion-colors">
                     CREATE</button>
                 <button 
-                on:click={() => goto("/gyms")}
+                on:click={() => goto("/eventlist")}
                 class="py-[23px] px-[86px] bg-black text-xl text-white w-[299px] hover:bg-white hover:text-black duration-300 transittion-colors">
                     Track Your Progress</button>
             </div>
