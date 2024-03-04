@@ -10,14 +10,63 @@
     let eventDescription: string;
     let eventDate: string;
     let guestName: string;
-    let guestPhoto: string;
+    let guestPhoto: File | undefined;
     let guestDesignation: string;
     let loading = false;
     let currentUser: User | null = null;
 
-    function createEvent() {
-        console.log(eventName);
+    authStore.subscribe((value) => {
+        currentUser = value.user;
+    });
+
+    function handleFileInputChange(event: Event) {
+        const inputElement =event.target as HTMLInputElement;
+        if (inputElement.files && inputElement.files.length > 0) {
+            guestPhoto = inputElement.files[0];
+        }
     }
+
+    async function createEvent() {
+        if (eventName === undefined || eventDescription === undefined || loading === true)
+            return alert('Fields cannot be empty');
+        loading = true;
+
+        const eventInfo = {
+            eventName: eventName,
+            eventDescription: eventDescription,
+            eventDate: eventDate,
+            guestName: guestName,
+            guestPhoto: await uploadGuestPhoto(),
+            guestDesignation: guestDesignation,
+            hostName: currentUser?.displayName,
+            hostPhoto: currentUser?.photoURL,
+            hostEmail: currentUser?.email,
+            members: []
+        };
+
+        try {
+            const eventRef = doc(db, "events", eventName)
+            setDoc(eventRef, eventInfo, {merge : true})
+            goto("/eventlist")
+        } catch (error) {
+            console.log('An error occured while creating event ${error}')
+        }
+        loading = false
+    }
+
+async function uploadGuestPhoto() {
+    if (!guestPhoto) {
+        return null;
+    }
+    try {
+        const storageRef = ref(storage, "guest_photos/" + guestPhoto.name)
+        await uploadBytes(storageRef, guestPhoto)
+        const downloadUrl = await getDownloadURL(storageRef)
+        return downloadUrl
+    } catch (error) {
+        console.log('An error occured while uploading the guest photo')
+    }
+}
 
 </script>
 
@@ -42,7 +91,8 @@
                 <label for="event-description">Event Description</label>
                 <input 
                     id="event-description" 
-                    type="text" 
+                    type="text"
+                    bind:value={eventDescription}
                     placeholder="Enter Event Description"
                     class="py-4 pl-5 pr-24 bg-24 bg-transparent border border-borderclr"
                 />
@@ -53,6 +103,7 @@
                 <input 
                     id="event-date" 
                     type="date" 
+                    bind:value={eventDate}
                     placeholder="Enter Event Date"
                     class="py-4 pl-5 pr-24 bg-24 bg-transparent border border-borderclr"
                 />
@@ -66,6 +117,7 @@
                         <input 
                             id="guest" 
                             type="text" 
+                            bind:value={guestName}
                             placeholder="Enter Guest Name"
                             class="py-4 pl-5 pr-24 bg-24 bg-transparent border border-borderclr"
                         />
@@ -75,7 +127,8 @@
                         <label for="guest-photo">Upload Guest Photo</label>
                         <input 
                             id="guest-photo" 
-                            type="file" 
+                            type="file"
+                            on:change={handleFileInputChange}
                             class="py-4 pl-5 pr-24 bg-24 bg-transparent border border-borderclr"
                         />
                     </div>
@@ -87,13 +140,17 @@
                 <input 
                     id="designation" 
                     type="text" 
+                    bind:value={guestDesignation}
                     placeholder="Enter Guest Designation"
                     class="py-4 pl-5 pr-24 bg-24 bg-transparent border border-borderclr"
                 />
             </div>
             <button 
-            on:click={createEvent}
-            class="py-2 px-8 bg-white text-black mt-8 disabled:bg-white/25 disabled:cursor-not-allowed">Create</button>
+                on:click={createEvent}
+                disabled={loading}
+                class="py-2 px-8 bg-white text-black mt-8 disabled:bg-white/25 disabled:cursor-not-allowed">Create
+                {loading ? 'Registering' : 'Register for this event'}
+            </button>
         </div>
     </div>
 </main>
