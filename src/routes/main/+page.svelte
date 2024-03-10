@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { goto } from "$app/navigation";
 
-    // import picName from '$lib/assets/picName.svg'; -- How to add pictures
+    import picName from '$lib/assets/Rob Center.png';
 </script>
 <main>
         <!--Main Page-->
@@ -21,6 +21,6 @@
                     Track Your Progress</button>
             </div>
         </div>
-        <!-- <img src={picName} alt="logo" class="absolute -top[90px] left-[800px] h-[376px] w-[706px] hidden xl:block" />-->
+        <img src={picName} alt="logo" class="absolute -top[90px] left-[800px] h-[376px] w-[706px] hidden xl:block" />
     </div>
 </main>
