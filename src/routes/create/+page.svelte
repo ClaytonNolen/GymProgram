@@ -10,15 +10,63 @@
     let eventDescription: string;
     let eventDate: string;
     let guestName: string;
-    let guestPhoto: string;
+    let guestPhoto: File;
     let guestDesignation: string;
     let loading = false;
     let currentUser: User | null = null;
+    authStore.subscribe((value) => {
+        currentUser = value.user;
+    });
 
-    function createEvent() {
-        console.log(eventName);
+    function handleFileInputChange(event: Event) {
+		const inputElement = event.target as HTMLInputElement;
+		if (inputElement.files && inputElement.files.length > 0) {
+			guestPhoto = inputElement.files[0];
+		}
+	}
+
+    async function createEvent() {
+		if (eventName === undefined || eventDescription === undefined || loading === true)
+			return alert('Gym name and description cannot be empty');
+		loading = true;
+    
+        const eventInfo = {
+			eventName: eventName,
+			eventDescription: eventDescription,
+			eventDate: eventDate,
+			guestName: guestName,
+			guestPhoto: await uploadGuestPhoto(),
+			guestDesignation: guestDesignation,
+			hostName: currentUser?.displayName,
+			hostPhoto: currentUser?.photoURL,
+			hostemail: currentUser?.email,
+			members: []
+        };
+        try {
+			const eventRef = doc(db, 'events', eventName);
+			setDoc(eventRef, eventInfo, { merge: true });
+			goto('/eventlist');
+		} catch (error) {
+			console.log(`An error ocuured while createing a document ${error}`);
+		}
+		loading = false;
     }
+    async function uploadGuestPhoto() {
+            if (!guestPhoto) {
+                return null;
+            }
 
+            try {
+                const storageRef = ref(storage, 'guest_photos/' + guestPhoto.name);
+                await uploadBytes(storageRef, guestPhoto);
+                const downloadURL = await getDownloadURL(storageRef);
+                return downloadURL;
+            } catch (error) {
+                console.log(`An error occurred while uploading the guest photo ${error}`);
+                return null;
+            }
+	    }
+    
 </script>
 
 <main class="text-gray-100 mt-10">
@@ -43,6 +91,7 @@
                 <input 
                     id="event-description" 
                     type="text" 
+                    bind:value={eventDescription}
                     placeholder="Enter Event Description"
                     class="py-4 pl-5 pr-24 bg-24 bg-transparent border border-borderclr"
                 />
@@ -53,6 +102,7 @@
                 <input 
                     id="event-date" 
                     type="date" 
+                    bind:value={eventDate}
                     placeholder="Enter Event Date"
                     class="py-4 pl-5 pr-24 bg-24 bg-transparent border border-borderclr"
                 />
@@ -66,6 +116,7 @@
                         <input 
                             id="guest" 
                             type="text" 
+                            bind:value={guestName}
                             placeholder="Enter Guest Name"
                             class="py-4 pl-5 pr-24 bg-24 bg-transparent border border-borderclr"
                         />
@@ -76,6 +127,7 @@
                         <input 
                             id="guest-photo" 
                             type="file" 
+                            on:change={handleFileInputChange}
                             class="py-4 pl-5 pr-24 bg-24 bg-transparent border border-borderclr"
                         />
                     </div>
@@ -87,13 +139,16 @@
                 <input 
                     id="designation" 
                     type="text" 
+                    bind:value={guestDesignation}
                     placeholder="Enter Guest Designation"
                     class="py-4 pl-5 pr-24 bg-24 bg-transparent border border-borderclr"
                 />
             </div>
             <button 
+            disabled={loading}
             on:click={createEvent}
-            class="py-2 px-8 bg-white text-black mt-8 disabled:bg-white/25 disabled:cursor-not-allowed">Create</button>
+            class="py-2 px-8 bg-white text-black mt-8 disabled:bg-white/25 disabled:cursor-not-allowed"
+            >{loading ? 'Creating' : 'Create'}</button>
         </div>
     </div>
 </main>
