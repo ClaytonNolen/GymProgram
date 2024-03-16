@@ -1,4 +1,6 @@
-<script> lang="ts"</script>
+<script lang="ts">
+    
+</script>
 
 <section class="mt-[60px] ml-[20px] xl:ml-[277px] text-white xl:col-span-2 pr-8">
     <p class="">formatted Date</p>
