@@ -5,11 +5,15 @@
 </script>
 <main>
         <!--Main Page-->
-    <div class="relative mt-[150px] p-2 lg:ml-[133px] flex"> 
-        <div> 
-            <h1 class="text-[32px] font-bold text-white lg:w-[710px]"> 
+    <div class="flex justify-center items-center h-screen"> 
+        <div class="text-center"> 
+            <img src={picName} alt="logo" class=" mx-auto w-1/2 lg:w-1/2 mb-8" />
+            <h1 class="text-[40px] font-bold text-white lg:w-[710px]"> 
                 Welcome to The Gym Program
             </h1>
+            <p class= "text-[20px] text-white lg:w-[710px] mt-4">
+                Here, you can track your workouts at the Robertson Center, or create your own gym that can keep track of additional workouts
+            </p>
             <div class="flex flex-col px-10 sm:flex-row mt-20 gap-14">
                 <button 
                 on:click={() => goto("/create")}
@@ -21,6 +25,5 @@
                     Track Your Progress</button>
             </div>
         </div>
-        <img src={picName} alt="logo" class="absolute -top[90px] left-[800px] h-[376px] w-[706px] hidden xl:block" />
     </div>
 </main>
