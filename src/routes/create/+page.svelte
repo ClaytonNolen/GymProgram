@@ -14,6 +14,7 @@
     let guestDesignation: string;
     let loading = false;
     let currentUser: User | null = null;
+    
     authStore.subscribe((value) => {
         currentUser = value.user;
     });
@@ -43,9 +44,9 @@
 			members: []
         };
         try {
-			const eventRef = doc(db, 'events', eventName);
+			const eventRef = doc(db, "events", eventName);
 			setDoc(eventRef, eventInfo, { merge: true });
-			goto('/eventlist');
+			goto("/eventlist");
 		} catch (error) {
 			console.log(`An error ocuured while createing a document ${error}`);
 		}
@@ -55,7 +56,6 @@
             if (!guestPhoto) {
                 return null;
             }
-
             try {
                 const storageRef = ref(storage, 'guest_photos/' + guestPhoto.name);
                 await uploadBytes(storageRef, guestPhoto);
@@ -145,10 +145,12 @@
                 />
             </div>
             <button 
-            disabled={loading}
-            on:click={createEvent}
-            class="py-2 px-8 bg-white text-black mt-8 disabled:bg-white/25 disabled:cursor-not-allowed"
-            >{loading ? 'Creating' : 'Create'}</button>
+                on:click={createEvent}
+                disabled={loading}
+                class="py-2 px-8 bg-white text-black mt-8 disabled:bg-white/25 disabled:cursor-not-allowed"
+            >
+                {loading ? 'Register' : 'Register for this event'} 
+            </button>
         </div>
     </div>
 </main>
