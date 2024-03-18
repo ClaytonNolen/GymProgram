@@ -12,7 +12,7 @@ const unsubscribe = onSnapshot(q, (querySnapshot) => {
         gyms = gyms // This is required bc SvelteKit does not updated arrays in this instance.
     })
 })
-console.log(gyms)
+//console.log(gyms)
 
 </script>
 

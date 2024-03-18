@@ -1,5 +1,14 @@
 <script lang="ts">
-    
+    import type { User } from 'firebase/auth';
+    import { formatDate } from '../helper/formatDate';
+    import { authStore } from '$lib/assets/gym/gym';
+    import { arrayUnion, doc, updateDoc } from 'firebase/firestore';
+    import { db } from '$lib/firebase';
+    import { goto } from '$app/navigation';
+
+    export let date: string;
+    export let name: string;
+    export let description: string;
 </script>
 
 <section class="mt-[60px] ml-[20px] xl:ml-[277px] text-white xl:col-span-2 pr-8">
