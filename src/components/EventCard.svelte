@@ -29,7 +29,7 @@
 <!-- If the click does not work check the pt2 at 44min. -->
 
 <article 
-on:click={() => goto(`/join/$(gymName)`)}
+on:click={() => goto(`/join/${gymName}`)}
 on:keydown={() => {}}
     class="bg-secondary p-8 rounded-lg hover:bg-slate-800 hover:scale-110 duration-300 transistion-all cursor-pointer">
         <div class="flex flex-col">

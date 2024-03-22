@@ -9,9 +9,9 @@
 
 <div class="grid xl:grid-cols-3">
     <EventInfo 
-        date={data.eventDate} 
-        name={data.eventName} 
-        description={data.eventDescription}
+        date={data.gymDate} 
+        name={data.gymName} 
+        description={data.gymDescription}
     />
     <!-- <GuestInfo
         guestName={data.guestName}
