@@ -12,7 +12,7 @@ const unsubscribe = onSnapshot(q, (querySnapshot) => {
         gyms = gyms // This is required bc SvelteKit does not updated arrays in this instance.
     })
 })
-//console.log(gyms)
+console.log(gyms)
 
 </script>
 
@@ -20,7 +20,7 @@ const unsubscribe = onSnapshot(q, (querySnapshot) => {
     <h1 class="text-5xl font-bold my-5">Gyms</h1>
     <div class="grid px-4 md:grid-cols-3 gap-8">
         {#each gyms as gym (gym.eventName)}
-        <EventCard {... gym}/>
+        <EventCard {...gym}/>
         {/each}
     </div>
 </main>
