@@ -52,6 +52,8 @@
             <h1>
                 Ab Crunch
             </h1>
+            <!--description from:
+            https://www.bodybuilding.com/exercises/ab-crunch-machine#:~:text=The%20machine%20crunch%20is%20a,curl%20up%20torward%20the%20torso.-->
             <div>
                 DESCRIPTION: sit upright in the machine. Curl your torso down toward your legs.
             </div>
@@ -68,6 +70,8 @@
             <h1>
                 Back Extension
             </h1>
+            <!--description from: 
+                https://steelsupplements.com/blogs/steel-blog/how-to-do-back-extensions-form-benefits#:~:text=Also%20known%20as%20hyperextension%2C%20the,spine%20through%20flexion%20and%20extension.&text=This%20fancy%20equipment%20helps%20angle,target%20the%20lower%20back%20muscles.-->
             <div>
                 DESCRIPTION: Adjust the machine to a 45-degree angle so your hips aligns with, or are barely above, the cushion pad.
                 Your feet should be hip-width apart and held in place by the support behind your ankles.
