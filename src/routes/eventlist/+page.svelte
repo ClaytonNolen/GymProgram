@@ -1,5 +1,5 @@
 <script lang="ts">
-    import EventCard from '../../components/EventCard.svelte'
+    import EventCard from '../../components/EventCard.svelte';
     import { collection, query, where, onSnapshot } from 'firebase/firestore';
     import { db } from "$lib/firebase";
     import type { TEvents } from "../../types";
