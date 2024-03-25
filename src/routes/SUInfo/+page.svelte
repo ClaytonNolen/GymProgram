@@ -34,22 +34,6 @@
     <row class="flex">
         <columnLeft>
             <h1>
-                Ab Bench
-            </h1>
-            <div>
-                DESCRIPTION:
-            </div>
-            <div>
-                MUSCLE GROUP:
-            </div>
-        </columnLeft>
-        <columnRight>
-            <img src={image1} alt="ab bench" class="mx-auto w-1/4 lg:w-1/4" />
-        </columnRight>
-    </row>
-    <row class="flex">
-        <columnLeft>
-            <h1>
                 Ab Crunch
             </h1>
             <!--description from:
@@ -62,7 +46,7 @@
             </div>
         </columnLeft>
         <columnRight>
-            <img src={image2} alt="ab crunch" class="mx-auto w-1/4 lg:w-1/4" />
+            <img src={image2} alt="ab crunch" class="mx-auto w-1/1 lg:w-1/1" />
         </columnRight>
     </row>
     <row class="flex">
@@ -84,7 +68,7 @@
             </div>
         </columnLeft>
         <columnRight>
-            <img src={image3} alt="back extension" class="mx-auto w-1/4 lg:w-1/4" />
+            <img src={image3} alt="back extension" class="mx-auto w-1/1 lg:w-1/1" />
         </columnRight>
     </row>
     <row class="flex">
@@ -104,7 +88,7 @@
             </div>
         </columnLeft>
         <columnRight>
-            <img src={image4} alt="bench press" class="mx-auto w-1/4 lg:w-1/4" />
+            <img src={image4} alt="bench press" class="mx-auto w-1/1 lg:w-1/1" />
         </columnRight>
     </row>
     <row class="flex">
@@ -112,31 +96,18 @@
             <h1>
                 Bicep Curl
             </h1>
+            <!--description from: 
+                https://www.exercise.com/exercises/machine-bicep-curl/-->
             <div>
-                DESCRIPTION:
+                DESCRIPTION: Move arms extended behind the handles and curl 
+                the handles up to your shoulders and back down.
             </div>
             <div>
                 MUSCLE GROUP: biceps brachii, brachialis and brachioradialis.
             </div>
         </columnLeft>
         <columnRight>
-            <img src={image5} alt="bicep curl" class="mx-auto w-1/4 lg:w-1/4" />
-        </columnRight>
-    </row>
-    <row class="flex">
-        <columnLeft>
-            <h1>
-                Cable Machine
-            </h1>
-            <div>
-                DESCRIPTION:
-            </div>
-            <div>
-                MUSCLE GROUP:
-            </div>
-        </columnLeft>
-        <columnRight>
-            <img src={image6} alt="cable machine" class="mx-auto w-1/4 lg:w-1/4" />
+            <img src={image5} alt="bicep curl" class="mx-auto w-1/1 lg:w-1/1" />
         </columnRight>
     </row>
     <row class="flex">
@@ -154,7 +125,7 @@
             </div>
         </columnLeft>
         <columnRight>
-            <img src={image7} alt="calf raise" class="mx-auto w-1/4 lg:w-1/4" />
+            <img src={image7} alt="calf raise" class="mx-auto w-1/1 lg:w-1/1" />
         </columnRight>
     </row>
     <row class="flex">
@@ -171,7 +142,7 @@
             </div>
         </columnLeft>
         <columnRight>
-            <img src={image8} alt="chest press" class="mx-auto w-1/4 lg:w-1/4" />
+            <img src={image8} alt="chest press" class="mx-auto w-1/1 lg:w-1/1" />
         </columnRight>
     </row>
     <row class="flex">
@@ -180,14 +151,16 @@
                 Glute Machine
             </h1>
             <div>
-                DESCRIPTION:
+                DESCRIPTION: Stand on the bottom of the machine and place your arms on the pads and 
+                put one leg at a time of the foot pad. Extend your leg and back while keeping the rest 
+                of the body still
             </div>
             <div>
                 MUSCLE GROUP: gluteal maximus, gluteal medius, gluteal minimus.
             </div>
         </columnLeft>
         <columnRight>
-            <img src={image9} alt="glute machine" class="mx-auto w-1/4 lg:w-1/4" />
+            <img src={image9} alt="glute machine" class="mx-auto w-1/1 lg:w-1/1" />
         </columnRight>
     </row>
     <row class="flex">
@@ -196,14 +169,17 @@
                 Hip Adductor_Abductor
             </h1>
             <div>
-                DESCRIPTION:
+                DESCRIPTION: Either place the inner pads facing towards each other 
+                or aways from each other. When facing each other, place the legs on the inside
+                against each pad and push out to move the pads away. In the other pad position, 
+                push with your legs inward to move the pads closer to each other.
             </div>
             <div>
                 MUSCLE GROUP: tensor fasciae latae, gluteus medius, gluteus minimus, gluteus maximus.
             </div>
         </columnLeft>
         <columnRight>
-            <img src={image10} alt="hip adductor/abductor" class="mx-auto w-1/4 lg:w-1/4" />
+            <img src={image10} alt="hip adductor/abductor" class="mx-auto w-1/1 lg:w-1/1" />
         </columnRight>
     </row>
     <row class="flex">
@@ -220,7 +196,7 @@
             </div>
         </columnLeft>
         <columnRight>
-            <img src={image11} alt="lat pull down" class="mx-auto w-1/4 lg:w-1/4" />
+            <img src={image11} alt="lat pull down" class="mx-auto w-1/1 lg:w-1/1" />
         </columnRight>
     </row>
     <row class="flex">
@@ -228,15 +204,19 @@
             <h1>
                 Lateral Raise
             </h1>
+            <!--description from: 
+                https://workoutlabs.com/exercise-guide/lateral-raise-machine/-->
             <div>
-                DESCRIPTION:
+                DESCRIPTION: Grab handles with each hand and have your elbow near the back of the pad. 
+                Push out and up with your ams to make them parallel to your shoulders and hold for a second. 
+                Then move arms slowly back down.
             </div>
             <div>
                 MUSCLE GROUP: lateral deltoid, anterior deltoid, serratus anterior.
             </div>
         </columnLeft>
         <columnRight>
-            <img src={image12} alt="lateral raise" class="mx-auto w-1/4 lg:w-1/4" />
+            <img src={image12} alt="lateral raise" class="mx-auto w-1/1 lg:w-1/1" />
         </columnRight>
     </row>
     <row class="flex">
@@ -254,7 +234,7 @@
             </div>
         </columnLeft>
         <columnRight>
-            <img src={image13} alt="leg extension" class="mx-auto w-1/4 lg:w-1/4" />
+            <img src={image13} alt="leg extension" class="mx-auto w-1/1 lg:w-1/1" />
         </columnRight>
     </row>
     <row class="flex">
@@ -272,7 +252,7 @@
             </div>
         </columnLeft>
         <columnRight>
-            <img src={image14} alt="leg press" class="mx-auto w-1/4 lg:w-1/4" />
+            <img src={image14} alt="leg press" class="mx-auto w-1/1 lg:w-1/1" />
         </columnRight>
     </row>
     <row class="flex">
@@ -288,7 +268,7 @@
             </div>
         </columnLeft>
         <columnRight>
-            <img src={image16} alt="pec fly" class="mx-auto w-1/4 lg:w-1/4" />
+            <img src={image16} alt="pec fly" class="mx-auto w-1/1 lg:w-1/1" />
         </columnRight>
     </row>
     <row class="flex">
@@ -304,7 +284,7 @@
             </div>
         </columnLeft>
         <columnRight>
-            <img src={image17} alt="plated chest press" class="mx-auto w-1/4 lg:w-1/4" />
+            <img src={image17} alt="plated chest press" class="mx-auto w-1/1 lg:w-1/1" />
         </columnRight>
     </row>
     <row class="flex">
@@ -320,7 +300,7 @@
             </div>
         </columnLeft>
         <columnRight>
-            <img src={image18} alt="plated leg press" class="mx-auto w-1/4 lg:w-1/4" />
+            <img src={image18} alt="plated leg press" class="mx-auto w-1/1 lg:w-1/1" />
         </columnRight>
     </row>
     <row class="flex">
@@ -336,7 +316,7 @@
             </div>
         </columnLeft>
         <columnRight>
-            <img src={image19} alt="rotary torso" class="mx-auto w-1/4 lg:w-1/4" />
+            <img src={image19} alt="rotary torso" class="mx-auto w-1/1 lg:w-1/1" />
         </columnRight>
     </row>
     <row class="flex">
@@ -352,7 +332,7 @@
             </div>
         </columnLeft>
         <columnRight>
-            <img src={image20} alt="seated leg curl" class="mx-auto w-1/4 lg:w-1/4" />
+            <img src={image20} alt="seated leg curl" class="mx-auto w-1/1 lg:w-1/1" />
         </columnRight>
     </row>
     <row class="flex">
@@ -368,7 +348,7 @@
             </div>
         </columnLeft>
         <columnRight>
-            <img src={image21} alt="seated row" class="mx-auto w-1/4 lg:w-1/4" />
+            <img src={image21} alt="seated row" class="mx-auto w-1/1 lg:w-1/1" />
         </columnRight>
     </row>
     <row class="flex">
@@ -384,7 +364,7 @@
             </div>
         </columnLeft>
         <columnRight>
-            <img src={image22} alt="shoulder press" class="mx-auto w-1/4 lg:w-1/4" />
+            <img src={image22} alt="shoulder press" class="mx-auto w-1/1 lg:w-1/1" />
         </columnRight>
     </row>
     <row class="flex">
@@ -400,23 +380,7 @@
             </div>
         </columnLeft>
         <columnRight>
-            <img src={image23} alt="smith machine" class="mx-auto w-1/4 lg:w-1/4" />
-        </columnRight>
-    </row>
-    <row class="flex">
-        <columnLeft>
-            <h1>
-                Squat Rack
-            </h1>
-            <div>
-                DESCRIPTION:
-            </div>
-            <div>
-                MUSCLE GROUP:
-            </div>
-        </columnLeft>
-        <columnRight>
-            <img src={image24} alt="squat rack" class="mx-auto w-1/4 lg:w-1/4" />
+            <img src={image23} alt="smith machine" class="mx-auto w-1/1 lg:w-1/1" />
         </columnRight>
     </row>
     <row class="flex">
@@ -432,23 +396,7 @@
             </div>
         </columnLeft>
         <columnRight>
-            <img src={image25} alt="tricep press" class="mx-auto w-1/4 lg:w-1/4" />
-        </columnRight>
-    </row>
-    <row class="flex">
-        <columnLeft>
-            <h1>
-                Other Equipment
-            </h1>
-            <div>
-                DESCRIPTION:
-            </div>
-            <div>
-                MUSCLE GROUP:
-            </div>
-        </columnLeft>
-        <columnRight>
-            <img src={image15} alt="other equipment" class="mx-auto w-1/4 lg:w-1/4" />
+            <img src={image25} alt="tricep press" class="mx-auto w-1/1 lg:w-1/1" />
         </columnRight>
     </row>
 </div>
