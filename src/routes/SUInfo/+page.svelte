@@ -407,6 +407,11 @@
         text-align: center;
     }
 
+    div {
+        font-size: 24px;
+        margin-top: 10px;
+    }
+
     :global(columnLeft) {
         border: double;
         border: 4;
