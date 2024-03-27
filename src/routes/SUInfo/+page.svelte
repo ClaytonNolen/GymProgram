@@ -261,7 +261,9 @@
                 Pec Fly
             </h1>
             <div>
-                DESCRIPTION:
+                DESCRIPTION: Place arms behind the pads with elbows parallel with your shoulders. 
+                Grab the handles and move your arms in until they are in front of your shoulders. 
+                Try to keep your upper back on the machine and return back to the staring position slowly.
             </div>
             <div>
                 MUSCLE GROUP: pectoralis major, pectoralis minor, deltoids, triceps, biceps.
@@ -277,7 +279,13 @@
                 Plated Chest Press
             </h1>
             <div>
-                DESCRIPTION:
+                DESCRIPTION: To add weight, place plates on each bar on each side and make sure the weight 
+                is the same on each side. Adjust the seat to where when your arms are grabbing the handles, 
+                they are on the same level as your upper chest. Grab either side of the handles to workout 
+                different parts of the chest. Push on each handle and extend the handles as far as you go and 
+                return slowly to the starting position. During the motion try to always have your hands in
+                the same position on both sides.
+
             </div>
             <div>
                 MUSCLE GROUP: pectoralis major, anterior deltoids, triceps brachii, biceps brachii.
@@ -293,7 +301,12 @@
                 Plated Leg Press
             </h1>
             <div>
-                DESCRIPTION:
+                DESCRIPTION: To add weight, place plates on each bar on each side and make sure the weight 
+                is the same on each side. Adjust the starting position of the black foot rest 
+                to where your legs are at 90 degrees. To move the weight, push it slightly up and 
+                move the handles out to where they are not stopping the sliding weight. Extend your legs and move 
+                back to the starting position to complete a rep. Once completed with a set, 
+                move the handle back in to where it stops the weight.
             </div>
             <div>
                 MUSCLE GROUP: quadriceps muscles, gluteal muscles, hamstrings, calves.
@@ -309,7 +322,7 @@
                 Rotary Torso
             </h1>
             <div>
-                DESCRIPTION:
+                DESCRIPTION: 
             </div>
             <div>
                 MUSCLE GROUP: obliques, quadratus lumborum.
