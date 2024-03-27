@@ -12,6 +12,8 @@
     <h1 class="font-bold text-sm md:text-2xl tracking-widest">The Gym Program</h1>
     <!-- Links -->
     <div class="flex items-center space-x-3 font-semibold">
+        <a href="/SUInfo" > SU ROB GYM </a>
+
         <a href="/main" > MAIN </a>
 
         <a href="/eventlist" > GYMS </a>
