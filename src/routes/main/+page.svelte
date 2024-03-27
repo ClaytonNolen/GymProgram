@@ -1,6 +1,5 @@
 <script lang="ts">
 	import { goto } from "$app/navigation";
-
     import picName from '$lib/assets/Rob Center.png';
 </script>
 <main>
