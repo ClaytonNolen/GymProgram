@@ -4,9 +4,9 @@
 
     import type { Member } from '../types';
 
-    export let eventName: string;
-    export let eventDescription: string; 
-    export let eventDate: string; 
+    export let gymName: string;
+    export let gymDescription: string; 
+    export let gymDate: string; 
     export let guestName: string; 
     export let guestPhoto: string; 
     export let guestDesignation: string; 
@@ -14,19 +14,27 @@
     export let hostPhoto: string; 
     export let hostemail: string; 
     export let members: Member[];
-
-    const formattedDate = formatDate(eventDate);
+    export let maxCapacity: number;
+    const formattedDate = formatDate(gymDate);
 </script>
+
+<!-- let gymName: string;
+    let gymDescription: string;
+    let gymDate: string;
+    let maxCapacity: number;
+    let gymPhoto: File;
+    let availableEquipment: string; -->
 
 <!-- svelte-ignore a11y-no-noninteractive-element-interactions -->
 <!-- If the click does not work check the pt2 at 44min. -->
+
 <article 
-on:click={() => goto(`/join/$(eventName)`)}
+on:click={() => goto(`/join/${gymName}`)}
 on:keydown={() => {}}
     class="bg-secondary p-8 rounded-lg hover:bg-slate-800 hover:scale-110 duration-300 transistion-all cursor-pointer">
         <div class="flex flex-col">
-            <h1 class="capitalize text-2xl font-bold tracking-widest">{eventName}</h1>
-            <p class="py-2 text-gray-300 font-semibold">{eventDescription}</p>
+            <h1 class="capitalize text-2xl font-bold tracking-widest">{gymName}</h1>
+            <p class="py-2 text-gray-300 font-semibold">{gymDescription}</p>
 
             <!-- Host -->
             <p>Host</p>
@@ -56,7 +64,8 @@ on:keydown={() => {}}
                 </div>
             </div>
 
-            <p class="text-gray-400 mt-4">Event Date : {formattedDate}</p>
-            <p>Members {members.length}</p>
+            <p class="text-gray-400 mt-4">Gym Date : {formattedDate}</p>
+            <p>Members: {members.length}</p>
+            <p>Max Capacity: {maxCapacity}</p>
         </div>
 </article>

@@ -1,7 +1,18 @@
 export type TEvents = {
-    eventName: string;
-    eventDescription: string; 
-    eventDate: string; 
+    // gymName: string;
+    // gymDescription: string; 
+    // gymDate: string; 
+    // guestName: string; 
+    // guestPhoto: string; 
+    // guestDesignation: string; 
+    // hostName: string; 
+    // hostPhoto: string; 
+    // hostemail: string; 
+    // members: Member[];
+
+    gymName: string;
+    gymDescription: string; 
+    gymDate: string; 
     guestName: string; 
     guestPhoto: string; 
     guestDesignation: string; 
@@ -9,6 +20,8 @@ export type TEvents = {
     hostPhoto: string; 
     hostemail: string; 
     members: Member[];
+    maxCapacity: number;
+ 
 };
 
 type Member = {
