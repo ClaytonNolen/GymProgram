@@ -21,6 +21,8 @@ export type TEvents = {
     hostemail: string; 
     members: Member[];
     maxCapacity: number;
+    Workout: string;
+    Notes: string;
  
 };
 
@@ -30,4 +32,5 @@ type Member = {
     memberEmail: string; 
     memberpgoto: string; 
     memberOutcome: string;
+
 }

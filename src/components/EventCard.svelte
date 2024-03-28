@@ -15,6 +15,8 @@
     export let hostemail: string; 
     export let members: Member[];
     export let maxCapacity: number;
+    export let Workout: string;
+    export let Notes: string;
     const formattedDate = formatDate(gymDate);
 </script>
 
@@ -67,5 +69,9 @@ on:keydown={() => {}}
             <p class="text-gray-400 mt-4">Gym Date : {formattedDate}</p>
             <p>Members: {members.length}</p>
             <p>Max Capacity: {maxCapacity}</p>
+            <p>Max Capacity: {Workout}</p>
+            <p>Max Capacity: {Notes}</p>
+
+
         </div>
 </article>
