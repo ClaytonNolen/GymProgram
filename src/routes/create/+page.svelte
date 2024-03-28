@@ -6,6 +6,10 @@
     import { ref, uploadBytes, getDownloadURL } from 'firebase/storage';
     import { goto } from '$app/navigation';
 
+    // NEW
+    let workOut: string;
+
+    // OLD
     let gymName: string;
     let gymDescription: string;
     let gymDate: string;
@@ -26,12 +30,12 @@
 	}
 
     async function createGym() {
-		if (gymName === undefined || gymDescription === undefined || loading === true)
+		if (workOut === undefined || gymDescription === undefined || loading === true)
 			return alert('Gym name and description cannot be empty');
 		loading = true;
     
         const gymInfo = {
-			gymName: gymName,
+			workOut: workOut,
 			gymDescription: gymDescription,
 			gymDate: gymDate,
 			maxCapacity: maxCapacity,
@@ -43,7 +47,7 @@
 			members: []
         };
         try {
-			const gymRef = doc(db, 'gyms', gymName);
+			const gymRef = doc(db, 'workouts', workOut);
 			setDoc(gymRef, gymInfo, { merge: true });
 			goto('/eventlist');
 		} catch (error) {
@@ -73,26 +77,15 @@
     <div>
         <!-- input box -->
         <div class="max-w-4xl mx-auto bg-secondary rounded-lg flex flex-col p-5">
-            <h1 class="text-center text-white text-2xl">Create</h1>
+            <h1 class="text-center text-white text-2xl">Create Your Workout</h1>
             <!-- Gym Name -->
             <div class="flex flex-col my-4">
-                <label for="gym-name">Gym Name</label>
+                <label for="workout">Workout</label>
                 <input 
-                    id="gym-name" 
+                    id="workout" 
                     type="text"
-                    bind:value={gymName}
-                    placeholder="Name of Gym"
-                    class="py-4 pl-5 pr-24 bg-24 bg-transparent border border-borderclr"
-                />
-            </div>
-            <!-- Gym Description -->
-            <div class="flex flex-col my-4">
-                <label for="gym-description">Gym Description</label>
-                <input 
-                    id="gym-description" 
-                    type="text" 
-                    bind:value={gymDescription}
-                    placeholder="Enter Description of Gym"
+                    bind:value={workOut}
+                    placeholder="Benchpress"
                     class="py-4 pl-5 pr-24 bg-24 bg-transparent border border-borderclr"
                 />
             </div>
@@ -107,10 +100,21 @@
                     class="py-4 pl-5 pr-24 bg-24 bg-transparent border border-borderclr"
                 />
             </div>
-
             <div class="flex my-4 gap-4">
+
+            <!-- Workout Notes -->
+            <div class="flex flex-col my-4">
+                <label for="gym-description">Notes</label>
+                <input 
+                    id="workout-notes" 
+                    type="text" 
+                    bind:value={gymDescription}
+                    placeholder="Enter any wanted notes or N/A"
+                    class="py-4 pl-5 pr-24 bg-24 bg-transparent border border-borderclr"
+                />
+            </div>
                 <!-- Max Capacity -->
-                <div class="flex flex-col flex-1">
+                <!-- <div class="flex flex-col flex-1">
                     <div class="flex flex-col flex-1 mb-4">
                         <label for="max-capacity">Max Capacity</label>
                         <input 
@@ -122,9 +126,9 @@
                         />
                     </div>
                 </div>
-            </div>
+            </div> -->
             <!-- Equipment Available -->
-            <div class="flex flex-col flex-1">
+            <!-- <div class="flex flex-col flex-1">
                 <label for="available-equipment">Equipment Available</label>
                 <input 
                     id="available-equipment" 
@@ -133,9 +137,9 @@
                     placeholder="Enter Equipment Available In Gym"
                     class="py-4 pl-5 pr-24 bg-24 bg-transparent border border-borderclr"
                 />
-            </div>
+            </div> -->
             <!-- Gym Photo -->
-            <div class="flex flex-col flex-1">
+            <!-- <div class="flex flex-col flex-1">
                 <label for="gym-photo">Upload Gym Photo</label>
                 <input 
                     id="gym-photo" 
@@ -143,7 +147,7 @@
                     on:change={handleFileInputChange}
                     class="py-4 pl-5 pr-24 bg-24 bg-transparent border border-borderclr"
                 />
-            </div>
+            </div> -->
             <button 
             disabled={loading}
             on:click={createGym}
