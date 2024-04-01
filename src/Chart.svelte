@@ -1,1 +1,0 @@
-//**File where a chart from chart.js would be added*/
