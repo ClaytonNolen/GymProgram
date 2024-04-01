@@ -321,8 +321,12 @@
             <h1>
                 Rotary Torso
             </h1>
+            <!--description from: 
+                https://www.exercise.com/exercises/torso-rotation-machine/-->
             <div>
-                DESCRIPTION: 
+                DESCRIPTION: Set your kness on the pads and grab the handles. Only rotate torso 
+                and move it to one direction and back to center. When going to the side, go as far 
+                as your range of motion will allow.
             </div>
             <div>
                 MUSCLE GROUP: obliques, quadratus lumborum.
@@ -337,8 +341,13 @@
             <h1>
                 Seated Leg Curl
             </h1>
+            <!--description from: 
+                https://us.myprotein.com/thezone/training/hamstring-seated-leg-curl-exercise-technique-common-mistakes/-->
             <div>
-                DESCRIPTION:
+                DESCRIPTION: When in the seat, place the upper bar just above the knees 
+                on your thighs. Place your feet right above the bottom bar. To complete the 
+                exercise, only move your legs and move the bar as close to your body as possible. Move 
+                back to starting position to complete the rep.
             </div>
             <div>
                 MUSCLE GROUP: hamstrings, glutes, hip flexors.
@@ -353,8 +362,12 @@
             <h1>
                 Seated Row
             </h1>
+            <!--description from: 
+                https://us.myprotein.com/thezone/training/hamstring-seated-leg-curl-exercise-technique-common-mistakes/-->
             <div>
-                DESCRIPTION:
+                DESCRIPTION: When on the seat, grab the hadles where your arms are completely extended. 
+                Push back the handles as close to your chest as possible while flexing your shoulder blades and 
+                keeping your back straight. Avoid curling your back when moving the weight.
             </div>
             <div>
                 MUSCLE GROUP: lats, traps, rear delts, and rhomboids.
@@ -369,8 +382,12 @@
             <h1>
                 Shoulder Press
             </h1>
+            <!--description from: 
+                https://www.hussle.com/blog/how-and-why-the-shoulder-press-machine/-->
             <div>
-                DESCRIPTION:
+                DESCRIPTION: Adjust the seat to where the handles are at shoulder height. Place hands 
+                behind the bars and push your hands over your head. Lower your hands back down in a controlled 
+                way to complete the rep.
             </div>
             <div>
                 MUSCLE GROUP: deltoids, triceps, trapezius and pecs.
@@ -386,7 +403,7 @@
                 Smith Machine
             </h1>
             <div>
-                DESCRIPTION:
+                DESCRIPTION: Will probably need to update this machine with one of the benchmarks
             </div>
             <div>
                 MUSCLE GROUP:
@@ -401,8 +418,12 @@
             <h1>
                 Tricep Press
             </h1>
+            <!--description from: 
+                https://www.sportskeeda.com/health-and-fitness/how-to-use-a-triceps-press-machine-tips-technique-correct-form-benefits-and-common-mistakes-->
             <div>
-                DESCRIPTION:
+                DESCRIPTION: In the seat, have your back straight and knees at a 90 degree angle. 
+                Keep the elbows close to the body and push down on the handles until the arms are 
+                extended. Return back to the starting position to complete the rep.
             </div>
             <div>
                 MUSCLE GROUP: triceps, pectoral, and deltoids.
