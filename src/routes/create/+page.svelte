@@ -54,9 +54,9 @@
         };
 
         try {
-			const gymRef = doc(db, 'gyms', workout);
+			const gymRef = doc(db, 'workouts', workout);
 			setDoc(gymRef, workoutInfo, { merge: true });
-			goto('/eventlist');
+			goto('/profile');
 		} catch (error) {
 			console.log(`An error ocuured while createing a document ${error}`);
 		}
