@@ -17,11 +17,10 @@ console.log(workouts)
 </script>
 
 <main class="text-gray-100 mt-10 max-w-5xl mx-auto">
-    <h1 class="text-5xl font-bold my-5">Gyms</h1>
+    <h1 class="text-5xl font-bold my-5">Workouts</h1>
     <div class="grid px-4 md:grid-cols-3 gap-8">
         {#each workouts as work (work.workout)}
-        {work}
-        <!-- <EventCard {...work}/> -->
+        <EventCard {...work}/>
         {/each}
     </div>
 </main>
