@@ -4,22 +4,24 @@
     import { db } from "$lib/firebase";
     import type { TEvents } from "../../types";
 
-let gyms : TEvents[] = []
-const q = query(collection(db, "gyms"))
+let workouts : TEvents[] = []
+const q = query(collection(db, "workouts"))
 const unsubscribe = onSnapshot(q, (querySnapshot) => {
     querySnapshot.forEach(doc => {
-        gyms.push(doc.data() as TEvents)
-        gyms = gyms // This is required bc SvelteKit does not updated arrays in this instance.
+        workouts.push(doc.data() as TEvents)
+        workouts = workouts // This is required bc SvelteKit does not updated arrays in this instance.
     })
 })
-console.log(gyms)
+console.log(workouts)
+
 </script>
 
 <main class="text-gray-100 mt-10 max-w-5xl mx-auto">
     <h1 class="text-5xl font-bold my-5">Gyms</h1>
     <div class="grid px-4 md:grid-cols-3 gap-8">
-        {#each gyms as gym (gym.gymName)}
-        <EventCard {...gym}/>
+        {#each workouts as work (work.workout)}
+        {work}
+        <!-- <EventCard {...work}/> -->
         {/each}
     </div>
 </main>
