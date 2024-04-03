@@ -27,6 +27,8 @@ export type TEvents = {
     workout: string;
     workoutNotes: string;
     workoutDate: string;
+    workoutTitle: string;
+
  
 };
 

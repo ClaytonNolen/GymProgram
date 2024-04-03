@@ -9,6 +9,7 @@
     let workout: string;
     let workoutNotes: string;
     let workoutDate: string;
+    let workoutTitle: string;
 
     let gymName: string;
     let gymDescription: string;
@@ -34,23 +35,12 @@
 			return alert('Must include at least one workout');
 		loading = true;
     
-        const gymInfo = {
-			gymName: gymName,
-			gymDescription: gymDescription,
-			gymDate: gymDate,
-			maxCapacity: maxCapacity,
-			gymPhoto: await uploadGymPhoto(),
-			availableEquipment: availableEquipment,
-			hostName: currentUser?.displayName,
-			hostPhoto: currentUser?.photoURL,
-			hostemail: currentUser?.email,
-			members: []
-        };
 
         const workoutInfo = {
             workout: workout,
             workoutNotes: workoutNotes,
-            workoutDate: workoutDate
+            workoutDate: workoutDate,
+            workoutTitle: workoutTitle
         };
 
         try {
@@ -62,21 +52,6 @@
 		}
 		loading = false;
     }
-    async function uploadGymPhoto() {
-            if (!gymPhoto) {
-                return null;
-            }
-
-            try {
-                const storageRef = ref(storage, 'guest_photos/' + gymPhoto.name);
-                await uploadBytes(storageRef, gymPhoto);
-                const downloadURL = await getDownloadURL(storageRef);
-                return downloadURL;
-            } catch (error) {
-                console.log(`An error occurred while uploading the guest photo ${error}`);
-                return null;
-            }
-	    }
     
 </script>
 
@@ -85,7 +60,19 @@
         <!-- input box -->
         <div class="max-w-4xl mx-auto bg-secondary rounded-lg flex flex-col p-5">
             <h1 class="text-center text-white text-2xl">Create</h1>
-       
+
+             <!-- Workout Name-->
+             <div class="flex flex-col my-4">
+                <label for="workout-title">Workout Name</label>
+                <input 
+                    id="workout-title" 
+                    type="text" 
+                    bind:value={workoutTitle}
+                    placeholder="Workout Name e.g. Leg Day"
+                    class="py-4 pl-5 pr-24 bg-24 bg-transparent border border-borderclr"
+                />
+            </div>
+
             <!-- Workout -->
             <div class="flex flex-col my-4">
                 <label for="workout">Workout</label>
