@@ -18,9 +18,9 @@ console.log(gyms)
 
 <main class="text-gray-100 mt-10 max-w-5xl mx-auto">
     <h1 class="text-5xl font-bold my-5">Gyms</h1>
-    <div class="grid px-4 md:grid-cols-3 gap-8">
-        {#each gyms as gym (gym.gymName)}
+    <!-- <div class="grid px-4 md:grid-cols-3 gap-8">
+        {#each gyms as gym (gym.workout)}
         <EventCard {...gym}/>
         {/each}
-    </div>
+    </div> -->
 </main>
