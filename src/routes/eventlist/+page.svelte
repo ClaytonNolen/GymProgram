@@ -23,4 +23,8 @@ console.log(gyms)
         <EventCard {...gym}/>
         {/each}
     </div> -->
+    <div class="grid px-4 md:grid-cols-3 gap-8">
+        {#each workouts as workout (gym.workout)}
+        <EventCard {...workout}/>
+        {/each}
 </main>
