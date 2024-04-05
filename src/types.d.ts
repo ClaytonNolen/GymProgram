@@ -10,17 +10,25 @@ export type TEvents = {
     // hostemail: string; 
     // members: Member[];
 
-    gymName: string;
-    gymDescription: string; 
-    gymDate: string; 
-    guestName: string; 
-    guestPhoto: string; 
-    guestDesignation: string; 
-    hostName: string; 
-    hostPhoto: string; 
-    hostemail: string; 
-    members: Member[];
-    maxCapacity: number;
+    // gymName: string;
+    // gymDescription: string; 
+    // gymDate: string; 
+    // guestName: string; 
+    // guestPhoto: string; 
+    // guestDesignation: string; 
+    // hostName: string; 
+    // hostPhoto: string; 
+    // hostemail: string; 
+    // members: Member[];
+    // maxCapacity: number;
+    // Workout: string;
+    // Notes: string;
+
+    workout: string;
+    workoutNotes: string;
+    workoutDate: string;
+    workoutTitle: string;
+
  
 };
 
@@ -30,4 +38,5 @@ type Member = {
     memberEmail: string; 
     memberpgoto: string; 
     memberOutcome: string;
+
 }
