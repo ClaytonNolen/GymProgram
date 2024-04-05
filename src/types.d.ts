@@ -30,4 +30,9 @@ type Member = {
     memberEmail: string; 
     memberpgoto: string; 
     memberOutcome: string;
-}
+};
+
+type UserData = {
+    testStr: string;
+    userID: string;
+};
