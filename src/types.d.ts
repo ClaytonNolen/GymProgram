@@ -38,5 +38,3 @@ type Member = {
     memberEmail: string; 
     memberpgoto: string; 
     memberOutcome: string;
-
-}
