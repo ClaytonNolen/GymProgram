@@ -26,9 +26,9 @@
     import image25 from '$lib/assets/Triceps Press.png'
 </script>
 
-<h1 class="mt-4 mb-4 text-white">
+<h2 class="mt-4 mb-4 text-center text-4xl font-bold text-white">
     The Robertson Gym Equipment
-</h1>
+</h2>
 
 <div class="text-white mx-4">
     <row class="flex">
@@ -437,13 +437,21 @@
 
 <style>
     h1 {
-        font-size: 24px;
+        font-size: 38px;
         text-align: center;
+        background: black;
+        border-bottom: solid;
+        border: 2;
+        border: white -500px;
     }
 
     div {
         font-size: 24px;
         margin-top: 10px;
+        border-bottom: dashed;
+        border: 2;
+        border: white -500px;
+        height: 44.3%;
     }
 
     :global(columnLeft) {
