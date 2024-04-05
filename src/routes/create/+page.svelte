@@ -5,6 +5,8 @@
     import { authStore } from '$lib/assets/gym/gym';
     import { ref, uploadBytes, getDownloadURL } from 'firebase/storage';
     import { goto } from '$app/navigation';
+    import { Dropdown, DropdownItem, DropdownDivider, DropdownHeader } from 'flowbite-svelte';
+
 
     let workout: string;
     let workoutNotes: string;
@@ -75,12 +77,12 @@
 
             <!-- Workout -->
             <div class="flex flex-col my-4">
-                <label for="workout">Workout</label>
+                <label for="workout">Exercise</label>
                 <input 
                     id="workout" 
-                    type="text" 
+                    type="string" 
                     bind:value={workout}
-                    placeholder="Select Workout..."
+                    placeholder= "Select Workout..."
                     class="py-4 pl-5 pr-24 bg-24 bg-transparent border border-borderclr"
                 />
             </div>
