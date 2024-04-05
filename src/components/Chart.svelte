@@ -1,7 +1,7 @@
-<script>
+ <!-- <script>
     import { Line } from 'svelte-chartjs';
     import 'chart.js/auto';
-    import { data } from './GymData.js';
+    import { data } from './data.js';
   
     import {
       Chart as ChartJS,
@@ -24,5 +24,5 @@
       CategoryScale
     );
   </script>
-  
-  <Line data={data} width={100} height={50} options={{ maintainAspectRatio: false}} />
+  -->
+  <!--<Line data={data} options={{ responsive: true}} />-->
