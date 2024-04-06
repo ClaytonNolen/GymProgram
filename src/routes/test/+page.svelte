@@ -1,6 +1,6 @@
 <script lang="ts">
     import { goto } from "$app/navigation";
-    import { doc, setDoc } from 'firebase/firestore';
+    import { doc, getDoc, setDoc } from 'firebase/firestore';
     import { db } from '$lib/firebase';
     import { authStore } from '$lib/assets/gym/gym'; // Importing only authStore from auth module
 	import type { User } from "@firebase/auth";
@@ -25,18 +25,27 @@
             return alert('User not logged in');
         }
 
-        if (!testStr) {
-            return alert('The field cannot be empty');
+        if (!testStr.trim()) {
+            return alert('Please enter some test data');
         }
 
         loading = true;
 
         try {
             const userDocRef = doc(db, 'users', currentUser.uid);
-            await setDoc(userDocRef, { testStr }, { merge: true });
-            goto('/main'); // Assuming this is where you want to navigate after successful upload
+            // Get the existing document data
+            const docSnap = await getDoc(userDocRef);
+            if (docSnap.exists()) {
+                const existingData = docSnap.data().testInput || []; // If testInput doesn't exist, initialize as empty array
+                const newData = [...existingData, testStr]; // Append the new input to the existing array
+                await setDoc(userDocRef, { testInput: newData }, { merge: true }); // Update the document with the updated array
+            } else {
+                await setDoc(userDocRef, { testInput: [testStr] }); // If document doesn't exist, create it with the new input as the first element of the array
+            }
+            goto("/main"); // Should be changed to the Profile page.
         } catch (error) {
             console.error('Error occurred while creating a document', error);
+            alert('An error occurred while uploading data. Please try again later.');
         }
 
         loading = false;
