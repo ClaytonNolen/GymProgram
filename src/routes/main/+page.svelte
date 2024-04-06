@@ -1,7 +1,9 @@
 <script lang="ts">
 	import { goto } from "$app/navigation";
     import picName from '$lib/assets/Rob Center.png';
+	import Chart from "../../components/Chart.svelte";
 </script>
+
 <main>
         <!--Main Page - template for page with tailwind css code is from https://www.youtube.com/watch?v=fTsVYwxjyS4-->
     <div class="flex justify-center items-center h-screen"> 
@@ -24,6 +26,12 @@
                 class="py-[23px] px-[86px] bg-black text-xl text-white w-[299px] hover:bg-white hover:text-black duration-300 transittion-colors">
                     Track Your Progress</button>
             </div>
+            <Chart />
         </div>
     </div>
+
+    <div>
+        <Chart />
+    </div>
+    
 </main>
