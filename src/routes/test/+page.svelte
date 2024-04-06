@@ -1,32 +1,45 @@
-<!-- Helped with error. -->
-
 <script lang="ts">
-	import { goto } from "$app/navigation";
+    import { goto } from "$app/navigation";
     import { doc, setDoc } from 'firebase/firestore';
     import { db } from '$lib/firebase';
-    import type { User } from 'firebase/auth';
+    import { authStore } from '$lib/assets/gym/gym'; // Importing only authStore from auth module
+	import type { User } from "@firebase/auth";
+	import { onDestroy } from "svelte";
 
     let testStr: string;
     let loading = false;
-    let currentUser: User | null = null;
-    let userID: string;
+    let currentUser : User | null = null; // Initialize currentUser to null to avoid undefined errors
+
+    // Subscribe to authStore to get current user
+    const unsubscribe = authStore.subscribe((value) => {
+        currentUser = value.user;
+    });
+
+    // Unsubscribe from authStore when component is destroyed to avoid memory leaks
+    onDestroy(() => {
+        unsubscribe();
+    });
 
     async function createTest() {
-		if (testStr === undefined)
-			return alert('The field cannot be empty');
-		loading = true;
-    
-        const testInfo = {
-			testStr: testStr,
-            userID: currentUser?.uid
-        }; try {
-			const testRef = doc(db, 'usersTest', userID);
-			setDoc(testRef, testInfo, { merge: true });
-			goto('/main');
-		} catch (error) {
-			console.log(`An error ocuured while createing a document ${error}`);
-		}
-		loading = false;
+        if (!currentUser) {
+            return alert('User not logged in');
+        }
+
+        if (!testStr) {
+            return alert('The field cannot be empty');
+        }
+
+        loading = true;
+
+        try {
+            const userDocRef = doc(db, 'users', currentUser.uid);
+            await setDoc(userDocRef, { testStr }, { merge: true });
+            goto('/main'); // Assuming this is where you want to navigate after successful upload
+        } catch (error) {
+            console.error('Error occurred while creating a document', error);
+        }
+
+        loading = false;
     }
 </script>
 
@@ -53,22 +66,15 @@
                             class="py-4 pl-5 pr-24 bg-24 bg-transparent border border-borderclr"
                         />
                     </div>
-                    <div class="flex flex-col my-4">
-                        <label for="gym-name">INPUT 2</label>
-                        <input 
-                            id="input2" 
-                            type="text"
-                            class="py-4 pl-5 pr-24 bg-24 bg-transparent border border-borderclr"
-                        />
-                    </div>
-
             <div class="text-center gap-14">
                 <!--Buttons and how they are navigated to different pages with "on:click"-->
                 <button 
+                id="submit"
                 disabled={loading}
                 on:click={createTest}
                 class="py-[23px] px-[86px] bg-black text-xl text-white w-[299px] hover:bg-white hover:text-black duration-300 transittion-colors">
-                {loading ? 'Uploading Test' : 'Upload Complete'} CLICK </button>
+                {loading ? 'Uploading Test' : 'Upload Complete'} CLICK 
+            </button>
             </div>
         </div>
     </div>
