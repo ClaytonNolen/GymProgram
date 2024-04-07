@@ -20,7 +20,9 @@ console.log(workouts)
     <h1 class="text-4xl font-bold my-5">Workouts</h1>
     <div class="px-4">
         {#each workouts as work (work.workout)}
-        <EventCard {...work}/>
+        <button>
+            <EventCard {...work}/>
+        </button>
         {/each}
     </div>
 </main>

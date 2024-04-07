@@ -1,9 +1,11 @@
 <script lang="ts">
     import { goto } from "$app/navigation";
+	import { stringify } from "postcss";
     import { formatDate } from "../helper/formatDate";
 
     import type { Member } from '../types';
 
+    export let workoutTitle: string;
     export let workout: string;
     export let workoutNotes: string;
     export let workoutDate: string;
@@ -16,9 +18,9 @@
 
 <div class="bg-black rounded-lg p-2">
     <row>
-        <col>Workout Date: {formattedDate}
+        <col>Workout: {workoutTitle}
         <border></border>
-        <col>Workouts: {workout}
+        <col>Date: {workoutDate}
         <border></border>
         <col>Workout Notes: {workoutNotes}
     </row>
