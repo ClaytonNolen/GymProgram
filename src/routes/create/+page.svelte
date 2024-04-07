@@ -19,6 +19,7 @@
         // let answer: string;
         let answer = '';
         let selectedExercise: {id: number, text: string} | null = null
+        // exercise input fields
         let selectedExerciseArr: { 
             id: number,
             workout:string, 
@@ -27,7 +28,7 @@
             reps:number | null,
             weight:number | null}[] =[];
      
-
+        // exercise options
         let exercises = [
             {id: 0, text:'Select Workout:'},
             {id: 1, text:'Ab Bench'},
@@ -53,7 +54,9 @@
             {id: 21, text:'Shoulder Press'},
             {id: 22, text:'Tricep Press'},
         ];
+
         let loading = false;
+
         let currentUser: User | null = null;
         authStore.subscribe((value) => {
             currentUser = value.user;
@@ -115,7 +118,6 @@
                 reps: reps,
                 weight: weight,
                 showExerciseInfo: showExerciseInfo
-
             };
 
             try {
@@ -124,7 +126,6 @@
                 goto('/profile');
             } catch (error) {
                 console.log(answer)
-
                 console.log(`An error ocuured while creating a document ${error}`);
             }
             loading = false;
@@ -136,7 +137,7 @@
         <div>
             <!-- input box -->
             <div class="max-w-4xl mx-auto bg-secondary rounded-lg flex flex-col p-5">
-                <h1 class="text-center text-white text-2xl">Create</h1>
+                <h1 class="text-center text-white text-2xl">Create Workout</h1>
 
                 <!-- Workout Name-->
                 <div class="flex flex-col my-4">
@@ -159,6 +160,7 @@
                         color: #000000;
                     }
                 </style>
+
                 <div class="flex flex-col my-4">
                     <label for="workout">Exercise</label>
                     <select bind:value={workout} on:change={handleWorkoutSelection}
@@ -176,7 +178,7 @@
                     </select>
                 </div>
 
-                <!-->Exercise sets, reps, weight-->
+                <!--Exercise sets, reps, weight-->
                 {#if showExerciseInfo}
                 <div class="flex flex-row my-4">
                     <!--Sets-->
