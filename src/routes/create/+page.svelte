@@ -103,7 +103,7 @@
             }
         }
 
-        async function createGym() {
+        async function createWorkout() {
             if (workout === undefined || loading === true)
                 return alert('Must include at least one workout');
             loading = true;
@@ -281,7 +281,7 @@
             {/each}
                 <button 
                 disabled={loading}
-                on:click={createGym}
+                on:click={createWorkout}
                 class="py-2 px-8 bg-white text-black mt-8 disabled:bg-white/25 disabled:cursor-not-allowed"
                 >{loading ? 'Creating' : 'Create Workout'}</button>
 
