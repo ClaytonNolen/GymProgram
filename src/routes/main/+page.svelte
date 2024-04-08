@@ -29,7 +29,7 @@
         </div>
     </div>
 
-    <div class="flex justify-center">
+    <div class="flex justify-center"> <!--Centers the chart-->
         <Chart />
     </div>
     

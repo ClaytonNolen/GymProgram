@@ -3,6 +3,7 @@ import { initializeApp, getApps, deleteApp, type FirebaseApp} from "firebase/app
 import { GoogleAuthProvider, getAuth } from "firebase/auth";
 import { getFirestore } from "firebase/firestore";
 import { getStorage } from "firebase/storage";
+import { collection, getDocs } from "firebase/firestore";
 
 
 // TODO: Add SDKs for Firebase products that you want to use
@@ -35,3 +36,22 @@ export const db = getFirestore(firebaseApp);
 export const auth = getAuth(firebaseApp);
 export const storage = getStorage(firebaseApp);
 export const googleProvider = new GoogleAuthProvider();
+
+// Trouble shooting how to do this with A.I. Includes collection and getDocs import at the top. 
+// Can not find good enough resources for our projectin other areas.
+// Fetch data from Firestore and put it in an array
+const fetchData = async () => {
+  try {
+    const usersCollection = collection(db, 'Users');
+    const snapshot = await getDocs(usersCollection);
+    snapshot.forEach(doc => {
+      // Assuming each document has a field called testInput which is an array
+      const testInputArray = doc.data().testInput as Document[];
+      console.log('Data fetched:', testInputArray);
+    });
+  } catch (error) {
+    console.error('Error fetching data:', error);
+  }
+};
+fetchData();
+
