@@ -15,6 +15,7 @@
         currentUser = value.user;
     });
 
+    // This was suggested by AI.
     // Unsubscribe from authStore when component is destroyed to avoid memory leaks
     onDestroy(() => {
         unsubscribe();
@@ -24,13 +25,15 @@
         if (!currentUser) {
             return alert('User not logged in');
         }
-
+        
+        // This trim was made with AI.
         if (!testStr.trim()) {
             return alert('Please enter some test data');
         }
 
         loading = true;
 
+        // These If statements in the try {} was made with AI.
         try {
             const userDocRef = doc(db, 'users', currentUser.uid);
             // Get the existing document data
