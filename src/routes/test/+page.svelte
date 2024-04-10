@@ -15,7 +15,7 @@
         currentUser = value.user;
     });
 
-    // This was suggested by AI.
+    // Suggested to have by A.I.
     // Unsubscribe from authStore when component is destroyed to avoid memory leaks
     onDestroy(() => {
         unsubscribe();
@@ -38,6 +38,7 @@
             const userDocRef = doc(db, 'users', currentUser.uid);
             // Get the existing document data
             const docSnap = await getDoc(userDocRef);
+            // The If/Else statements below were created by A.I.
             if (docSnap.exists()) {
                 const existingData = docSnap.data().testInput || []; // If testInput doesn't exist, initialize as empty array
                 const newData = [...existingData, testStr]; // Append the new input to the existing array
