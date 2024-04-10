@@ -1,7 +1,9 @@
 <script lang="ts">
 	import { goto } from "$app/navigation";
     import picName from '$lib/assets/Rob Center.png';
+	import Chart from "../../components/Chart.svelte";
 </script>
+
 <main>
         <!--Main Page - template for page with tailwind css code is from https://www.youtube.com/watch?v=fTsVYwxjyS4-->
     <div class="flex justify-center items-center h-screen"> 
@@ -26,4 +28,9 @@
             </div>
         </div>
     </div>
+
+    <div class="flex justify-center"> <!--Centers the chart-->
+        <Chart />
+    </div>
+    
 </main>

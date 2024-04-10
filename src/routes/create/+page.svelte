@@ -25,19 +25,11 @@
         currentUser = value.user;
     });
 
-    function handleFileInputChange(event: Event) {
-		const inputElement = event.target as HTMLInputElement;
-		if (inputElement.files && inputElement.files.length > 0) {
-			gymPhoto = inputElement.files[0];
-		}
-	}
-
     async function createGym() {
 		if (workout === undefined || loading === true)
 			return alert('Must include at least one workout');
 		loading = true;
     
-
         const workoutInfo = {
             workout: workout,
             workoutNotes: workoutNotes,

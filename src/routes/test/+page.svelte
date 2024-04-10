@@ -1,32 +1,58 @@
-<!-- Helped with error. -->
-
 <script lang="ts">
-	import { goto } from "$app/navigation";
-    import { doc, setDoc } from 'firebase/firestore';
+    import { goto } from "$app/navigation";
+    import { doc, getDoc, setDoc } from 'firebase/firestore';
     import { db } from '$lib/firebase';
-    import type { User } from 'firebase/auth';
+    import { authStore } from '$lib/assets/gym/gym'; // Importing only authStore from auth module
+	import type { User } from "@firebase/auth";
+	import { onDestroy } from "svelte";
 
     let testStr: string;
     let loading = false;
-    let currentUser: User | null = null;
-    let userID: string;
+    let currentUser : User | null = null; // Initialize currentUser to null to avoid undefined errors
+
+    // Subscribe to authStore to get current user
+    const unsubscribe = authStore.subscribe((value) => {
+        currentUser = value.user;
+    });
+
+    // Suggested to have by A.I.
+    // Unsubscribe from authStore when component is destroyed to avoid memory leaks
+    onDestroy(() => {
+        unsubscribe();
+    });
 
     async function createTest() {
-		if (testStr === undefined)
-			return alert('The field cannot be empty');
-		loading = true;
-    
-        const testInfo = {
-			testStr: testStr,
-            userID: currentUser?.uid
-        }; try {
-			const testRef = doc(db, 'usersTest', userID);
-			setDoc(testRef, testInfo, { merge: true });
-			goto('/main');
-		} catch (error) {
-			console.log(`An error ocuured while createing a document ${error}`);
-		}
-		loading = false;
+        if (!currentUser) {
+            return alert('User not logged in');
+        }
+        
+        // This trim was made with AI.
+        if (!testStr.trim()) {
+            return alert('Please enter some test data');
+        }
+
+        loading = true;
+
+        // These If statements in the try {} was made with AI.
+        try {
+            const userDocRef = doc(db, 'users', currentUser.uid);
+            // Get the existing document data
+            const docSnap = await getDoc(userDocRef);
+            // The If/Else statements below were created by A.I.
+            if (docSnap.exists()) {
+                const existingData = docSnap.data().testInput || []; // If testInput doesn't exist, initialize as empty array
+                const newData = [...existingData, testStr]; // Append the new input to the existing array
+                await setDoc(userDocRef, { testInput: newData }, { merge: true }); // Update the document with the updated array
+            } else {
+                await setDoc(userDocRef, { testInput: [testStr] }); // If document doesn't exist, create it with the new input as the first element of the array
+            }
+            goto("/main"); // Should be changed to the Profile page.
+        } catch (error) {
+            console.error('Error occurred while creating a document', error);
+            alert('An error occurred while uploading data. Please try again later.');
+        }
+
+        loading = false;
     }
 </script>
 
@@ -53,22 +79,15 @@
                             class="py-4 pl-5 pr-24 bg-24 bg-transparent border border-borderclr"
                         />
                     </div>
-                    <div class="flex flex-col my-4">
-                        <label for="gym-name">INPUT 2</label>
-                        <input 
-                            id="input2" 
-                            type="text"
-                            class="py-4 pl-5 pr-24 bg-24 bg-transparent border border-borderclr"
-                        />
-                    </div>
-
             <div class="text-center gap-14">
                 <!--Buttons and how they are navigated to different pages with "on:click"-->
                 <button 
+                id="submit"
                 disabled={loading}
                 on:click={createTest}
                 class="py-[23px] px-[86px] bg-black text-xl text-white w-[299px] hover:bg-white hover:text-black duration-300 transittion-colors">
-                {loading ? 'Uploading Test' : 'Upload Complete'} CLICK </button>
+                {loading ? 'Uploading Test' : 'Upload Complete'} CLICK 
+            </button>
             </div>
         </div>
     </div>

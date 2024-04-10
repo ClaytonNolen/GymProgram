@@ -3,10 +3,9 @@ import { initializeApp, getApps, deleteApp, type FirebaseApp} from "firebase/app
 import { GoogleAuthProvider, getAuth } from "firebase/auth";
 import { getFirestore } from "firebase/firestore";
 import { getStorage } from "firebase/storage";
-
+import { collection, getDocs } from "firebase/firestore";
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
-
 // Your web app's Firebase configuration
 // For Firebase JS SDK v7.20.0 and later, measurementId is optional
 const firebaseConfig = {
@@ -18,10 +17,8 @@ const firebaseConfig = {
   appId: import.meta.env.VITE_APP_ID,
   measurementId: import.meta.env.VITE_MEASUREMENT_ID
 };
-
 // Initialize Firebase
 let firebaseApp: FirebaseApp;
-
 if(!getApps().length) {
     firebaseApp = initializeApp(firebaseConfig);
 } else {
@@ -29,8 +26,8 @@ if(!getApps().length) {
     deleteApp(firebaseApp);
     firebaseApp = initializeApp(firebaseConfig);
 }
-
 export const db = getFirestore(firebaseApp);
 export const auth = getAuth(firebaseApp);
 export const storage = getStorage(firebaseApp);
 export const googleProvider = new GoogleAuthProvider();
+

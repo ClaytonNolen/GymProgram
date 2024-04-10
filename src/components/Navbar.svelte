@@ -34,9 +34,9 @@
             <div class="flex flex-col">
                 <p>Logged In as: <span class="text-purple-500 italic font-bold">{currentUser?.displayName}</span> </p>
             </div>
-            <div class="flex flex-col">
+            <!-- <div class="flex flex-col">
                 <p>TEST <span class="text-purple-500 italic font-bold">{currentUser?.uid}</span> </p>
-            </div>
+            </div> -->
             <button on:click={authHandlers.logout} class="bg-white p-2 rounded-full text-black">LOG OUT</button>
         </div>
     {/if}
