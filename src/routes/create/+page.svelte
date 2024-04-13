@@ -33,7 +33,18 @@
     }
 
     function createWorkout() {
-        
+        const workoutInfo = {
+                workoutName: workoutName,
+                exercises: exercises
+            };
+
+            try {
+                const gymRef = doc(db, 'workoutTest', workoutName);
+                setDoc(gymRef, workoutInfo, { merge: true });
+                goto('/profile');
+            } catch (error) {
+                console.log(`An error ocuured while creating a document ${error}`);
+            }
     }
 </script>
 
