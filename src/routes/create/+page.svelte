@@ -8,7 +8,7 @@
     import { Dropdown, DropdownItem, DropdownDivider, DropdownHeader } from 'flowbite-svelte';
     
     let workoutName: String
-    let exerciseName: String
+    //let exerciseName: String
     let sets: number | null
     let reps: number | null
     let weight: number | null
@@ -21,9 +21,45 @@
         currentUser = value.user;
     });
 
+    let selectedExercise: {id: number, text: string} | null = null
+    // exercise input fields
+    let selectedExerciseArr: { 
+        id: number,
+        workout:string, 
+        exercise:string,
+        sets:number | null,
+        reps:number | null,
+        weight:number | null}[] =[];
+    
+    // exercise options
+    let exerciseName = [
+        {id: 0, text:'Select Workout:'},
+        {id: 1, text:'Ab Bench'},
+        {id: 2, text:'Abdominal Crunch'},
+        {id: 3, text:'Back Extension'},
+        {id: 4, text:'Bench Press'},
+        {id: 5, text:'Bicep Curl'},
+        {id: 6, text:'Cable Machine'},
+        {id: 7, text:'Calf Raise'},
+        {id: 8, text:'Chest Press'},
+        {id: 9, text:'Glute Machine'},
+        {id: 10, text:'Hip Adductor'},
+        {id: 11, text:'Lat Pull Down'},
+        {id: 12, text:'Lateral Raise'},
+        {id: 13, text:'Leg Extension'},
+        {id: 14, text:'Leg Press'},
+        {id: 15, text:'Pec Fly'},
+        {id: 16, text:'Plated Chest Press'},
+        {id: 17, text:'Plated Leg Press'},
+        {id: 18, text:'Rotary Torso'},
+        {id: 19, text:'Seated Leg Curl'},
+        {id: 20, text:'Seated Row'},
+        {id: 21, text:'Shoulder Press'},
+        {id: 22, text:'Tricep Press'},
+    ];
+
     function addExercise() {
         exercises[numExercises] = [exerciseName, sets, reps, weight];
-        exerciseName=""
         sets=null
         reps=null
         weight=null
