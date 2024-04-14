@@ -8,7 +8,7 @@
     import { Dropdown, DropdownItem, DropdownDivider, DropdownHeader } from 'flowbite-svelte';
     
     let workoutName: String
-    //let exerciseName: String
+    let exercise: String = 'Select workout:'
     let sets: number | null
     let reps: number | null
     let weight: number | null
@@ -59,9 +59,9 @@
     ];
 
     function handleWorkoutSelection() {
-            if (workout !== 'Select Workout:'){
+            if (exercise !== 'Select Workout:'){
                 showExerciseInfo = true;
-                selectedExercise = exercises.find(exercise => exercise.text === workout) || null;
+                selectedExercise = exercises.find(exercise => exercise.text === exercise) || null;
             } else {
                 showExerciseInfo = false;
                 selectedExercise = null;
