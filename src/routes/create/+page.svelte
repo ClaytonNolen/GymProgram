@@ -16,6 +16,11 @@
     let numExercises = 0
     let workoutNotes: String
 
+    let currentUser: User | null = null;
+    authStore.subscribe((value) => {
+        currentUser = value.user;
+    });
+
     function addExercise() {
         exercises[numExercises] = [exerciseName, sets, reps, weight];
         exerciseName=""
