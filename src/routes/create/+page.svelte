@@ -14,6 +14,7 @@
     let weight: number | null
     let exercises: any[] = []
     let numExercises = 0
+    let notes: String
 
     function addExercise() {
         exercises[numExercises] = [exerciseName, sets, reps, weight];
