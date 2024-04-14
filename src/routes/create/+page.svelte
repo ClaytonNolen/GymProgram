@@ -70,7 +70,8 @@
         }
 
     function addExercise() {
-        exercises[numExercises] = [exerciseName, sets, reps, weight];
+        exercises[numExercises] = [exercise, sets, reps, weight];
+        exercise="Select exercise:"
         sets=null
         reps=null
         weight=null
@@ -117,11 +118,14 @@
             </div>
         {/each}
         <div>
-            <input
-                class="my-2"
-                bind:value={exerciseName}
-                placeholder="Exercise Name"
-            />
+            <label for="exercise"></label>
+            <select bind:value={exercise} on:change={handleWorkoutSelection} id = "exercise">
+                {#each exerciseName as ex}
+                <option value={ex.text}>  
+                    {ex.text}
+                </option>
+                {/each}
+            </select>
             <input
                 class="my-2"
                 bind:value={sets}
