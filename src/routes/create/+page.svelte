@@ -58,6 +58,16 @@
         {id: 22, text:'Tricep Press'},
     ];
 
+    function handleWorkoutSelection() {
+            if (workout !== 'Select Workout:'){
+                showExerciseInfo = true;
+                selectedExercise = exercises.find(exercise => exercise.text === workout) || null;
+            } else {
+                showExerciseInfo = false;
+                selectedExercise = null;
+            }
+        }
+
     function addExercise() {
         exercises[numExercises] = [exerciseName, sets, reps, weight];
         sets=null
