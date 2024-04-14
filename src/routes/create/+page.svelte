@@ -107,6 +107,10 @@
                 class="py-4 pl-5 pr-24 bg-24 bg-transparent border border-borderclr"
             ></textarea>
         </div>
+        <button
+            class="bg-black text-white rounded-lg p-1"
+            on:click={() => createWorkout()}>
+            Create Workout
     </div>
 </main>
 
