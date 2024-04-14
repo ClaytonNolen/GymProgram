@@ -9,6 +9,7 @@
     
     let workoutName: String
     let exercise: String = 'Select workout:'
+    let showExerciseInfo: boolean = false;
     let sets: number | null
     let reps: number | null
     let weight: number | null
