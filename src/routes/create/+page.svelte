@@ -25,6 +25,25 @@
         numExercises = numExercises + 1
     }
 
+    async function createWorkout() {
+            if (workoutName === undefined)
+                return alert('Please name workout');
+        
+            const workoutInfo = {
+                workoutName: workoutName,
+                exercises: exercises,
+                workoutNotes: workoutNotes
+            };
+
+            try {
+                const gymRef = doc(db, 'workoutTest', workoutName);
+                setDoc(gymRef, workoutInfo, { merge: true });
+                goto('/profile');
+            } catch (error) {
+                console.log(`An error ocuured while creating a document ${error}`);
+            }
+        }
+
 </script>
 
 <main class="mx-auto">
