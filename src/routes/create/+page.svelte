@@ -14,7 +14,7 @@
     let weight: number | null
     let exercises: any[] = []
     let numExercises = 0
-    let notes: String
+    let workoutNotes: String
 
     function addExercise() {
         exercises[numExercises] = [exerciseName, sets, reps, weight];
@@ -74,6 +74,15 @@
                 Add Exercise
             </button>
         </div>
+        <div class="flex flex-col my-4 text-white">
+            <label for="workout-notes">Notes</label>
+            <textarea 
+                id="workout-notes" 
+                bind:value={workoutNotes}
+                placeholder="Notes"
+                class="py-4 pl-5 pr-24 bg-24 bg-transparent border border-borderclr"
+            ></textarea>
+        </div>
     </div>
 </main>
 
@@ -83,4 +92,9 @@
         width: 50%;
     }
 
+    textarea {
+        width: 100%;
+        resize: vertical;
+        height: 200px;
+    }
 </style>
