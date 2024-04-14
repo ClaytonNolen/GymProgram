@@ -1,33 +1,85 @@
-<script>
-	import { Object, Array, bind } from 'svelte-object'
+<script lang="ts">
+    import { doc, setDoc } from 'firebase/firestore';
+    import { db, storage } from '$lib/firebase';
+    import type { User } from 'firebase/auth';
+    import { authStore } from '$lib/assets/gym/gym';
+    import { ref, uploadBytes, getDownloadURL } from 'firebase/storage';
+    import { goto } from '$app/navigation';
+    import { Dropdown, DropdownItem, DropdownDivider, DropdownHeader } from 'flowbite-svelte';
+    
+    let workoutName: String
+    let exerciseName: String
+    let sets: number | null
+    let reps: number | null
+    let weight: number | null
+    let exercises: any[] = []
+    let numExercises = 0
 
-  let data = [{
-		name: 'Lillemis',
-		age: 5,
-		editable: 'You can edit this text'
-	}]
-	
-	let store
+    function addExercise() {
+        exercises[numExercises] = [exerciseName, sets, reps, weight];
+        exerciseName=""
+        sets=null
+        reps=null
+        weight=null
+        numExercises = numExercises + 1
+    }
+
 </script>
 
+<main class="mx-auto">
+    <h1 class="text-center text-white">
+        New Workout
+    </h1>
+    <div class=" bg-secondary rounded-lg mx-auto">
+        <input
+            class="my-2"
+            bind:value={workoutName}
+            placeholder="Workout Name"
+        />
+        <h2 class="text-white">
+            Exercises
+        </h2>
+        {#each exercises as ex}
+            <div class="flex flex-col text-white">
+                {ex}
+            </div>
+        {/each}
+        <div>
+            <input
+                class="my-2"
+                bind:value={exerciseName}
+                placeholder="Exercise Name"
+            />
+            <input
+                class="my-2"
+                bind:value={sets}
+                placeholder="Sets"
+            />
+            <input
+                class="my-2"
+                bind:value={reps}
+                placeholder="Reps"
+            />
+            <input
+                class="my-2"
+                bind:value={weight}
+                placeholder="Weight"
+            />
+        </div>
+        <div>
+            <button
+                class="bg-black text-white rounded-lg p-1"
+                on:click={() => addExercise()}>
+                Add Exercise
+            </button>
+        </div>
+    </div>
+</main>
 
-<div>
-	<Object bind:store let:store let:value value={{ name: 'Arthurs Pet Company' }}>
-		<h2>{value.name}</h2>
-		<input use:store={'name'}>
-		<Array name='pets' let:value value={data}>
-			<h3>Pets</h3>
-			{#each value as item, k}
-				<div>
-					<Object let:store name={k}>
-						<input use:store={'name'} />
-						<input use:store={'age'} type='number' />
-						<div use:store={'editable'}> {item.editable || ''} </div>
-					</Object>
-					<button on:click={() => value.removeByIndex(k)}>- {item.name || ''}</button>
-				</div>
-			{/each}
-			<button on:click={() => value.push({})}>+</button>
-		</Array>
-	</Object>
-</div>
+<style>
+    main {
+        text-align: center;
+        width: 50%;
+    }
+
+</style>
