@@ -9,19 +9,18 @@
 </script>
 
 <header class="bg-secondary p-4 flex justify-between items-center text-white">
-    <h1 class="font-bold text-sm md:text-2xl tracking-widest">The Gym Program</h1>
+    <h1 class="font-bold text-lg md:text-2xl tracking-widest">The Gym Program</h1>
     <!-- Links -->
-    <div class="flex items-center space-x-10 font-semibold">
-        
-        <a href="/main" > MAIN </a>
-        
-        <a href="/SUInfo" > ROB GYM </a>
+    <div class="flex items-center space-x-10 font-semibold text-lg">
+       <!-- <a href="/main" > MAIN </a> -->
+        <a href="/SUInfo"> ROB GYM </a>
 
         <a href="/create" > CREATE </a>
 
-        <a href="/profile" > PROFILE </a>
+        <a href="/profile" > PROGRESS </a>
 
         <a href="/test" > TEST </a>
+
     </div>
 
     <!-- User/Logout -->

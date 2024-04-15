@@ -18,7 +18,7 @@ to implement onMount-->
 
 // Function to fetch data from Firebase
 // Lines 27 - 31 were developed by A.I. and helped us correctly store an array type in the data being fetched.
-// Line 71 was suggested by A.I. to help diaplay the graph.
+// Line 78 was suggested by A.I. to help diaplay the graph.
 async function fetchData() {
   try {
     const querySnapshot = await getDocs(collection(db, 'users')); // Assuming 'users' is your collection name
@@ -30,13 +30,14 @@ async function fetchData() {
         } else {
           console.error('Invalid data format:', data);
         }
-      }
+      }    
     });
   } catch (error) {
     console.error('Error fetching data from Firebase:', error);
   }
 }
 
+// Code for title card for chart and legend position from https://www.youtube.com/watch?v=NySBh_DIRlg
   let canvas: HTMLCanvasElement;
   onMount(async () => {
     await fetchData(); // Fetch data from Firebase before initializing the chart
@@ -50,23 +51,41 @@ async function fetchData() {
         labels: Array.from({ length: chartData.length }, (_, i) => i + 1), // Generate labels based on data length
         datasets: [
           {
-            label: '# of Votes',
+            label: 'Max Weight',
             data: chartData,
-            backgroundColor: 'rgba(255,159,64,1)',
+            backgroundColor: 'rgba(255,205,0,1)',
             borderColor: 'rgba(255,159,64,1)',
-            borderWidth: 1,
+            borderWidth: 2,
+            pointBorderColor: "white"
           },
         ],
       },
       options: {
+        responsive: true,
         scales: {
           y: {
             beginAtZero: true,
           },
         },
+        plugins: {
+          legend: {
+            position: "bottom"
+          }
+        }
       },
     });
   });
 </script>
 
-<canvas bind:this={canvas}></canvas> 
+<!--Adds ttitle and line above chart while connecting it to the canvas -->
+<div class="col-8 ring-offset-2 my-5">
+  <div class="card">
+      <div class="card-body">
+        <h5 class= "text-white"> Bench Press Progress </h5>
+        <hr>
+        <canvas bind:this={canvas}></canvas> 
+      </div>
+  </div>
+</div>
+
+<!-- <canvas bind:this={canvas}></canvas> -->
