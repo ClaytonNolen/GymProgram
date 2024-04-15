@@ -16,11 +16,13 @@ console.log(workouts)
 
 </script>
 
-<main class="text-gray-100 mt-10 max-w-5xl mx-auto">
-    <h1 class="text-5xl font-bold my-5">Workouts</h1>
-    <div class="grid px-4 md:grid-cols-3 gap-8">
+<main class="text-gray-100 max-w-5xl mx-auto">
+    <h1 class="text-4xl font-bold my-5">Workouts</h1>
+    <div class="px-4">
         {#each workouts as work (work.workout)}
-        <EventCard {...work}/>
+        <button>
+            <EventCard {...work}/>
+        </button>
         {/each}
     </div>
 </main>
