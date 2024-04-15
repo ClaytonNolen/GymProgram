@@ -6,6 +6,7 @@
         import { ref, uploadBytes, getDownloadURL } from 'firebase/storage';
         import { goto } from '$app/navigation';
         import { Dropdown, DropdownItem, DropdownDivider, DropdownHeader } from 'flowbite-svelte';
+	import { each } from 'chart.js/helpers';
 
 
         let workout: string = "Select Workout";
@@ -92,12 +93,21 @@
                     sets: sets,
                     reps: reps,
                     weight: weight
-                }
+                };
                 selectedExerciseArr.push(exerciseObj);
                     // sets = null;
                     // reps = null;
                     // weight = null;
             }
+                const nextExercise = {
+                    id: selectedExerciseArr.length,
+                    workout:'',
+                    exercise: '',
+                    sets: null,
+                    reps: null,
+                    weight: null
+                };
+                selectedExerciseArr.push(nextExercise);
         }
 
         async function createGym() {
@@ -201,7 +211,7 @@
                                 class="py-4 pl-5 pr-24 bg-24 bg-transparent border border-borderclr"
                             />
                         </div>
-                        <!--Reps-->
+                        <!--Weight-->
                         <div class="flex flex-col">
                             <label for="weight">Weight</label>
                             <input 
@@ -214,6 +224,8 @@
                         </div>
                     </div>
                 {/if}
+
+                
 
                 
                 <!-- Workout Date -->
@@ -242,14 +254,15 @@
                         id="workout-notes" 
                         bind:value={workoutNotes}
                         placeholder="Additional Workout Information...
-    100 Pushups
-    100 Sit Ups
-    100 Squats
-    10 km Run"
+
+100 Pushups
+100 Sit Ups
+100 Squats
+10 km Run"
+
                         class="py-4 pl-5 pr-24 bg-24 bg-transparent border border-borderclr"
                     ></textarea>
                 </div>
-
                 <button 
                 disabled={loading}
                 on:click={addMultipleExercises}
@@ -257,24 +270,48 @@
                 >{loading ? 'Creating' : 'Add Exercise'}</button>
                 {#each selectedExerciseArr as exercise}
                 <div class="flex flex-col my-4">
-                    <label for="exercise-{exercise.id}">Exercise</label>
+                    <label for="exercsie-{exercise.id}">Exercise</label>
+                    <select bind:value={exercise.exercise} on:change={handleWorkoutSelection}
+                    class="py-4 pl-5 pr-24 bg-24 bg-transparent border border-borderclr"
+                    id = "workout"
+                    >
+                    {#each exercises as ex}
+                    <option value={ex.text}>  
+                        {ex.text}
+                    </option>
+                    {/each}
                     <input 
-                        id="exercise-{exercise.id}" 
-                        type="text" 
+                    class="py-4 pl-5 pr-24 bg-24 bg-transparent border border-borderclr"
+                    />
+                </select>
+                    <!-- <input
+                        id="exercise-{exercise.id}"
+                        type="text"
                         value={exercise.exercise}
                         class="py-4 pl-5 pr-24 bg-24 bg-transparent border border-borderclr"
                         readonly
-                    />
-                    <!-- Add input fields for sets, reps, and weight-->
+                    /> -->
                     <label for="sets-{exercise.id}">Sets</label>
-                    <input 
-                        id="sets-{exercise.id}" 
-                        type="number" 
+                    <input
+                        id="sets-{exercise.id}"
+                        type="text"
                         value={exercise.sets}
                         class="py-4 pl-5 pr-24 bg-24 bg-transparent border border-borderclr"
-                        readonly
                     />
-                    <!-- reps and weight -->
+                    <label for="reps-{exercise.id}">Reps</label>
+                    <input
+                        id="reps-{exercise.id}"
+                        type="text"
+                        value={exercise.reps}
+                        class="py-4 pl-5 pr-24 bg-24 bg-transparent border border-borderclr" 
+                    />
+                    <label for="weight-{exercise.id}">Weight</label>
+                    <input
+                        id="weight-{exercise.id}"
+                        type="text"
+                        value={exercise.weight}
+                        class="py-4 pl-5 pr-24 bg-24 bg-transparent border border-borderclr"
+                    />
                 </div>
             {/each}
                 <button 
@@ -282,7 +319,6 @@
                 on:click={createGym}
                 class="py-2 px-8 bg-white text-black mt-8 disabled:bg-white/25 disabled:cursor-not-allowed"
                 >{loading ? 'Creating' : 'Create Workout'}</button>
-
             </div>
         </div>
     </main>

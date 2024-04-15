@@ -21,6 +21,7 @@
     export let workout: string;
     export let workoutNotes: string;
     export let workoutDate: string;
+    export let workoutTitle: string;
 
     const formattedDate = formatDate(workoutDate);
 </script>
@@ -56,12 +57,9 @@ on:keydown={() => {}}
                 </div>
             </div>
         -->
-
+            <p >{workoutTitle}</p>
             <p class="text-gray-400 mt-4">Workout Date : {formattedDate}</p>
-            <p>Workouts: {workout}</p>
-            <p>Workout Notes: {workoutNotes}</p>
-
-
-
+            <!-- <p>Workouts: {workout}</p>
+            <p>Workout Notes: {workoutNotes}</p> -->
         </div>
 </article>

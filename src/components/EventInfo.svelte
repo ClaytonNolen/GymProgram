@@ -6,9 +6,10 @@
     import { db } from '$lib/firebase';
     import { goto } from '$app/navigation';
 
-    export let date: string;
-    export let name: string;
-    export let description: string;
+    export let workoutDate: string;
+    export let workoutTitle: string;
+    export let workoutNotes: string;
+    export let exercise: string;
 </script>
 
 <section class="mt-[60px] ml-[20px] xl:ml-[277px] text-white xl:col-span-2 pr-8">
