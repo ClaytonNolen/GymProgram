@@ -12,7 +12,7 @@
             <h1 class="text-[40px] font-bold text-white lg:w-[710px]"> <!--Title-->
                 Welcome to The Gym Program
             </h1>
-            <p class= "text-[20px] text-white lg:w-[710px] mt-4"> <!--Description of the app-->
+            <p class= "text-[20px] text-black lg:w-[710px] mt-4"> <!--Description of the app-->
                 Here, you can track your workouts at the Robertson Center and keep track of your progress over time.
             </p>
             <div class="flex flex-col px-10 sm:flex-row mt-10 gap-14">

@@ -8,7 +8,7 @@
     })
 </script>
 
-<header class="bg-secondary p-4 flex justify-between items-center text-white">
+<header class="bg-secondary p-4 flex justify-between items-center text-inputclr">
     <h1 class="font-bold text-lg md:text-2xl tracking-widest">The Gym Program</h1>
     <!-- Links -->
     <div class="flex items-center space-x-10 font-semibold text-lg">
