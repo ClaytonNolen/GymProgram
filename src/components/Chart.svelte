@@ -21,18 +21,18 @@ to implement onMount-->
 // Line 71 was suggested by A.I. to help diaplay the graph.
 async function fetchData() {
   try {
-    const querySnapshot = await getDocs(collection(db, 'users')); // Assuming 'users' is your collection name
-    querySnapshot.forEach((doc) => {
-      if (doc.id === currentUser?.uid) {
-        const data = doc.data().testInput; // Assuming 'testInput' is the field where your data is stored
-        if (Array.isArray(data)) {
-          chartData.push(...data); // Push data into chartData array
+    const querySnapshot = await getDocs(collection(db, 'users')); // Assuming 'users' is your collection name.
+    querySnapshot.forEach((doc) => {  // Check each document.
+      if (doc.id === currentUser?.uid) {    // If a doc exists titled as the UID then...
+        const data = doc.data().testInput; // Assuming 'testInput' is the field where your data is stored.
+        if (Array.isArray(data)) {  // If an array exists...
+          chartData.push(...data); // Push data into chartData array.
         } else {
           console.error('Invalid data format:', data);
         }
       }
     });
-  } catch (error) {
+  } catch (error) {   // If error report it.
     console.error('Error fetching data from Firebase:', error);
   }
 }

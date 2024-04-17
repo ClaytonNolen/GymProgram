@@ -1,3 +1,5 @@
+/* formatDate.ts | Last Modified: April 17, 2024 | Author: Clayton Nolen */
+
 export function formatDate(dateString: string) {
     const date = new Date(dateString);
 
