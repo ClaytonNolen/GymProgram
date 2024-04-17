@@ -7,15 +7,15 @@
     import { goto } from '$app/navigation';
     import { Dropdown, DropdownItem, DropdownDivider, DropdownHeader } from 'flowbite-svelte';
     
-    let workoutName: String
-    let exercise: String = 'Select workout:'
+    let workoutName: string
+    let exercise: string = 'Select workout:'
     let showExerciseInfo: boolean = false;
     let sets: number | null
     let reps: number | null
     let weight: number | null
     let exercises: any[] = []
     let numExercises = 0
-    let workoutNotes: String
+    let workoutNotes: string
 
     let currentUser: User | null = null;
     authStore.subscribe((value) => {
