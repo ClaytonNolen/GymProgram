@@ -10,10 +10,11 @@
     let workoutName: string
     let exercise: string = 'Select workout:'
     let showExerciseInfo: boolean = false;
-    let sets: number | null
-    let reps: number | null
-    let weight: number | null
+    let sets: number[] = []
+    let reps: number[] = []
+    let weight: number[] = []
     let exercises: any[] = []
+    let displayEx: any[] = []
     let numExercises = 0
     let workoutNotes: string
 
@@ -70,30 +71,32 @@
         }
 
     function addExercise() {
-        exercises[numExercises] = [exercise, sets, reps, weight];
+        displayEx[numExercises] = [exercise, sets[numExercises], reps[numExercises], weight[numExercises]];
+        exercises[numExercises] = exercise;
         exercise="Select exercise:"
-        sets=null
-        reps=null
-        weight=null
         numExercises = numExercises + 1
     }
 
     async function createWorkout() {
             if (workoutName === undefined)
                 return alert('Please name workout');
-        
             const workoutInfo = {
                 workoutName: workoutName,
                 exercises: exercises,
+                sets: sets,
+                reps: reps,
+                weight: weight,
                 workoutNotes: workoutNotes
             };
 
             try {
-                const gymRef = doc(db, 'workoutTest', workoutName);
+                const gymRef = doc(db, 'workoutTest3', workoutName);
+                console.log("gymRef good")
                 setDoc(gymRef, workoutInfo, { merge: true });
+                console.log("setDoc good")
                 goto('/profile');
             } catch (error) {
-                console.log(`An error ocuured while creating a document ${error}`);
+                return alert(`An error ocuured while creating a document ${error}`);
             }
         }
 
@@ -112,7 +115,7 @@
         <h2 class="text-white">
             Exercises
         </h2>
-        {#each exercises as ex}
+        {#each displayEx as ex}
             <div class="flex flex-col text-white">
                 {ex}
             </div>
@@ -128,17 +131,17 @@
             </select>
             <input
                 class="my-2"
-                bind:value={sets}
+                bind:value={sets[numExercises]}
                 placeholder="Sets"
             />
             <input
                 class="my-2"
-                bind:value={reps}
+                bind:value={reps[numExercises]}
                 placeholder="Reps"
             />
             <input
                 class="my-2"
-                bind:value={weight}
+                bind:value={weight[numExercises]}
                 placeholder="Weight"
             />
         </div>
