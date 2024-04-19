@@ -21,7 +21,7 @@
 
         <a href="/profile" > PROGRESS </a>
 
-        <a href="/test" > TEST </a>
+        <a href="/tracker" > TRACKER </a>
 
     </div>
 
