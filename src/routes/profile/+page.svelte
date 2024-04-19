@@ -22,21 +22,23 @@
         <Workouts />
     {/if}
 
-    <div>   <!--Centers the chart-->
+    <!--Used https://www.chartjs.org/docs/latest/configuration/responsive.html to increase chart size and responsiveness-->
+    <div class="chart-container" style ="position: relative; height:40vh; width:80vw">   <!--Centers the chart-->
         <BenchChart />
     </div>
 
-    <div class="flex justify-center"><!--Centers the chart-->
+    <!--<div class="chart-container space-y-10" style ="position: relative; height:40vh; width:80vw">
         <SquatChart />
     </div>
 
-    <div class="flex justify-center"><!--Centers the chart-->
+    <div class="chart-container space-y-10" style ="position: relative; height:40vh; width:80vw">
         <DeadChart />
     </div>
 
-    <div class="flex justify-center"><!--Centers the chart-->
+    <div class="chart-container space-y-10" style ="position: relative; height:40vh; width:80vw">
         <CleanChart />
     </div>
+    -->
 
 </main>
 
