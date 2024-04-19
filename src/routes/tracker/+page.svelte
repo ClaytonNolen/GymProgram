@@ -13,6 +13,9 @@
     let powerCleanStr: string;
 
     export let benchDate: string;
+    export let squatDate: string;
+    export let deadLiftDate: string;
+    export let powerCleanDate: string;
 
     let loading = false;
     let currentUser : User | null = null; // Initialize currentUser to null to avoid undefined errors
@@ -88,20 +91,20 @@
             const docSnap = await getDoc(userDocRef);
             // The If/Else statements below were created by A.I.
             if (docSnap.exists()) {
-                // If benchInput doesn't exist, initialize as empty array.
-                const existingSquatData = docSnap.data().squatInput || [];
-
-                // Append the new input to the existing array.
-                const newSquatData = [...existingSquatData, squatStr];
-
+                const existingSquatData = docSnap.data().squatInput || []; // If benchInput doesn't exist, initialize as empty array.
+                const existingSquatTime = docSnap.data().squatTimeInput || []
+                
+                const formattedSquatDateStr = formatDate(squatDate);
+                const newSquatData = [...existingSquatData, squatStr]; // Append the new input to the existing array.
+                const newSquatTime = [...existingSquatTime, formattedSquatDateStr];
+                
                 // Update the document with the updated array.
                 await setDoc(userDocRef, { squatInput: newSquatData }, { merge: true });
-
+                await setDoc(userDocRef, { squatTimeInput: newSquatTime }, { merge: true });
             } else {
-                
-                // If document doesn't exist, create it with the new input as the first element of the array.
-                await setDoc(userDocRef, { squatInput: [squatStr] });
-
+                const formattedSquatDateStr = formatDate(squatDate);
+                await setDoc(userDocRef, { squatInput: [squatStr] }); // If document doesn't exist, create it with the new input as the first element of the array.
+                await setDoc(userDocRef, { squatTimeInput: [formattedSquatDateStr] });
             }
             goto("/profile"); // Should be changed to the Profile page.
         } catch (error) {
@@ -130,19 +133,20 @@
             const docSnap = await getDoc(userDocRef);
             // The If/Else statements below were created by A.I.
             if (docSnap.exists()) {
-                // If benchInput doesn't exist, initialize as empty array.
-                const existingDeadLiftData = docSnap.data().deadLiftInput || [];
+                const existingDeadLiftData = docSnap.data().deadLiftInput || []; // If benchInput doesn't exist, initialize as empty array.
+                const existingDeadLiftTime = docSnap.data().deadLiftTimeInput || [];
 
-                // Append the new input to the existing array.
-                const newDeadLiftData = [...existingDeadLiftData, deadLiftStr];
+                const formattedDeadLiftDateStr = formatDate(deadLiftDate);
+                const newDeadLiftData = [...existingDeadLiftData, deadLiftStr]; // Append the new input to the existing array.
+                const newDeadLiftTime = [...existingDeadLiftTime, formattedDeadLiftDateStr];
 
                 // Update the document with the updated array.
                 await setDoc(userDocRef, { deadLiftInput: newDeadLiftData }, { merge: true });
-
-            } else {  
-                // If document doesn't exist, create it with the new input as the first element of the array.
-                await setDoc(userDocRef, { deadLiftInput: [deadLiftStr] });
-
+                await setDoc(userDocRef, { deadLiftTimeInput: newDeadLiftTime }, { merge: true });
+            } else { 
+                const formattedDeadLiftDateStr = formatDate(deadLiftDate); 
+                await setDoc(userDocRef, { deadLiftInput: [deadLiftStr] }); // If document doesn't exist, create it with the new input as the first element of the array.
+                await setDoc(userDocRef, { deadLiftTimeInput: [formattedDeadLiftDateStr] });
             }
             goto("/profile"); // Should be changed to the Profile page.
         } catch (error) {
@@ -173,7 +177,6 @@
             if (docSnap.exists()) {
 
                 const existingPowerCleanData = docSnap.data().powerCleanInput || []; // If benchInput doesn't exist, initialize as empty array.
-
                 const newPowerCleanData = [...existingPowerCleanData, powerCleanStr]; // Append the new input to the existing array.
 
 
@@ -204,7 +207,7 @@
                 <!-- input box -->
                 <div class="max-w-4xl mx-auto bg-secondary rounded-lg flex flex-col p-5">
                     <h1 class="text-center text-white text-2xl">BENCH PRESS</h1>
-                                    <!-- Workout Date -->
+            <!-- Workout Date -->
              <div class="flex flex-col my-4">
                 <label for="workout-date">Workout Date</label>
                 <input 
@@ -241,6 +244,16 @@
             <!-- input box -->
             <div class="max-w-4xl mx-auto bg-secondary rounded-lg flex flex-col p-5">
                 <h1 class="text-center text-white text-2xl">SQUAT</h1>
+            <!-- Workout Date -->
+             <div class="flex flex-col my-4">
+                <label for="workout-date">Workout Date</label>
+                <input 
+                    id="workout-date" 
+                    type="date" 
+                    bind:value={squatDate}
+                    placeholder="Enter Date"
+                    class="py-4 pl-5 pr-24 bg-24 bg-transparent border border-borderclr"
+                />
                 <!-- Gym Name -->
                 <div class="flex flex-col my-4">
                     <label for="squatStr">SQUAT ENTRY</label>
@@ -266,6 +279,16 @@
             <!-- input box -->
             <div class="max-w-4xl mx-auto bg-secondary rounded-lg flex flex-col p-5">
                 <h1 class="text-center text-white text-2xl">DEAD LIFT</h1>
+            <!-- Workout Date -->
+             <div class="flex flex-col my-4">
+                <label for="workout-date">Workout Date</label>
+                <input 
+                    id="workout-date" 
+                    type="date" 
+                    bind:value={deadLiftDate}
+                    placeholder="Enter Date"
+                    class="py-4 pl-5 pr-24 bg-24 bg-transparent border border-borderclr"
+                />
                 <!-- Gym Name -->
                 <div class="flex flex-col my-4">
                     <label for="deadLiftStr">DEAD LIFT ENTRY</label>
