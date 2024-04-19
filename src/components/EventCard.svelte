@@ -1,7 +1,6 @@
 <script lang="ts">
     import { goto } from "$app/navigation";
     import { formatDate } from "../helper/formatDate";
-
     import type { Member } from '../types';
 
     // export let gymName: string;
@@ -18,9 +17,10 @@
     // export let Workout: string;
     // export let Notes: string;
 
-    export let workout: string;
-    export let workoutNotes: string;
+    export let workoutName: string;
+    export let displayEx: any[];
     export let workoutDate: string;
+    export let workoutNotes: string;
 
     const formattedDate = formatDate(workoutDate);
 </script>
@@ -57,11 +57,10 @@ on:keydown={() => {}}
             </div>
         -->
 
-            <p class="text-gray-400 mt-4">Workout Date : {formattedDate}</p>
-            <p>Workouts: {workout}</p>
+            <!--<p class="text-gray-400 mt-4">Workout Date : {formattedDate}</p>-->
+            <p>Workouts: {workoutName}</p>
+            
             <p>Workout Notes: {workoutNotes}</p>
-
-
 
         </div>
 </article>
