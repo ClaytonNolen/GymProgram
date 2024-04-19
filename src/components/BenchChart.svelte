@@ -74,6 +74,9 @@ async function fetchBench() {
           y: {
             beginAtZero: true,
           },
+          x: {
+            offset: true,
+          }
         },
         plugins: {
           legend: {
