@@ -63,7 +63,7 @@ async function fetchBench() {
       },
       options: {
         responsive: true,
-        maintainAspectRatio: true,
+        aspectRatio: 1.8,
         scales: {
           y: {
             beginAtZero: true,

@@ -22,7 +22,7 @@
         <Workouts />
     {/if}
 
-    <div class="flex justify-center"><!--Centers the chart-->
+    <div>   <!--Centers the chart-->
         <BenchChart />
     </div>
 
