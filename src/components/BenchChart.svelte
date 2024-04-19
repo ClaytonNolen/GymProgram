@@ -15,11 +15,12 @@ to implement onMount-->
   })
 
   let benchData: number[] = []; // Initialize benchData array
-  let benchDate: string;
+  let benchDate: string [] = ["01/01/01", "01/02/01", "01/03/01", "01/04/01", "01/05/01", "01/06/01", "01/07/01", "01/08/01", "01/09/01", "01/10/01", "01/11/01", "01/12/01", "01/13/01", "01/14/01", "01/15/01", "01/16/01", "01/17/01", "01/18/01", "01/19/01", "01/20/01", "01/21/01", "01/22/01", "01/23/01", "01/24/01"];
   
 // Function to fetch data from Firebase
 // Lines 27 - 31 were developed by A.I. and helped us correctly store an array type in the data being fetched.
 // Line 78 was suggested by A.I. to help diaplay the graph.
+// Change to where only last 24 indexes of the array are taken
 async function fetchBench() {
   try {
     const querySnapshot = await getDocs(collection(db, 'users')); // Assuming 'users' is your collection name
@@ -49,7 +50,8 @@ async function fetchBench() {
       // Need to edit later for styling
       type: 'line',
       data: {
-        labels: Array.from({ length: benchData.length }, (_, i) => i + 1), // Generate labels based on data length
+        labels: benchDate, // Generate labels based on data length
+        // labels: Array.from({ length: benchData.length }, (_, i) => i + 1), // Generate labels based on data length
         datasets: [
           {
             label: 'Max Weight',
@@ -62,8 +64,9 @@ async function fetchBench() {
         ],
       },
       options: {
+      
         responsive: true,
-        aspectRatio: 1.8,
+        maintainAspectRatio: true,
         scales: {
           y: {
             beginAtZero: true,

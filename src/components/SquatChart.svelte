@@ -14,7 +14,7 @@ to implement onMount-->
       currentUser = value.user
     })
   
-    let chartData: number[] = []; // Initialize chartData array
+    let squatData: number[] = []; // Initialize chartData array
 
   // Function to fetch data from Firebase
   // Lines 27 - 31 were developed by A.I. and helped us correctly store an array type in the data being fetched.
@@ -24,9 +24,9 @@ to implement onMount-->
       const querySnapshot = await getDocs(collection(db, 'users')); // Assuming 'users' is your collection name
       querySnapshot.forEach((doc) => {
         if (doc.id === currentUser?.uid) {
-          const data = doc.data().testInput; // Assuming 'testInput' is the field where your data is stored
+          const data = doc.data().squatInput; // Assuming 'testInput' is the field where your data is stored
           if (Array.isArray(data)) {
-            chartData.push(...data); // Push data into chartData array
+            squatData.push(...data); // Push data into chartData array
           } else {
             console.error('Invalid data format:', data);
           }
@@ -48,11 +48,11 @@ to implement onMount-->
         // Need to edit later for styling
         type: 'line',
         data: {
-          labels: Array.from({ length: chartData.length }, (_, i) => i + 1), // Generate labels based on data length
+          labels: Array.from({ length: squatData.length }, (_, i) => i + 1), // Generate labels based on data length
           datasets: [
             {
               label: 'Max Weight',
-              data: chartData,
+              data: squatData,
               backgroundColor: 'rgba(255,205,0,1)',
               borderColor: 'rgba(255,159,64,1)',
               borderWidth: 2,

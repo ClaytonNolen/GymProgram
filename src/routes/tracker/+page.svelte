@@ -194,7 +194,7 @@
 
 <main>
         <!--Main Page - template for page with tailwind css code is from https://www.youtube.com/watch?v=fTsVYwxjyS4-->
-    <div class="flex justify-center items-center h-screen"> 
+    <div class="flex justify-center items-center"> 
         <div class="text-center"> 
             <h1 class="text-center text-[40px] font-bold text-white lg:w-[710px]"> <!--Title-->
                 TESTING: UID AND GRAPHS
@@ -218,12 +218,12 @@
                     <!-- Gym Name -->
                     <div class="flex flex-col my-4">
                         <label for="benchStr">BENCH PRESS ENTRY</label>
-                        <input 
+                        <input
                             id="benchStr" 
                             type="text"
                             bind:value={benchStr}
                             placeholder="integers only"
-                            class="py-4 pl-5 pr-24 bg-24 bg-transparent border border-borderclr"
+                            class="py-4 pl-5 pr-24 bg-24 bg-transparent border border-borderclr text-white"
                         />
                     </div>
             <div class="text-center gap-14">
@@ -237,5 +237,81 @@
             </button>
             </div>
         </div>
-
+        <div>
+            <!-- input box -->
+            <div class="max-w-4xl mx-auto bg-secondary rounded-lg flex flex-col p-5">
+                <h1 class="text-center text-white text-2xl">SQUAT</h1>
+                <!-- Gym Name -->
+                <div class="flex flex-col my-4">
+                    <label for="squatStr">SQUAT ENTRY</label>
+                    <input 
+                        id="squarStr" 
+                        type="text"
+                        bind:value={squatStr}
+                        placeholder="integers only"
+                        class="py-4 pl-5 pr-24 bg-24 bg-transparent border border-borderclr"
+                    />
+                </div>
+        <div class="text-center gap-14">
+            <!--Buttons and how they are navigated to different pages with "on:click"-->
+        <button 
+            id="submit"
+            disabled={loading}
+            on:click={createSquat}
+            class="py-[23px] px-[86px] bg-black text-xl text-white w-[299px] hover:bg-white hover:text-black duration-300 transittion-colors">
+            {loading ? 'Uploading Test' : 'Upload Complete'} CLICK 
+        </button>
+        </div>
+        <div>
+            <!-- input box -->
+            <div class="max-w-4xl mx-auto bg-secondary rounded-lg flex flex-col p-5">
+                <h1 class="text-center text-white text-2xl">DEAD LIFT</h1>
+                <!-- Gym Name -->
+                <div class="flex flex-col my-4">
+                    <label for="deadLiftStr">DEAD LIFT ENTRY</label>
+                    <input 
+                        id="deadLiftStr" 
+                        type="text"
+                        bind:value={deadLiftStr}
+                        placeholder="integers only"
+                        class="py-4 pl-5 pr-24 bg-24 bg-transparent border border-borderclr"
+                    />
+                </div>
+        <div class="text-center gap-14">
+            <!--Buttons and how they are navigated to different pages with "on:click"-->
+        <button 
+            id="submit"
+            disabled={loading}
+            on:click={createDeadLift}
+            class="py-[23px] px-[86px] bg-black text-xl text-white w-[299px] hover:bg-white hover:text-black duration-300 transittion-colors">
+            {loading ? 'Uploading Test' : 'Upload Complete'} CLICK 
+        </button>
+        </div>
+    </div>
+    <div>
+            <!-- input box -->
+            <div class="max-w-4xl mx-auto bg-secondary rounded-lg flex flex-col p-5">
+                <h1 class="text-center text-white text-2xl">POWER CLEAN</h1>
+                    <!-- Gym Name -->
+                    <div class="flex flex-col my-4">
+                        <label for="benchStr">POWER CLEAN ENTRY</label>
+                        <input 
+                            id="benchStr" 
+                            type="text"
+                            bind:value={powerCleanStr}
+                            placeholder="integers only"
+                            class="py-4 pl-5 pr-24 bg-24 bg-transparent border border-borderclr"
+                        />
+                    </div>
+            <div class="text-center gap-14">
+                <!--Buttons and how they are navigated to different pages with "on:click"-->
+            <button 
+                id="submit"
+                disabled={loading}
+                on:click={createPowerClean}
+                class="py-[23px] px-[86px] bg-black text-xl text-white w-[299px] hover:bg-white hover:text-black duration-300 transittion-colors">
+                {loading ? 'Uploading Test' : 'Upload Complete'} CLICK 
+            </button>
+            </div>
+        </div>
 </main>
