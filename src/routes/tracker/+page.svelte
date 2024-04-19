@@ -197,7 +197,7 @@
 
             <div>
                 <!-- input box -->
-                <div class="max-w-4xl mx-auto bg-primary rounded-lg flex flex-col p-5">
+                <div class="max-w-4xl mx-auto bg-secondary rounded-lg flex flex-col p-5">
                     <h1 class="text-center text-white text-2xl">BENCH PRESS</h1>
                     <!-- Gym Name -->
                     <div class="flex flex-col my-4">
@@ -207,7 +207,7 @@
                             type="text"
                             bind:value={benchStr}
                             placeholder="integers only"
-                            class="py-4 pl-5 pr-24 bg-24 bg-transparent border border-borderclr"
+                            class="py-4 pl-5 pr-24 bg-24 bg-transparent border border-borderclr text-white"
                         />
                     </div>
             <div class="text-center gap-14">
@@ -233,7 +233,7 @@
                         type="text"
                         bind:value={squatStr}
                         placeholder="integers only"
-                        class="py-4 pl-5 pr-24 bg-24 bg-transparent border border-borderclr"
+                        class="py-4 pl-5 pr-24 bg-24 bg-transparent border border-borderclr  text-white"
                     />
                 </div>
         <div class="text-center gap-14">
@@ -258,7 +258,7 @@
                         type="text"
                         bind:value={deadLiftStr}
                         placeholder="integers only"
-                        class="py-4 pl-5 pr-24 bg-24 bg-transparent border border-borderclr"
+                        class="py-4 pl-5 pr-24 bg-24 bg-transparent border border-borderclr  text-white"
                     />
                 </div>
         <div class="text-center gap-14">
@@ -284,7 +284,7 @@
                             type="text"
                             bind:value={powerCleanStr}
                             placeholder="integers only"
-                            class="py-4 pl-5 pr-24 bg-24 bg-transparent border border-borderclr"
+                            class="py-4 pl-5 pr-24 bg-24 bg-transparent border border-borderclr  text-white"
                         />
                     </div>
             <div class="text-center gap-14">
