@@ -189,7 +189,7 @@
 
 <main>
         <!--Main Page - template for page with tailwind css code is from https://www.youtube.com/watch?v=fTsVYwxjyS4-->
-    <div class="flex justify-center items-center h-screen"> 
+    <div class="flex justify-center items-center"> 
         <div class="text-center"> 
             <h1 class="text-center text-[40px] font-bold text-white lg:w-[710px]"> <!--Title-->
                 TESTING: UID AND GRAPHS
@@ -197,12 +197,12 @@
 
             <div>
                 <!-- input box -->
-                <div class="max-w-4xl mx-auto bg-secondary rounded-lg flex flex-col p-5">
+                <div class="max-w-4xl mx-auto bg-primary rounded-lg flex flex-col p-5">
                     <h1 class="text-center text-white text-2xl">BENCH PRESS</h1>
                     <!-- Gym Name -->
                     <div class="flex flex-col my-4">
                         <label for="benchStr">BENCH PRESS ENTRY</label>
-                        <input 
+                        <input
                             id="benchStr" 
                             type="text"
                             bind:value={benchStr}
