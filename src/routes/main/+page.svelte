@@ -1,7 +1,6 @@
 <script lang="ts">
 	import { goto } from "$app/navigation";
     import picName from '$lib/assets/Rob Center.png';
-	import Chart from "../../components/Chart.svelte";
 </script>
 
 <main>
@@ -29,8 +28,5 @@
         </div>
     </div>
 
-    <div class="flex justify-center"> <!--Centers the chart-->
-        <Chart />
-    </div>
     
 </main>
