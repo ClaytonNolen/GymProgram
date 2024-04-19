@@ -59,7 +59,7 @@ on:keydown={() => {}}
 
             <!--<p class="text-gray-400 mt-4">Workout Date : {formattedDate}</p>-->
             <p>Workouts: {workoutName}</p>
-            
+            <p>Exercises: {displayEx}</p>
             <p>Workout Notes: {workoutNotes}</p>
 
         </div>
