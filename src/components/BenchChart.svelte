@@ -15,7 +15,7 @@ to implement onMount-->
   })
 
   let benchData: number[] = []; // Initialize benchData array
-  let benchDate: string [] = [];
+  let benchDate: string[] = [];
   
 // Function to fetch data from Firebase
 // Lines 27 - 31 were developed by A.I. and helped us correctly store an array type in the data being fetched.

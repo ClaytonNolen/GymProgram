@@ -2,7 +2,7 @@ export function formatDate(dateString: string) {
     const date = new Date(dateString);
     
     // Format the day
-    const day = date.getDate();
+    const day = date.getDate() + 1;
 
     // Format the month
     const monthIndex = date.getMonth();

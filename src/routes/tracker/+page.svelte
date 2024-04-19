@@ -175,15 +175,19 @@
             const docSnap = await getDoc(userDocRef);
             // The If/Else statements below were created by A.I.
             if (docSnap.exists()) {
-
                 const existingPowerCleanData = docSnap.data().powerCleanInput || []; // If benchInput doesn't exist, initialize as empty array.
-                const newPowerCleanData = [...existingPowerCleanData, powerCleanStr]; // Append the new input to the existing array.
+                const existingPowerCleanTime = docSnap.data().powerCleanTimeInput || [];
 
+                const formattedPowerCleanDateStr = formatDate(powerCleanDate);
+                const newPowerCleanData = [...existingPowerCleanData, powerCleanStr]; // Append the new input to the existing array.
+                const newPowerCleanTime = [...existingPowerCleanTime, formattedPowerCleanDateStr];
 
                 await setDoc(userDocRef, { powerCleanInput: newPowerCleanData }, { merge: true }); // Update the document with the updated array.
+                await setDoc(userDocRef, { powerCleanTimeInput: newPowerCleanTime}, { merge: true });
             } else {
+                const formattedPowerCleanDateStr = formatDate(powerCleanDate);
                 await setDoc(userDocRef, { powerCleanInput: [powerCleanStr] }); // If document doesn't exist, create it with the new input as the first element of the array.
-
+                await setDoc(userDocRef, { powerCleanTimeInput: [formattedPowerCleanDateStr] });
             }
             goto("/profile"); // Should be changed to the Profile page.
         } catch (error) {
@@ -315,6 +319,16 @@
             <!-- input box -->
             <div class="max-w-4xl mx-auto bg-secondary rounded-lg flex flex-col p-5">
                 <h1 class="text-center text-white text-2xl">POWER CLEAN</h1>
+            <!-- Workout Date -->
+             <div class="flex flex-col my-4">
+                <label for="workout-date">Workout Date</label>
+                <input 
+                    id="workout-date" 
+                    type="date" 
+                    bind:value={powerCleanDate}
+                    placeholder="Enter Date"
+                    class="py-4 pl-5 pr-24 bg-24 bg-transparent border border-borderclr"
+                />
                     <!-- Gym Name -->
                     <div class="flex flex-col my-4">
                         <label for="benchStr">POWER CLEAN ENTRY</label>
