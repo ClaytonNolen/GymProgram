@@ -56,7 +56,7 @@
                 await setDoc(userDocRef, { benchInput: [benchStr] }); // If document doesn't exist, create it with the new input as the first element of the array.
 
             }
-            goto("/main"); // Should be changed to the Profile page.
+            goto("/profile"); // Should be changed to the Profile page.
         } catch (error) {
             console.error('Error occurred while creating a document', error);
             alert('An error occurred while uploading data. Please try again later.');
@@ -98,7 +98,7 @@
                 await setDoc(userDocRef, { squatInput: [squatStr] });
 
             }
-            goto("/main"); // Should be changed to the Profile page.
+            goto("/profile"); // Should be changed to the Profile page.
         } catch (error) {
             console.error('Error occurred while creating a document', error);
             alert('An error occurred while uploading data. Please try again later.');
@@ -139,7 +139,7 @@
                 await setDoc(userDocRef, { deadLiftInput: [deadLiftStr] });
 
             }
-            goto("/main"); // Should be changed to the Profile page.
+            goto("/profile"); // Should be changed to the Profile page.
         } catch (error) {
             console.error('Error occurred while creating a document', error);
             alert('An error occurred while uploading data. Please try again later.');
@@ -177,7 +177,7 @@
                 await setDoc(userDocRef, { powerCleanInput: [powerCleanStr] }); // If document doesn't exist, create it with the new input as the first element of the array.
 
             }
-            goto("/main"); // Should be changed to the Profile page.
+            goto("/profile"); // Should be changed to the Profile page.
         } catch (error) {
             console.error('Error occurred while creating a document', error);
             alert('An error occurred while uploading data. Please try again later.');
