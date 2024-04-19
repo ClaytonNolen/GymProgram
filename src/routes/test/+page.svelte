@@ -6,7 +6,10 @@
 	import type { User } from "@firebase/auth";
 	import { onDestroy } from "svelte";
 
-    let testStr: string;
+    let benchStr: string;
+    let squatStr: string;
+    let deadLiftStr: string;
+
     let loading = false;
     let currentUser : User | null = null; // Initialize currentUser to null to avoid undefined errors
 
@@ -27,7 +30,7 @@
         }
         
         // This trim was made with AI.
-        if (!testStr.trim()) {
+        if (!benchStr.trim() || !squatStr.trim() || !deadLiftStr.trim) {
             return alert('Please enter some test data');
         }
 
@@ -40,18 +43,31 @@
             const docSnap = await getDoc(userDocRef);
             // The If/Else statements below were created by A.I.
             if (docSnap.exists()) {
-                const existingData = docSnap.data().testInput || []; // If testInput doesn't exist, initialize as empty array
-                const newData = [...existingData, testStr]; // Append the new input to the existing array
-                await setDoc(userDocRef, { testInput: newData }, { merge: true }); // Update the document with the updated array
+
+                const existingBenchData = docSnap.data().benchInput || []; // If benchInput doesn't exist, initialize as empty array.
+                const existingSquatData = docSnap.data().squatInput || [];
+                const existingDeadLiftData = docSnap.data().deadLiftInput || [];
+
+                const newBenchData = [...existingBenchData, benchStr]; // Append the new input to the existing array.
+                const newSquatData = [...existingSquatData, squatStr];
+                const newDeadLiftData = [...existingDeadLiftData, deadLiftStr];
+
+                await setDoc(userDocRef, { benchInput: newBenchData }, { merge: true }); // Update the document with the updated array.
+                await setDoc(userDocRef, { squatInput: newSquatData }, { merge: true });
+                await setDoc(userDocRef, { deadLiftInput: newDeadLiftData }, { merge: true });
+
             } else {
-                await setDoc(userDocRef, { testInput: [testStr] }); // If document doesn't exist, create it with the new input as the first element of the array
+                
+                await setDoc(userDocRef, { benchInput: [benchStr] }); // If document doesn't exist, create it with the new input as the first element of the array.
+                await setDoc(userDocRef, { squatInput: [squatStr] });
+                await setDoc(userDocRef, { deadLiftInput: [deadLiftStr] });
+
             }
             goto("/main"); // Should be changed to the Profile page.
         } catch (error) {
             console.error('Error occurred while creating a document', error);
             alert('An error occurred while uploading data. Please try again later.');
         }
-
         loading = false;
     }
 </script>
@@ -67,21 +83,21 @@
             <div>
                 <!-- input box -->
                 <div class="max-w-4xl mx-auto bg-secondary rounded-lg flex flex-col p-5">
-                    <h1 class="text-center text-white text-2xl">INPUT HERE</h1>
+                    <h1 class="text-center text-white text-2xl">BENCH PRESS</h1>
                     <!-- Gym Name -->
                     <div class="flex flex-col my-4">
-                        <label for="testStr">INPUT 1</label>
+                        <label for="benchStr">BENCH PRESS ENTRY</label>
                         <input 
-                            id="testStr" 
+                            id="benchStr" 
                             type="text"
-                            bind:value={testStr}
-                            placeholder="placeholder"
+                            bind:value={benchStr}
+                            placeholder="integers only"
                             class="py-4 pl-5 pr-24 bg-24 bg-transparent border border-borderclr"
                         />
                     </div>
             <div class="text-center gap-14">
                 <!--Buttons and how they are navigated to different pages with "on:click"-->
-                <button 
+            <button 
                 id="submit"
                 disabled={loading}
                 on:click={createTest}
@@ -89,6 +105,56 @@
                 {loading ? 'Uploading Test' : 'Upload Complete'} CLICK 
             </button>
             </div>
+        </div>
+        <div>
+            <!-- input box -->
+            <div class="max-w-4xl mx-auto bg-secondary rounded-lg flex flex-col p-5">
+                <h1 class="text-center text-white text-2xl">SQUAT</h1>
+                <!-- Gym Name -->
+                <div class="flex flex-col my-4">
+                    <label for="squatStr">SQUAT ENTRY</label>
+                    <input 
+                        id="squarStr" 
+                        type="text"
+                        bind:value={squatStr}
+                        placeholder="integers only"
+                        class="py-4 pl-5 pr-24 bg-24 bg-transparent border border-borderclr"
+                    />
+                </div>
+        <div class="text-center gap-14">
+            <!--Buttons and how they are navigated to different pages with "on:click"-->
+        <button 
+            id="submit"
+            disabled={loading}
+            on:click={createTest}
+            class="py-[23px] px-[86px] bg-black text-xl text-white w-[299px] hover:bg-white hover:text-black duration-300 transittion-colors">
+            {loading ? 'Uploading Test' : 'Upload Complete'} CLICK 
+        </button>
+        </div>
+        <div>
+            <!-- input box -->
+            <div class="max-w-4xl mx-auto bg-secondary rounded-lg flex flex-col p-5">
+                <h1 class="text-center text-white text-2xl">DEAD LIFT</h1>
+                <!-- Gym Name -->
+                <div class="flex flex-col my-4">
+                    <label for="deadLiftStr">DEAD LIFT ENTRY</label>
+                    <input 
+                        id="deadLiftStr" 
+                        type="text"
+                        bind:value={deadLiftStr}
+                        placeholder="integers only"
+                        class="py-4 pl-5 pr-24 bg-24 bg-transparent border border-borderclr"
+                    />
+                </div>
+        <div class="text-center gap-14">
+            <!--Buttons and how they are navigated to different pages with "on:click"-->
+        <button 
+            id="submit"
+            disabled={loading}
+            on:click={createTest}
+            class="py-[23px] px-[86px] bg-black text-xl text-white w-[299px] hover:bg-white hover:text-black duration-300 transittion-colors">
+            {loading ? 'Uploading Test' : 'Upload Complete'} CLICK 
+        </button>
         </div>
     </div>
 </main>
