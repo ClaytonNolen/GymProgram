@@ -62,6 +62,7 @@ async function fetchData() {
       },
       options: {
         responsive: true,
+        maintainAspectRatio: true,
         scales: {
           y: {
             beginAtZero: true,
