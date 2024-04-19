@@ -15,7 +15,7 @@ to implement onMount-->
   })
 
   let benchData: number[] = []; // Initialize benchData array
-  let benchDate: string [] = ["01/01/01", "01/02/01", "01/03/01", "01/04/01", "01/05/01", "01/06/01", "01/07/01", "01/08/01", "01/09/01", "01/10/01", "01/11/01", "01/12/01", "01/13/01", "01/14/01", "01/15/01", "01/16/01", "01/17/01", "01/18/01", "01/19/01", "01/20/01", "01/21/01", "01/22/01", "01/23/01", "01/24/01"];
+  let benchDate: string [] = [];
   
 // Function to fetch data from Firebase
 // Lines 27 - 31 were developed by A.I. and helped us correctly store an array type in the data being fetched.
@@ -27,10 +27,13 @@ async function fetchBench() {
     querySnapshot.forEach((doc) => {
       if (doc.id === currentUser?.uid) {
         const data = doc.data().benchInput; // Assuming 'benchInput' is the field where your data is stored
+        const time = doc.data().benchTimeInput;
         if (Array.isArray(data)) {
-          benchData.push(...data); // Push data into benchData array
+          benchData.push(...data); // Push data into benchData array.
+          benchDate.push(...time); // Push data into benchDate array.
         } else {
           console.error('Invalid data format:', data);
+          console.error('Invalid date format:', time);
         }
       }    
     });
