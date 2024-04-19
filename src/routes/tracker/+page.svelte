@@ -205,14 +205,14 @@
                 <div class="max-w-4xl mx-auto bg-secondary rounded-lg flex flex-col p-5">
                     <h1 class="text-center text-white text-2xl">BENCH PRESS</h1>
                                     <!-- Workout Date -->
-             <div class="flex flex-col my-4">
+             <div class="flex flex-col my-4 text-white">
                 <label for="workout-date">Workout Date</label>
                 <input 
                     id="workout-date" 
                     type="date" 
                     bind:value={benchDate}
                     placeholder="Enter Date"
-                    class="py-4 pl-5 pr-24 bg-24 bg-transparent border border-borderclr"
+                    class="py-4 pl-5 pr-24 bg-24 bg-transparent border border-borderclr text-white"
                 />
             </div>
                     <!-- Gym Name -->
