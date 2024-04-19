@@ -4,10 +4,10 @@ export default {
   theme: {
     extend: {
       colors: {
-        primary: '#808083',
-        secondary: '#000000',
-        inputclr: '#FFCD00',
-        borderclr: '#23252F'
+        primary: '#181818',
+        secondary: '#121212',
+        inputclr: '#FFFFFF',
+        borderclr: '#B3B3B3'
       }    
     },
   },

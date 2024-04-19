@@ -1,6 +1,6 @@
 export function formatDate(dateString: string) {
     const date = new Date(dateString);
-
+    
     // Format the day
     const day = date.getDate();
 

@@ -30,10 +30,10 @@
         <div class="items-center space-x-2 hidden xl:inline-flex">
             <img src={currentUser?.photoURL}
             alt={currentUser?.displayName} 
-            class="rounded-full h-10 w-10"
+            class="rounded-full h-15 w-15"
             />
             <div class="flex flex-col">
-                <p>Logged In as: <span class="text-purple-500 italic font-bold">{currentUser?.displayName}</span> </p>
+                <p><span class="text-purple-500 italic font-bold">{currentUser?.displayName}</span></p>
             </div>
             <!-- <div class="flex flex-col">
                 <p>TEST <span class="text-purple-500 italic font-bold">{currentUser?.uid}</span> </p>

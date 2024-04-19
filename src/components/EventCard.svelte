@@ -1,7 +1,6 @@
 <script lang="ts">
     import { goto } from "$app/navigation";
     import { formatDate } from "../helper/formatDate";
-
     import type { Member } from '../types';
 
     // export let gymName: string;
@@ -60,8 +59,6 @@ on:keydown={() => {}}
             <p class="text-gray-400 mt-4">Workout Date : {formattedDate}</p>
             <p>Workouts: {workout}</p>
             <p>Workout Notes: {workoutNotes}</p>
-
-
 
         </div>
 </article>

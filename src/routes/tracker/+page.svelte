@@ -5,11 +5,14 @@
     import { authStore } from '$lib/assets/gym/gym'; // Importing only authStore from auth module
 	import type { User } from "@firebase/auth";
 	import { onDestroy } from "svelte";
+    import { formatDate } from "../../helper/formatDate";
 
     let benchStr: string;
     let squatStr: string;
     let deadLiftStr: string;
     let powerCleanStr: string;
+
+    export let benchDate: string;
 
     let loading = false;
     let currentUser : User | null = null; // Initialize currentUser to null to avoid undefined errors
@@ -44,17 +47,19 @@
             const docSnap = await getDoc(userDocRef);
             // The If/Else statements below were created by A.I.
             if (docSnap.exists()) {
-
                 const existingBenchData = docSnap.data().benchInput || []; // If benchInput doesn't exist, initialize as empty array.
+                const existingBenchTime = docSnap.data().benchTimeInput || []
 
+                const formattedBenchDateStr = formatDate(benchDate);
                 const newBenchData = [...existingBenchData, benchStr]; // Append the new input to the existing array.
+                const newBenchTime = [...existingBenchTime, formattedBenchDateStr];
 
                 await setDoc(userDocRef, { benchInput: newBenchData }, { merge: true }); // Update the document with the updated array.
-
+                await setDoc(userDocRef, { benchTimeInput: newBenchTime }, { merge: true });
             } else {
-                
+                const formattedBenchDateStr = formatDate(benchDate);
                 await setDoc(userDocRef, { benchInput: [benchStr] }); // If document doesn't exist, create it with the new input as the first element of the array.
-
+                await setDoc(userDocRef, { benchTimeInput: [formattedBenchDateStr] });
             }
             goto("/profile"); // Should be changed to the Profile page.
         } catch (error) {
@@ -199,6 +204,17 @@
                 <!-- input box -->
                 <div class="max-w-4xl mx-auto bg-secondary rounded-lg flex flex-col p-5">
                     <h1 class="text-center text-white text-2xl">BENCH PRESS</h1>
+                                    <!-- Workout Date -->
+             <div class="flex flex-col my-4">
+                <label for="workout-date">Workout Date</label>
+                <input 
+                    id="workout-date" 
+                    type="date" 
+                    bind:value={benchDate}
+                    placeholder="Enter Date"
+                    class="py-4 pl-5 pr-24 bg-24 bg-transparent border border-borderclr"
+                />
+            </div>
                     <!-- Gym Name -->
                     <div class="flex flex-col my-4">
                         <label for="benchStr">BENCH PRESS ENTRY</label>
@@ -221,81 +237,5 @@
             </button>
             </div>
         </div>
-        <div>
-            <!-- input box -->
-            <div class="max-w-4xl mx-auto bg-secondary rounded-lg flex flex-col p-5">
-                <h1 class="text-center text-white text-2xl">SQUAT</h1>
-                <!-- Gym Name -->
-                <div class="flex flex-col my-4">
-                    <label for="squatStr">SQUAT ENTRY</label>
-                    <input 
-                        id="squarStr" 
-                        type="text"
-                        bind:value={squatStr}
-                        placeholder="integers only"
-                        class="py-4 pl-5 pr-24 bg-24 bg-transparent border border-borderclr"
-                    />
-                </div>
-        <div class="text-center gap-14">
-            <!--Buttons and how they are navigated to different pages with "on:click"-->
-        <button 
-            id="submit"
-            disabled={loading}
-            on:click={createSquat}
-            class="py-[23px] px-[86px] bg-black text-xl text-white w-[299px] hover:bg-white hover:text-black duration-300 transittion-colors">
-            {loading ? 'Uploading Test' : 'Upload Complete'} CLICK 
-        </button>
-        </div>
-        <div>
-            <!-- input box -->
-            <div class="max-w-4xl mx-auto bg-secondary rounded-lg flex flex-col p-5">
-                <h1 class="text-center text-white text-2xl">DEAD LIFT</h1>
-                <!-- Gym Name -->
-                <div class="flex flex-col my-4">
-                    <label for="deadLiftStr">DEAD LIFT ENTRY</label>
-                    <input 
-                        id="deadLiftStr" 
-                        type="text"
-                        bind:value={deadLiftStr}
-                        placeholder="integers only"
-                        class="py-4 pl-5 pr-24 bg-24 bg-transparent border border-borderclr"
-                    />
-                </div>
-        <div class="text-center gap-14">
-            <!--Buttons and how they are navigated to different pages with "on:click"-->
-        <button 
-            id="submit"
-            disabled={loading}
-            on:click={createDeadLift}
-            class="py-[23px] px-[86px] bg-black text-xl text-white w-[299px] hover:bg-white hover:text-black duration-300 transittion-colors">
-            {loading ? 'Uploading Test' : 'Upload Complete'} CLICK 
-        </button>
-        </div>
-    </div>
-    <div>
-            <!-- input box -->
-            <div class="max-w-4xl mx-auto bg-secondary rounded-lg flex flex-col p-5">
-                <h1 class="text-center text-white text-2xl">POWER CLEAN</h1>
-                    <!-- Gym Name -->
-                    <div class="flex flex-col my-4">
-                        <label for="benchStr">POWER CLEAN ENTRY</label>
-                        <input 
-                            id="benchStr" 
-                            type="text"
-                            bind:value={powerCleanStr}
-                            placeholder="integers only"
-                            class="py-4 pl-5 pr-24 bg-24 bg-transparent border border-borderclr"
-                        />
-                    </div>
-            <div class="text-center gap-14">
-                <!--Buttons and how they are navigated to different pages with "on:click"-->
-            <button 
-                id="submit"
-                disabled={loading}
-                on:click={createPowerClean}
-                class="py-[23px] px-[86px] bg-black text-xl text-white w-[299px] hover:bg-white hover:text-black duration-300 transittion-colors">
-                {loading ? 'Uploading Test' : 'Upload Complete'} CLICK 
-            </button>
-            </div>
-        </div>
+
 </main>
