@@ -14,19 +14,20 @@ to implement onMount-->
     currentUser = value.user
   })
 
-  let chartData: number[] = []; // Initialize chartData array
-
+  let benchData: number[] = []; // Initialize benchData array
+  let benchDate: string;
+  
 // Function to fetch data from Firebase
 // Lines 27 - 31 were developed by A.I. and helped us correctly store an array type in the data being fetched.
 // Line 78 was suggested by A.I. to help diaplay the graph.
-async function fetchData() {
+async function fetchBench() {
   try {
     const querySnapshot = await getDocs(collection(db, 'users')); // Assuming 'users' is your collection name
     querySnapshot.forEach((doc) => {
       if (doc.id === currentUser?.uid) {
-        const data = doc.data().testInput; // Assuming 'testInput' is the field where your data is stored
+        const data = doc.data().benchInput; // Assuming 'benchInput' is the field where your data is stored
         if (Array.isArray(data)) {
-          chartData.push(...data); // Push data into chartData array
+          benchData.push(...data); // Push data into benchData array
         } else {
           console.error('Invalid data format:', data);
         }
@@ -40,7 +41,7 @@ async function fetchData() {
 // Code for title card for chart and legend position from https://www.youtube.com/watch?v=NySBh_DIRlg
   let canvas: HTMLCanvasElement;
   onMount(async () => {
-    await fetchData(); // Fetch data from Firebase before initializing the chart
+    await fetchBench(); // Fetch data from Firebase before initializing the chart
     const ctx = canvas.getContext('2d');
     // Line below was given by AI to fix an error with ctx possibly having a null value
     if (!ctx) return;
@@ -48,11 +49,11 @@ async function fetchData() {
       // Need to edit later for styling
       type: 'line',
       data: {
-        labels: Array.from({ length: chartData.length }, (_, i) => i + 1), // Generate labels based on data length
+        labels: Array.from({ length: benchData.length }, (_, i) => i + 1), // Generate labels based on data length
         datasets: [
           {
             label: 'Max Weight',
-            data: chartData,
+            data: benchData,
             backgroundColor: 'rgba(255,205,0,1)',
             borderColor: 'rgba(255,159,64,1)',
             borderWidth: 2,
@@ -87,5 +88,3 @@ async function fetchData() {
       </div>
   </div>
 </div>
-
-<!-- <canvas bind:this={canvas}></canvas> -->
