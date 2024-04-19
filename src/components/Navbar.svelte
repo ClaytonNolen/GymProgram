@@ -30,14 +30,11 @@
         <div class="items-center space-x-2 hidden xl:inline-flex">
             <img src={currentUser?.photoURL}
             alt={currentUser?.displayName} 
-            class="rounded-full h-15 w-15"
+            class="rounded-full h-12 w-12"
             />
             <div class="flex flex-col">
                 <p><span class="text-purple-500 italic font-bold">{currentUser?.displayName}</span></p>
             </div>
-            <!-- <div class="flex flex-col">
-                <p>TEST <span class="text-purple-500 italic font-bold">{currentUser?.uid}</span> </p>
-            </div> -->
             <button on:click={authHandlers.logout} class="bg-white p-2 rounded-full text-black">LOG OUT</button>
         </div>
     {/if}
