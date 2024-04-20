@@ -1,4 +1,5 @@
 <script lang="ts">
+	import type { User } from "firebase/auth";
     import { formatDate } from "../helper/formatDate";
     import type { Member } from '../types';
 
@@ -9,6 +10,7 @@
     export let weight: number[];
     export let workoutDate: string;
     export let workoutNotes: string;
+    //export let currentUser: User;
 
     const formattedDate = formatDate(workoutDate);
 </script>

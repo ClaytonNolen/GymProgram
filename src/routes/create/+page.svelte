@@ -80,7 +80,8 @@
                 reps: reps,
                 weight: weight,
                 workoutDate: workoutDate,
-                workoutNotes: workoutNotes
+                workoutNotes: workoutNotes,
+                currentUser: currentUser
             };
 
             try {
