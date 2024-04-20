@@ -148,6 +148,7 @@
             <label for="workout-date">Date</label>
             <input
                 id="workout-date" 
+                type="date"
                 bind:value={workoutDate}
                 placeholder="Date"
                 class="my-2"
