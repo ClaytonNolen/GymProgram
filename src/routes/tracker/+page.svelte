@@ -223,14 +223,14 @@
                 />
             </div>
                     <!-- Gym Name -->
-                    <div class="flex flex-col my-4">
-                        <label for="benchStr">BENCH PRESS ENTRY</label>
+                    <div class="flex flex-col my-4 text-white">
+                        <label for="benchStr">BENCH MAX WEIGHT</label>
                         <input
                             id="benchStr" 
-                            type="text"
+                            type="text" 
                             bind:value={benchStr}
                             placeholder="integers only"
-                            class="py-4 pl-5 pr-24 bg-24 bg-transparent border border-borderclr text-white"
+                            class="py-4 pl-5 pr-24 bg-24 bg-transparent border border-borderclr text-white placeholder-white"
                         />
                     </div>
             <div class="text-center gap-14">
@@ -246,7 +246,7 @@
         </div>
         <div>
             <!-- input box -->
-            <div class="max-w-4xl mx-auto bg-secondary rounded-lg flex flex-col p-5">
+            <div class="max-w-4xl mx-auto bg-secondary rounded-lg flex flex-col p-5 text-white">
                 <h1 class="text-center text-white text-2xl">SQUAT</h1>
             <!-- Workout Date -->
              <div class="flex flex-col my-4">
@@ -266,7 +266,7 @@
                         type="text"
                         bind:value={squatStr}
                         placeholder="integers only"
-                        class="py-4 pl-5 pr-24 bg-24 bg-transparent border border-borderclr"
+                        class="py-4 pl-5 pr-24 bg-24 bg-transparent border border-borderclr text-white placeholder-white"
                     />
                 </div>
         <div class="text-center gap-14">
@@ -301,7 +301,7 @@
                         type="text"
                         bind:value={deadLiftStr}
                         placeholder="integers only"
-                        class="py-4 pl-5 pr-24 bg-24 bg-transparent border border-borderclr"
+                        class="py-4 pl-5 pr-24 bg-24 bg-transparent border border-borderclr text-white placeholder-white"
                     />
                 </div>
         <div class="text-center gap-14">
@@ -337,7 +337,7 @@
                             type="text"
                             bind:value={powerCleanStr}
                             placeholder="integers only"
-                            class="py-4 pl-5 pr-24 bg-24 bg-transparent border border-borderclr"
+                            class="py-4 pl-5 pr-24 bg-24 bg-transparent border border-borderclr text-white placeholder-white"
                         />
                     </div>
             <div class="text-center gap-14">

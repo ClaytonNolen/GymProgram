@@ -23,22 +23,23 @@
     {/if}
 
     <!--Used https://www.chartjs.org/docs/latest/configuration/responsive.html to increase chart size and responsiveness-->
-    <div class="chart-container" style ="position: relative; height:40vh; width:80vw">   <!--Centers the chart-->
+    <!-- Tailwind margin code (mt and mb): https://tailwindcss.com/docs/margin-->
+    <div class="chart-container mt-10 mb-80" style ="position: relative; height:30vh; width:60vw">   <!--Centers the chart-->
         <BenchChart />
     </div>
-
-    <!--<div class="chart-container space-y-10" style ="position: relative; height:40vh; width:80vw">
+    
+    <div class="chart-container mb-80" style ="position: relative; height:30vh; width:60vw">
         <SquatChart />
     </div>
 
-    <div class="chart-container space-y-10" style ="position: relative; height:40vh; width:80vw">
+    <div class="chart-container mb-80" style ="position: relative; height:30vh; width:60vw">
         <DeadChart />
     </div>
 
-    <div class="chart-container space-y-10" style ="position: relative; height:40vh; width:80vw">
+    <div class="chart-container mb-80" style ="position: relative; height:30vh; width:60vw">
         <CleanChart />
     </div>
-    -->
+    
 
 </main>
 

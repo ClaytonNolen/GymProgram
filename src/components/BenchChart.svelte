@@ -89,7 +89,7 @@ async function fetchBench() {
 </script>
 
 <!--Adds ttitle and line above chart while connecting it to the canvas -->
-<div class="col-8 ring-offset-2 my-5">
+<div class="col-8 ring-offset-2">
   <div class="card">
       <div class="card-body">
         <h5 class= "text-white"> Bench Press Progress </h5>
