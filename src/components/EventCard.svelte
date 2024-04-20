@@ -10,7 +10,6 @@
     export let weight: number[];
     export let workoutDate: string;
     export let workoutNotes: string;
-    //export let currentUser: User;
 
     const formattedDate = formatDate(workoutDate);
 </script>
