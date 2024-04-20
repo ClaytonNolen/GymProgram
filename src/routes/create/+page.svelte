@@ -81,7 +81,7 @@
                 weight: weight,
                 workoutDate: workoutDate,
                 workoutNotes: workoutNotes,
-                currentUser: currentUser
+                UserID: currentUser?.uid
             };
 
             try {
