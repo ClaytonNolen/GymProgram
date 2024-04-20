@@ -14,7 +14,8 @@ to implement onMount-->
       currentUser = value.user
     })
   
-    let squatData: number[] = []; // Initialize chartData array
+    let squatData: number[] = []; // Initialize squatData array
+    let squatDate: string[] = [];
 
   // Function to fetch data from Firebase
   // Lines 27 - 31 were developed by A.I. and helped us correctly store an array type in the data being fetched.
@@ -24,11 +25,14 @@ to implement onMount-->
       const querySnapshot = await getDocs(collection(db, 'users')); // Assuming 'users' is your collection name
       querySnapshot.forEach((doc) => {
         if (doc.id === currentUser?.uid) {
-          const data = doc.data().squatInput; // Assuming 'testInput' is the field where your data is stored
+          const data = doc.data().squatInput; // Input of max squat weight
+          const time = doc.data().squatTimeInput;
           if (Array.isArray(data)) {
-            squatData.push(...data); // Push data into chartData array
+            squatData.push(...data); // Push data into squatData array
+            squatDate.push(...time); // Push data into squatData array
           } else {
             console.error('Invalid data format:', data);
+            console.error('Invalid data format:', time);
           }
         }    
       });
@@ -48,7 +52,7 @@ to implement onMount-->
         // Need to edit later for styling
         type: 'line',
         data: {
-          labels: Array.from({ length: squatData.length }, (_, i) => i + 1), // Generate labels based on data length
+          labels: squatDate, // Generate labels based on data length
           datasets: [
             {
               label: 'Max Weight',
@@ -67,6 +71,9 @@ to implement onMount-->
             y: {
               beginAtZero: true,
             },
+            x: {
+            offset: true,
+          }
           },
           plugins: {
             legend: {
@@ -79,7 +86,7 @@ to implement onMount-->
   </script>
   
   <!--Adds ttitle and line above chart while connecting it to the canvas -->
-  <div class="col-8 ring-offset-2 my-5">
+  <div class="col-8 ring-offset-2">
     <div class="card">
         <div class="card-body">
           <h5 class= "text-white"> Squat Progress </h5>

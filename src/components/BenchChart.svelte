@@ -53,8 +53,7 @@ async function fetchBench() {
       // Need to edit later for styling
       type: 'line',
       data: {
-        labels: benchDate, // Generate labels based on data length
-        // labels: Array.from({ length: benchData.length }, (_, i) => i + 1), // Generate labels based on data length
+        labels: benchDate, // x-axis label for date
         datasets: [
           {
             label: 'Max Weight',

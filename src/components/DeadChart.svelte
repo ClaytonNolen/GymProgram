@@ -15,7 +15,8 @@ to implement onMount-->
     })
   
     let deadData: number[] = []; // Initialize deadData array
-  
+    let deadDate: number[] = [];
+
   // Function to fetch data from Firebase
   // Lines 27 - 31 were developed by A.I. and helped us correctly store an array type in the data being fetched.
   // Line 78 was suggested by A.I. to help diaplay the graph.
@@ -25,10 +26,13 @@ to implement onMount-->
       querySnapshot.forEach((doc) => {
         if (doc.id === currentUser?.uid) {
           const data = doc.data().deadLiftInput; // Assuming 'testInput' is the field where your data is stored
+          const time = doc.data().deadLiftTimeInput;
           if (Array.isArray(data)) {
             deadData.push(...data); // Push data into deadData array
+            deadDate.push(...time);
           } else {
             console.error('Invalid data format:', data);
+            console.error('Invalid date format:', time);
           }
         }    
       });
@@ -48,7 +52,7 @@ to implement onMount-->
         // Need to edit later for styling
         type: 'line',
         data: {
-          labels: Array.from({ length: deadData.length }, (_, i) => i + 1), // Generate labels based on data length
+          labels: deadDate, // x-axis label for date
           datasets: [
             {
               label: 'Max Weight',
@@ -67,6 +71,9 @@ to implement onMount-->
             y: {
               beginAtZero: true,
             },
+            x: {
+            offset: true,
+          }
           },
           plugins: {
             legend: {
@@ -79,7 +86,7 @@ to implement onMount-->
   </script>
   
   <!--Adds title and line above chart while connecting it to the canvas -->
-  <div class="col-8 ring-offset-2 my-5">
+  <div class="col-8 ring-offset-2">
     <div class="card">
         <div class="card-body">
           <h5 class= "text-white"> Dead Lift Progress </h5>
