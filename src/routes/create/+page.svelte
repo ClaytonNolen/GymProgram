@@ -81,7 +81,6 @@
                 weight: weight,
                 workoutDate: workoutDate,
                 workoutNotes: workoutNotes,
-                UserID: currentUser?.uid
             };
 
             try {
