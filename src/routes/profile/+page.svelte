@@ -1,20 +1,18 @@
 <script>
     import Workouts from '../workouts/+page.svelte';
+    import BenchChart from "../../components/BenchChart.svelte";
+    import SquatChart from "../../components/SquatChart.svelte";
+    import DeadChart from "../../components/DeadChart.svelte";
+    import CleanChart from "../../components/CleanChart.svelte";
 
-    // variables used for toggle functionality
+    // Used to redirect to workout page when the button is pressed
     let workoutPage = false;
-    let progressPage = false;
-    let accountPage = false;
-    let settingsPage = false;
 </script>
 
 <main class="flex-col text-center text-2xl text-white my-4">
     <!--button with toggle functionality that displays workouts page-->
     <button 
         on:click={() => (workoutPage = !workoutPage)}
-        on:click={() => progressPage = false}
-        on:click={() => accountPage = false}
-        on:click={() => settingsPage = false}
         class="p-4 bg-black rounded-lg mt-12 font-bold w-[200px]">
         Workouts
     </button>
@@ -24,50 +22,24 @@
         <Workouts />
     {/if}
 
-    <!--button with toggle functionality that displays progress page-->
-    <button
-        on:click={() => (progressPage = !progressPage)}
-        on:click={() => workoutPage = false}
-        on:click={() => accountPage = false}
-        on:click={() => settingsPage = false}
-        class="p-4 bg-black rounded-lg mt-12 font-bold w-[200px]">
-        Progress
-    </button>
+    <!--Used https://www.chartjs.org/docs/latest/configuration/responsive.html to increase chart size and responsiveness-->
+    <!-- Tailwind margin code (mt and mb): https://tailwindcss.com/docs/margin-->
+    <div class="chart-container mt-10 mb-80" style ="position: relative; height:30vh; width:60vw">   <!--Centers the chart-->
+        <BenchChart />
+    </div>
+    
+    <div class="chart-container mb-80" style ="position: relative; height:30vh; width:60vw">
+        <SquatChart />
+    </div>
 
-    {#if progressPage === true}
-        <!--progress page goes here-->
-        Progress page goes here
-    {/if}
+    <div class="chart-container mb-80" style ="position: relative; height:30vh; width:60vw">
+        <DeadChart />
+    </div>
 
-    <!--button with toggle functionality that displays account page-->
-    <button
-        on:click={() => (accountPage = !accountPage)}
-        on:click={() => workoutPage = false}
-        on:click={() => progressPage = false}
-        on:click={() => settingsPage = false}
-        class="p-4 bg-black rounded-lg mt-12 font-bold w-[200px]">
-        Account
-    </button>
-
-    {#if accountPage === true}
-        <!--account page goes here-->
-        Account page goes here
-    {/if}
-
-    <!--button with toggle functionality that displays settings page-->
-    <button 
-        on:click={() => (settingsPage = !settingsPage)}
-        on:click={() => workoutPage = false}
-        on:click={() => progressPage = false}
-        on:click={() => accountPage = false}
-        class="p-4 bg-black rounded-lg mt-12 font-bold w-[200px]">
-        Settings
-    </button>
-
-    {#if settingsPage === true}
-        <!--settings page goes here-->
-        Settings page goes here
-    {/if}
+    <div class="chart-container mb-80" style ="position: relative; height:30vh; width:60vw">
+        <CleanChart />
+    </div>
+    
 
 </main>
 
