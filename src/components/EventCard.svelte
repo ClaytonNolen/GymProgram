@@ -25,7 +25,7 @@ on:keydown={() => {}}
             <p>Sets: {sets}</p>
             <p>Reps: {reps}</p>
             <p>Weight: {weight}</p>
-            <p>Workout Date : {formattedDate}</p>
+            <p>Workout Date: {formattedDate}</p>
             <p>Workout Notes: {workoutNotes}</p>
         </div>
 </article>

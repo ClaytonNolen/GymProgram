@@ -16,6 +16,7 @@
     let exercises: any[] = []
     let displayEx: any[] = []
     let numExercises = 0
+    let workoutDate: Date
     let workoutNotes: string
 
     let currentUser: User | null = null;
@@ -78,6 +79,7 @@
                 sets: sets,
                 reps: reps,
                 weight: weight,
+                workoutDate: workoutDate,
                 workoutNotes: workoutNotes
             };
 
@@ -142,6 +144,15 @@
             </button>
         </div>
         <div class="flex flex-col my-4 text-white">
+            <label for="workout-date">Date</label>
+            <input
+                id="workout-date" 
+                bind:value={workoutDate}
+                placeholder="Date"
+                class="my-2"
+            />
+        </div>
+        <div class="flex flex-col my-4">
             <label for="workout-notes">Notes</label>
             <textarea 
                 id="workout-notes" 
