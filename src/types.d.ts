@@ -1,33 +1,14 @@
 export type TEvents = {
-    // gymName: string;
-    // gymDescription: string;
-    // gymDate: string;
-    // guestName: string;
-    // guestPhoto: string;
-    // guestDesignation: string;
-    // hostName: string;
-    // hostPhoto: string;
-    // hostemail: string;
-    // members: Member[];
-    // gymName: string;
-    // gymDescription: string;
-    // gymDate: string;
-    // guestName: string;
-    // guestPhoto: string;
-    // guestDesignation: string;
-    // hostName: string;
-    // hostPhoto: string;
-    // hostemail: string;
-    // members: Member[];
-    // maxCapacity: number;
-    // Workout: string;
-    // Notes: string;
-    workout: string;
-    workoutNotes: string;
+    workoutName: string;
+    exercises: string[];
+    sets: number[];
+    reps: number[];
+    weight: number[];
     workoutDate: string;
-    workoutTitle: string;
-    // answer: string;
+    workoutNotes: string;
+    userID: string;
 };
+
 type Member = {
     memberName: string;
     memberLastName: string;

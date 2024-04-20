@@ -3,24 +3,31 @@
     import { collection, query, where, onSnapshot } from 'firebase/firestore';
     import { db } from "$lib/firebase";
     import type { TEvents } from "../../types";
+    import type { User } from 'firebase/auth';
+    import { authStore } from '$lib/assets/gym/gym';
 
-let workouts : TEvents[] = []
-const q = query(collection(db, "workouts"))
-const unsubscribe = onSnapshot(q, (querySnapshot) => {
-    querySnapshot.forEach(doc => {
-        workouts.push(doc.data() as TEvents)
-        workouts = workouts // This is required bc SvelteKit does not updated arrays in this instance.
+    let currentUser: User | null = null;
+    authStore.subscribe((value) => {
+        currentUser = value.user;
+    });
+
+    let workouts : TEvents[] = []
+    const q = query(collection(db, "workoutTest3"))
+    const unsubscribe = onSnapshot(q, (querySnapshot) => {
+        querySnapshot.forEach(doc => {
+            workouts.push(doc.data() as TEvents)
+            workouts = workouts // This is required bc SvelteKit does not updated arrays in this instance.
+        })
     })
-})
-console.log(workouts)
 
 </script>
 
 <main class="text-gray-100 mt-10 max-w-5xl mx-auto">
-    <h1 class="text-5xl font-bold my-5">Workouts</h1>
     <div class="grid px-4 md:grid-cols-3 gap-8">
-        {#each workouts as work (work.workout)}
-        <EventCard {...work}/>
+        {#each workouts as work (work.workoutName)}
+            {#if work.userID === currentUser?.uid}
+                <EventCard {...work}/>
+            {/if}
         {/each}
     </div>
 </main>

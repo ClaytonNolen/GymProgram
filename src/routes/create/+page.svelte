@@ -6,108 +6,179 @@
     import { ref, uploadBytes, getDownloadURL } from 'firebase/storage';
     import { goto } from '$app/navigation';
     import { Dropdown, DropdownItem, DropdownDivider, DropdownHeader } from 'flowbite-svelte';
+    
+    let workoutName: string
+    let exercise: string = 'Select workout:'
+    let showExerciseInfo: boolean = false;
+    let sets: number[] = []
+    let reps: number[] = []
+    let weight: number[] = []
+    let exercises: any[] = []
+    let displayEx: any[] = []
+    let numExercises = 0
+    let workoutDate: Date
+    let workoutNotes: string
 
-
-    let workout: string;
-    let workoutNotes: string;
-    let workoutDate: string;
-    let workoutTitle: string;
-
-    let gymName: string;
-    let gymDescription: string;
-    let gymDate: string;
-    let maxCapacity: number;
-    let gymPhoto: File;
-    let availableEquipment: string;
-    let loading = false;
     let currentUser: User | null = null;
     authStore.subscribe((value) => {
         currentUser = value.user;
     });
 
-    async function createGym() {
-		if (workout === undefined || loading === true)
-			return alert('Must include at least one workout');
-		loading = true;
+    let selectedExercise: {id: number, text: string} | null = null
     
-        const workoutInfo = {
-            workout: workout,
-            workoutNotes: workoutNotes,
-            workoutDate: workoutDate,
-            workoutTitle: workoutTitle
-        };
+    // exercise options
+    let exerciseName = [
+        {id: 0, text:'Select Workout:'},
+        {id: 1, text:'Ab Bench'},
+        {id: 2, text:'Abdominal Crunch'},
+        {id: 3, text:'Back Extension'},
+        {id: 4, text:'Bench Press'},
+        {id: 5, text:'Bicep Curl'},
+        {id: 6, text:'Cable Machine'},
+        {id: 7, text:'Calf Raise'},
+        {id: 8, text:'Chest Press'},
+        {id: 9, text:'Glute Machine'},
+        {id: 10, text:'Hip Adductor'},
+        {id: 11, text:'Lat Pull Down'},
+        {id: 12, text:'Lateral Raise'},
+        {id: 13, text:'Leg Extension'},
+        {id: 14, text:'Leg Press'},
+        {id: 15, text:'Pec Fly'},
+        {id: 16, text:'Plated Chest Press'},
+        {id: 17, text:'Plated Leg Press'},
+        {id: 18, text:'Rotary Torso'},
+        {id: 19, text:'Seated Leg Curl'},
+        {id: 20, text:'Seated Row'},
+        {id: 21, text:'Shoulder Press'},
+        {id: 22, text:'Tricep Press'},
+    ];
 
-        try {
-			const gymRef = doc(db, 'workouts', workout);
-			setDoc(gymRef, workoutInfo, { merge: true });
-			goto('/profile');
-		} catch (error) {
-			console.log(`An error ocuured while createing a document ${error}`);
-		}
-		loading = false;
+    function handleWorkoutSelection() {
+            if (exercise !== 'Select Workout:'){
+                showExerciseInfo = true;
+                selectedExercise = exercises.find(exercise => exercise.text === exercise) || null;
+            } else {
+                showExerciseInfo = false;
+                selectedExercise = null;
+            }
+        }
+
+    function addExercise() {
+        displayEx[numExercises] = [exercise, sets[numExercises], reps[numExercises], weight[numExercises]];
+        exercises[numExercises] = exercise;
+        exercise="Select exercise:"
+        numExercises = numExercises + 1
     }
-    
+
+    async function createWorkout() {
+            if (workoutName === undefined)
+                return alert('Please name workout');
+            const workoutInfo = {
+                workoutName: workoutName,
+                exercises: exercises,
+                sets: sets,
+                reps: reps,
+                weight: weight,
+                workoutDate: workoutDate,
+                workoutNotes: workoutNotes,
+                userID: currentUser?.uid
+            };
+
+            try {
+                const gymRef = doc(db, 'workoutTest3', workoutName);
+                setDoc(gymRef, workoutInfo, { merge: true });
+                goto('/profile');
+            } catch (error) {
+                return alert(`An error ocuured while creating a document ${error}`);
+            }
+        }
 </script>
 
-<main class="text-gray-100 mt-10">
-    <div>
-        <!-- input box -->
-        <div class="max-w-4xl mx-auto bg-secondary rounded-lg flex flex-col p-5">
-            <h1 class="text-center text-white text-2xl">Create</h1>
-
-             <!-- Workout Name-->
-             <div class="flex flex-col my-4">
-                <label for="workout-title">Workout Name</label>
-                <input 
-                    id="workout-title" 
-                    type="text" 
-                    bind:value={workoutTitle}
-                    placeholder="Workout Name e.g. Leg Day"
-                    class="py-4 pl-5 pr-24 bg-24 bg-transparent border border-borderclr"
-                />
+<main class="mx-auto">
+    <h1 class="text-center text-white">
+        New Workout
+    </h1>
+    <div class=" bg-secondary rounded-lg mx-auto">
+        <input
+            class="my-2"
+            bind:value={workoutName}
+            placeholder="Workout Name"
+        />
+        <h2 class="text-white">
+            Exercises
+        </h2>
+        {#each displayEx as ex}
+            <div class="flex flex-col text-white">
+                {ex}
             </div>
-
-            <!-- Workout -->
-            <div class="flex flex-col my-4">
-                <label for="workout">Exercise</label>
-                <input 
-                    id="workout" 
-                    type="string" 
-                    bind:value={workout}
-                    placeholder= "Select Workout..."
-                    class="py-4 pl-5 pr-24 bg-24 bg-transparent border border-borderclr"
-                />
-            </div>
-
-             <!-- Workout Date -->
-             <div class="flex flex-col my-4">
-                <label for="workout-date">Workout Date</label>
-                <input 
-                    id="workout-date" 
-                    type="date" 
-                    bind:value={workoutDate}
-                    placeholder="Enter Date"
-                    class="py-4 pl-5 pr-24 bg-24 bg-transparent border border-borderclr"
-                />
-            </div>
-
-            <!-- Workout Notes -->
-            <div class="flex flex-col my-4">
-                <label for="workout-notes">Notes</label>
-                <input 
-                    id="workout-notes" 
-                    type="text" 
-                    bind:value={workoutNotes}
-                    placeholder="Additional Workout Information..."
-                    class="py-4 pl-5 pr-24 bg-24 bg-transparent border border-borderclr"
-                />
-            </div>
-
-            <button 
-            disabled={loading}
-            on:click={createGym}
-            class="py-2 px-8 bg-white text-black mt-8 disabled:bg-white/25 disabled:cursor-not-allowed"
-            >{loading ? 'Creating' : 'Create'}</button>
+        {/each}
+        <div>
+            <label for="exercise"></label>
+            <select bind:value={exercise} on:change={handleWorkoutSelection} id = "exercise">
+                {#each exerciseName as ex}
+                <option value={ex.text}>  
+                    {ex.text}
+                </option>
+                {/each}
+            </select>
+            <input
+                class="my-2"
+                bind:value={sets[numExercises]}
+                placeholder="Sets"
+            />
+            <input
+                class="my-2"
+                bind:value={reps[numExercises]}
+                placeholder="Reps"
+            />
+            <input
+                class="my-2"
+                bind:value={weight[numExercises]}
+                placeholder="Weight"
+            />
         </div>
+        <div>
+            <button
+                class="bg-black text-white rounded-lg p-1"
+                on:click={() => addExercise()}>
+                Add Exercise
+            </button>
+        </div>
+        <div class="flex flex-col my-4 text-white">
+            <label for="workout-date">Date</label>
+            <input
+                id="workout-date" 
+                type="date"
+                bind:value={workoutDate}
+                placeholder="Date"
+                class="my-2"
+            />
+        </div>
+        <div class="flex flex-col my-4">
+            <label for="workout-notes">Notes</label>
+            <textarea 
+                id="workout-notes" 
+                bind:value={workoutNotes}
+                placeholder="Notes"
+                class="py-4 pl-5 pr-24 bg-24 bg-transparent border border-borderclr"
+            ></textarea>
+        </div>
+        <button
+            class="bg-black text-white rounded-lg p-1"
+            on:click={() => createWorkout()}>
+            Create Workout
     </div>
 </main>
+
+<style>
+    main {
+        text-align: center;
+        width: 50%;
+    }
+
+    textarea {
+        width: 100%;
+        resize: vertical;
+        height: 200px;
+    }
+</style>
