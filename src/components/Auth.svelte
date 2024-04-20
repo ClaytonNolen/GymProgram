@@ -5,10 +5,22 @@
     import { authStore, authHandlers } from '$lib/assets/gym/gym';
 	import { goto } from "$app/navigation";
     import picName from '$lib/assets/Rob Center.png';
+    import { getFirestore, collection, query, where, getDocs } from 'firebase/firestore';
 
-    let currentUser : User | null
-    authStore.subscribe((value) => {
-        currentUser = value.user
+   
+    // let workouts = [];
+     let currentUser : User | null
+     authStore.subscribe((value) => {
+         currentUser = value.user
+
+          // Bing AI Solution to fetching users workouts
+    //     if (currentUser) {
+    //     const q = query(collection(getFirestore(), 'users', currentUser.uid, 'workouts'));
+    //     const querySnapshot = await getDocs(q);
+    //     workouts = querySnapshot.docs.map(doc => doc.data());
+    //     // Now 'workouts' contains all the workout data for the logged-in user
+    // }
+
     })
 </script>
 
