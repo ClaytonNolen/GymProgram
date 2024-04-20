@@ -6,6 +6,7 @@ export type TEvents = {
     weight: number[];
     workoutDate: string;
     workoutNotes: string;
+    userID: string;
 };
 
 type Member = {
