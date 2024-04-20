@@ -24,14 +24,6 @@
     });
 
     let selectedExercise: {id: number, text: string} | null = null
-    // exercise input fields
-    let selectedExerciseArr: { 
-        id: number,
-        workout:string, 
-        exercise:string,
-        sets:number | null,
-        reps:number | null,
-        weight:number | null}[] =[];
     
     // exercise options
     let exerciseName = [
@@ -91,15 +83,12 @@
 
             try {
                 const gymRef = doc(db, 'workoutTest3', workoutName);
-                console.log("gymRef good")
                 setDoc(gymRef, workoutInfo, { merge: true });
-                console.log("setDoc good")
                 goto('/profile');
             } catch (error) {
                 return alert(`An error ocuured while creating a document ${error}`);
             }
         }
-
 </script>
 
 <main class="mx-auto">

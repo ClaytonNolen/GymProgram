@@ -17,7 +17,7 @@ const unsubscribe = onSnapshot(q, (querySnapshot) => {
 
 <main class="text-gray-100 mt-10 max-w-5xl mx-auto">
     <div class="grid px-4 md:grid-cols-3 gap-8">
-        {#each workouts as work (work.workout)}
+        {#each workouts as work (work.workoutName)}
         <EventCard {...work}/>
         {/each}
     </div>
