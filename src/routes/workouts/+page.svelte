@@ -25,7 +25,7 @@
 <main class="text-gray-100 mt-10 max-w-5xl mx-auto">
     <div class="grid px-4 md:grid-cols-3 gap-8">
         {#each workouts as work (work.workoutName)}
-            {#if work.currentUser === currentUser}
+            {#if work.userID === currentUser}
                 <EventCard {...work}/>
             {/if}
         {/each}
