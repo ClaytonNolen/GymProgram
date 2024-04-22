@@ -8,7 +8,7 @@
     import { Dropdown, DropdownItem, DropdownDivider, DropdownHeader } from 'flowbite-svelte';
     
     let workoutName: string
-    let exercise: string = 'Select workout:'
+    let exercise: string = 'Select Workout:'
     let showExerciseInfo: boolean = false;
     let sets: number[] = []
     let reps: number[] = []
@@ -17,14 +17,13 @@
     let displayEx: any[] = []
     let numExercises = 0
     let workoutDate: Date
-    let workoutNotes: string
+    let workoutNotes: string = ""
+    let selectedExercise: {id: number, text: string} | {id: 0, text: 'Select Workout'}
 
     let currentUser: User | null = null;
     authStore.subscribe((value) => {
         currentUser = value.user;
     });
-
-    let selectedExercise: {id: number, text: string} | null = null
     
     // exercise options
     let exerciseName = [
@@ -59,20 +58,31 @@
                 selectedExercise = exercises.find(exercise => exercise.text === exercise) || null;
             } else {
                 showExerciseInfo = false;
-                selectedExercise = null;
             }
         }
 
     function addExercise() {
+        if (exercise === "Select Workout:")
+            return alert('Please select an exercise');
+        if (sets[numExercises] === undefined)
+            return alert('Please enter number of sets');
+        if (reps[numExercises] === undefined)
+            return alert('Please enter number of reps');
+        if (weight[numExercises] === undefined)
+            return alert('Please enter weight');
         displayEx[numExercises] = [exercise, sets[numExercises], reps[numExercises], weight[numExercises]];
         exercises[numExercises] = exercise;
-        exercise="Select exercise:"
+        exercise="Select Workout:"
         numExercises = numExercises + 1
     }
 
     async function createWorkout() {
             if (workoutName === undefined)
                 return alert('Please name workout');
+            if (numExercises <= 0)
+                return alert('Please add at least one exercise');
+            if (workoutDate === undefined)
+                return alert('Please enter date');
             const workoutInfo = {
                 workoutName: workoutName,
                 exercises: exercises,
@@ -144,7 +154,7 @@
                 Add Exercise
             </button>
         </div>
-        <div class="flex flex-col my-4 text-white">
+        <div class="flex flex-col my-4">
             <label for="workout-date">Date</label>
             <input
                 id="workout-date" 
@@ -154,7 +164,7 @@
                 class="my-2"
             />
         </div>
-        <div class="flex flex-col my-4">
+        <div class="flex flex-col text-white my-4">
             <label for="workout-notes">Notes</label>
             <textarea 
                 id="workout-notes" 
