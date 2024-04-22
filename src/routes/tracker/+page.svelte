@@ -31,26 +31,29 @@
         unsubscribe();
     });
 
+    
+    // Creating function to check for a whole number
+    // async function checkWhole() {}
+    
     async function createBench() {
         if (!currentUser) {
             return alert('User not logged in');
         }
 
-        
+
         // if there is no bench input for date, max weight, or both
+        // This trim was made with AI. 
+        // .trim accounts for when a user deletes an input  or in an empty text box and tries to submit.
         if(benchStr === undefined && benchDate === undefined) {
             return alert('Please enter the date and max weight of your bench press.');
-        } else if (benchDate == undefined) {
+        } else if (benchDate == undefined || !benchDate.trim()) {
             return alert('Please enter the date of your bench press.');
-        } else if (benchStr == undefined) {
+        } else if (benchStr == undefined || !benchStr.trim()) {
             return alert('Please enter the max weight of your bench press.');
         }
-        
-        // This trim was made with AI.
-        if (!benchStr.trim()) {
-            return alert('Please enter some test data');
-        }
 
+        // Check if entered string is a positive integer.
+        // if(benchStr)
 
         loading = true;
 
