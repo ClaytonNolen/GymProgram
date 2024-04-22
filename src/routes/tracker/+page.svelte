@@ -35,11 +35,22 @@
         if (!currentUser) {
             return alert('User not logged in');
         }
+
+        
+        // if there is no bench input for date, max weight, or both
+        if(benchStr === undefined && benchDate === undefined) {
+            return alert('Please enter the date and max weight of your bench press.');
+        } else if (benchDate == undefined) {
+            return alert('Please enter the date of your bench press.');
+        } else if (benchStr == undefined) {
+            return alert('Please enter the max weight of your bench press.');
+        }
         
         // This trim was made with AI.
         if (!benchStr.trim()) {
             return alert('Please enter some test data');
         }
+
 
         loading = true;
 
@@ -75,6 +86,15 @@
     async function createSquat() {
         if (!currentUser) {
             return alert('User not logged in');
+        }
+
+        // if there is no squat input for date, max weight, or both
+        if(squatStr === undefined && squatDate === undefined) {
+            return alert('Please enter the date and max weight of your squat.');
+        } else if (squatDate == undefined) {
+            return alert('Please enter the date of your squat.');
+        } else if (squatStr == undefined) {
+            return alert('Please enter the max weight of your squat.');
         }
         
         // This trim was made with AI.
@@ -118,6 +138,15 @@
         if (!currentUser) {
             return alert('User not logged in');
         }
+
+        // if there is no Deadlift input for date, max weight, or both
+        if(deadLiftStr === undefined && deadLiftDate === undefined) {
+            return alert('Please enter the date and max weight of your deadlift.');
+        } else if (deadLiftDate == undefined) {
+            return alert('Please enter the date of your deadlift.');
+        } else if (deadLiftStr == undefined) {
+            return alert('Please enter the max weight of your deadlift.');
+        }
         
         // This trim was made with AI.
         if (!deadLiftStr.trim) {
@@ -159,6 +188,15 @@
     async function createPowerClean() {
         if (!currentUser) {
             return alert('User not logged in');
+        }
+
+        // if there is no power clean input for date, max weight, or both
+        if(powerCleanStr === undefined && powerCleanDate === undefined) {
+            return alert('Please enter the date and max weight of your power clean.');
+        } else if (powerCleanDate == undefined) {
+            return alert('Please enter the date of your power clean.');
+        } else if (powerCleanStr == undefined) {
+            return alert('Please enter the max weight of your power clean.');
         }
         
         // This trim was made with AI.
@@ -204,7 +242,7 @@
     <div class="flex justify-center items-center"> 
         <div class="text-center"> 
             <h1 class="text-center text-[40px] font-bold text-white lg:w-[710px]"> <!--Title-->
-                TESTING: UID AND GRAPHS
+                BENCHMARK ENTRY
             </h1>
 
             <div>
