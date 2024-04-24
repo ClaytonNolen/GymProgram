@@ -87,7 +87,7 @@
             try {
                 const gymRef = doc(db, 'workoutTest3', workoutName);
                 setDoc(gymRef, workoutInfo, { merge: true });
-                goto('/profile');
+                goto('/workouts');
             } catch (error) {
                 return alert(`An error ocuured while creating a document ${error}`);
             }
