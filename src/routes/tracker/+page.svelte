@@ -6,6 +6,7 @@
 	import type { User } from "@firebase/auth";
 	import { onDestroy } from "svelte";
     import { formatDate } from "../../helper/formatDate";
+    import { wholeCheck } from "../../helper/wholeCheck";
 
     let benchStr: string;
     let squatStr: string;
@@ -31,14 +32,31 @@
         unsubscribe();
     });
 
+    
+    // Creating function to check for a whole number
+    // async function checkWhole() {}
+    
     async function createBench() {
         if (!currentUser) {
             return alert('User not logged in');
         }
-        
-        // This trim was made with AI.
-        if (!benchStr.trim()) {
-            return alert('Please enter some test data');
+
+
+        // if there is no bench input for date, max weight, or both
+        // This trim was made with AI. 
+        // .trim accounts for when a user deletes an input  or in an empty text box and tries to submit.
+        if(benchStr === undefined && benchDate === undefined) {
+            return alert('Please enter the date and max weight of your bench press.');
+        } else if (benchDate == undefined || !benchDate.trim()) {
+            return alert('Please enter the date of your bench press.');
+        } else if (benchStr == undefined || !benchStr.trim()) {
+            return alert('Please enter the max weight of your bench press.');
+        }
+
+        // Check if entered string is a positive integer.
+        // Stops the input and informs user if data input is invalid.
+        if (!(wholeCheck(benchStr))) {
+            return alert('Please enter a positive integer for the max weight.');
         }
 
         loading = true;
@@ -76,10 +94,22 @@
         if (!currentUser) {
             return alert('User not logged in');
         }
-        
-        // This trim was made with AI.
-        if (!squatStr.trim()) {
-            return alert('Please enter some test data');
+
+        // if there is no squat input for date, max weight, or both
+        // This trim was made with AI. 
+        // .trim accounts for when a user deletes an input  or in an empty text box and tries to submit.
+        if(squatStr === undefined && squatDate === undefined) {
+            return alert('Please enter the date and max weight of your squat.');
+        } else if (squatDate == undefined || !squatDate.trim()) {
+            return alert('Please enter the date of your sqaut.');
+        } else if (squatStr == undefined || !squatStr.trim()) {
+            return alert('Please enter the max weight of your squat.');
+        }
+
+        // Check if entered string is a positive integer.
+        // Stops the input and informs user if data input is invalid.
+        if (!(wholeCheck(squatStr))) {
+            return alert('Please enter a positive integer for the max weight.');
         }
 
         loading = true;
@@ -118,10 +148,22 @@
         if (!currentUser) {
             return alert('User not logged in');
         }
-        
-        // This trim was made with AI.
-        if (!deadLiftStr.trim) {
-            return alert('Please enter some test data');
+
+        // if there is no deadlift input for date, max weight, or both
+        // This trim was made with AI. 
+        // .trim accounts for when a user deletes an input  or in an empty text box and tries to submit.
+        if(deadLiftStr === undefined && deadLiftDate === undefined) {
+            return alert('Please enter the date and max weight of your deadlift.');
+        } else if (deadLiftDate == undefined || !deadLiftDate.trim()) {
+            return alert('Please enter the date of your deadlift.');
+        } else if (deadLiftStr == undefined || !deadLiftStr.trim()) {
+            return alert('Please enter the max weight of your deadlift.');
+        }
+
+        // Check if entered string is a positive integer.
+        // Stops the input and informs user if data input is invalid.
+        if (!(wholeCheck(deadLiftStr))) {
+            return alert('Please enter a positive integer for the max weight.');
         }
 
         loading = true;
@@ -160,10 +202,22 @@
         if (!currentUser) {
             return alert('User not logged in');
         }
-        
-        // This trim was made with AI.
-        if (!powerCleanStr.trim) {
-            return alert('Please enter some test data');
+
+        // if there is no power clean input for date, max weight, or both
+        // This trim was made with AI. 
+        // .trim accounts for when a user deletes an input  or in an empty text box and tries to submit.
+        if(powerCleanStr === undefined && powerCleanDate === undefined) {
+            return alert('Please enter the date and max weight of your power clean.');
+        } else if (powerCleanDate == undefined || !powerCleanDate.trim()) {
+            return alert('Please enter the date of your power clean.');
+        } else if (powerCleanStr == undefined || !powerCleanStr.trim()) {
+            return alert('Please enter the max weight of your power clean.');
+        }
+
+        // Check if entered string is a positive integer.
+        // Stops the input and informs user if data input is invalid.
+        if (!(wholeCheck(powerCleanStr))) {
+            return alert('Please enter a positive integer for the max weight.');
         }
 
         loading = true;
@@ -204,7 +258,7 @@
     <div class="flex justify-center items-center"> 
         <div class="text-center"> 
             <h1 class="text-center text-[40px] font-bold text-white lg:w-[710px]"> <!--Title-->
-                TESTING: UID AND GRAPHS
+                BENCHMARK ENTRY
             </h1>
 
             <div>

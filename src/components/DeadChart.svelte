@@ -49,7 +49,6 @@ to implement onMount-->
       // Line below was given by AI to fix an error with ctx possibly having a null value
       if (!ctx) return;
       new Chart(ctx, {
-        // Need to edit later for styling
         type: 'line',
         data: {
           labels: deadDate, // x-axis label for date
@@ -70,14 +69,33 @@ to implement onMount-->
           scales: {
             y: {
               beginAtZero: true,
+              // Takes the max in the data array and adds 50 to scale normally
+              suggestedMax: Math.max(...deadData) + 50,
+              grid: {
+              tickColor: 'white'
             },
+            ticks: {
+              color: 'white',
+            }
+          },
             x: {
-            offset: true,
-          }
+              offset: true,
+              grid: {
+                color: 'black',
+                tickColor: 'white'
+              },
+              ticks: {
+                color: 'white',
+              }
+            }
           },
           plugins: {
+            // Alters details about the line label for max weight
             legend: {
-              position: "bottom"
+              position: "right",
+              labels: {
+                color: 'white'
+              }
             }
           }
         },
