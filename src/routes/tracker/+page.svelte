@@ -96,17 +96,20 @@
         }
 
         // if there is no squat input for date, max weight, or both
+        // This trim was made with AI. 
+        // .trim accounts for when a user deletes an input  or in an empty text box and tries to submit.
         if(squatStr === undefined && squatDate === undefined) {
             return alert('Please enter the date and max weight of your squat.');
-        } else if (squatDate == undefined) {
-            return alert('Please enter the date of your squat.');
-        } else if (squatStr == undefined) {
+        } else if (squatDate == undefined || !squatDate.trim()) {
+            return alert('Please enter the date of your sqaut.');
+        } else if (squatStr == undefined || !squatStr.trim()) {
             return alert('Please enter the max weight of your squat.');
         }
-        
-        // This trim was made with AI.
-        if (!squatStr.trim()) {
-            return alert('Please enter some test data');
+
+        // Check if entered string is a positive integer.
+        // Stops the input and informs user if data input is invalid.
+        if (!(wholeCheck(squatStr))) {
+            return alert('Please enter a positive integer for the max weight.');
         }
 
         loading = true;
@@ -146,18 +149,21 @@
             return alert('User not logged in');
         }
 
-        // if there is no Deadlift input for date, max weight, or both
+        // if there is no deadlift input for date, max weight, or both
+        // This trim was made with AI. 
+        // .trim accounts for when a user deletes an input  or in an empty text box and tries to submit.
         if(deadLiftStr === undefined && deadLiftDate === undefined) {
             return alert('Please enter the date and max weight of your deadlift.');
-        } else if (deadLiftDate == undefined) {
+        } else if (deadLiftDate == undefined || !deadLiftDate.trim()) {
             return alert('Please enter the date of your deadlift.');
-        } else if (deadLiftStr == undefined) {
+        } else if (deadLiftStr == undefined || !deadLiftStr.trim()) {
             return alert('Please enter the max weight of your deadlift.');
         }
-        
-        // This trim was made with AI.
-        if (!deadLiftStr.trim) {
-            return alert('Please enter some test data');
+
+        // Check if entered string is a positive integer.
+        // Stops the input and informs user if data input is invalid.
+        if (!(wholeCheck(deadLiftStr))) {
+            return alert('Please enter a positive integer for the max weight.');
         }
 
         loading = true;
@@ -198,17 +204,20 @@
         }
 
         // if there is no power clean input for date, max weight, or both
+        // This trim was made with AI. 
+        // .trim accounts for when a user deletes an input  or in an empty text box and tries to submit.
         if(powerCleanStr === undefined && powerCleanDate === undefined) {
             return alert('Please enter the date and max weight of your power clean.');
-        } else if (powerCleanDate == undefined) {
+        } else if (powerCleanDate == undefined || !powerCleanDate.trim()) {
             return alert('Please enter the date of your power clean.');
-        } else if (powerCleanStr == undefined) {
+        } else if (powerCleanStr == undefined || !powerCleanStr.trim()) {
             return alert('Please enter the max weight of your power clean.');
         }
-        
-        // This trim was made with AI.
-        if (!powerCleanStr.trim) {
-            return alert('Please enter some test data');
+
+        // Check if entered string is a positive integer.
+        // Stops the input and informs user if data input is invalid.
+        if (!(wholeCheck(powerCleanStr))) {
+            return alert('Please enter a positive integer for the max weight.');
         }
 
         loading = true;

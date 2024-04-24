@@ -70,6 +70,8 @@ to implement onMount-->
           scales: {
             y: {
               beginAtZero: true,
+              // Takes the max in the data array and adds 50 to scale normally
+              suggestedMax: Math.max(...deadData) + 50,
             },
             x: {
             offset: true,
@@ -77,7 +79,7 @@ to implement onMount-->
           },
           plugins: {
             legend: {
-              position: "bottom"
+              position: "right"
             }
           }
         },
