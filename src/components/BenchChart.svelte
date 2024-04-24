@@ -94,6 +94,7 @@ async function fetchBench() {
           }
         },
         plugins: {
+          // Alters details about the line label for max weight
           legend: {
             position: "right",
             labels: {

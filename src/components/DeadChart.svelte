@@ -49,7 +49,6 @@ to implement onMount-->
       // Line below was given by AI to fix an error with ctx possibly having a null value
       if (!ctx) return;
       new Chart(ctx, {
-        // Need to edit later for styling
         type: 'line',
         data: {
           labels: deadDate, // x-axis label for date
@@ -91,6 +90,7 @@ to implement onMount-->
             }
           },
           plugins: {
+            // Alters details about the line label for max weight
             legend: {
               position: "right",
               labels: {
