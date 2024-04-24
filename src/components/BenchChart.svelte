@@ -52,7 +52,6 @@ async function fetchBench() {
     // Line below was given by AI to fix an error with ctx possibly having a null value
     if (!ctx) return;
     new Chart(ctx, {
-      // Need to edit later for styling
       type: 'line',
       data: {
         labels: benchDate, // x-axis label for date
@@ -76,14 +75,30 @@ async function fetchBench() {
             beginAtZero: true,
             // Takes the max in the data array and adds 50 to scale normally
             suggestedMax: Math.max(...benchData) + 50,
+            grid: {
+              tickColor: 'white'
+            },
+            ticks: {
+              color: 'white',
+            }
           },
           x: {
             offset: true,
+            grid: {
+              color: 'black',
+              tickColor: 'white'
+            },
+            ticks: {
+              color: 'white',
+            }
           }
         },
         plugins: {
           legend: {
-            position: "right"
+            position: "right",
+            labels: {
+              color: 'white'
+            }
           }
         }
       },

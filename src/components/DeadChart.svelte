@@ -72,14 +72,30 @@ to implement onMount-->
               beginAtZero: true,
               // Takes the max in the data array and adds 50 to scale normally
               suggestedMax: Math.max(...deadData) + 50,
+              grid: {
+              tickColor: 'white'
             },
+            ticks: {
+              color: 'white',
+            }
+          },
             x: {
-            offset: true,
-          }
+              offset: true,
+              grid: {
+                color: 'black',
+                tickColor: 'white'
+              },
+              ticks: {
+                color: 'white',
+              }
+            }
           },
           plugins: {
             legend: {
-              position: "right"
+              position: "right",
+              labels: {
+                color: 'white'
+              }
             }
           }
         },
