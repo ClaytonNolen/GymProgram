@@ -81,9 +81,6 @@
             if (workoutName === undefined)
                 return alert('Please name workout');
 
-            // if (workoutNotes === undefined)
-            //     return alert('Please add notes');
-
             const workoutInfo = {
                 workoutName: workoutName,
                 exercises: exercises,
