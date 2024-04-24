@@ -87,7 +87,7 @@ async function fetchBench() {
   });
 </script>
 
-<!--Adds ttitle and line above chart while connecting it to the canvas -->
+<!--Adds title and line above chart while connecting it to the canvas -->
 <div class="col-8 ring-offset-2">
   <div class="card">
       <div class="card-body">

@@ -6,6 +6,7 @@
 	import type { User } from "@firebase/auth";
 	import { onDestroy } from "svelte";
     import { formatDate } from "../../helper/formatDate";
+    import { wholeCheck } from "../../helper/wholeCheck";
 
     let benchStr: string;
     let squatStr: string;
@@ -53,7 +54,10 @@
         }
 
         // Check if entered string is a positive integer.
-        // if(benchStr)
+        // Stops the input and informs user if data input is invalid.
+        if (!(wholeCheck(benchStr))) {
+            return alert('Please enter a positive integer for the max weight.');
+        }
 
         loading = true;
 
