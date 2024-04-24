@@ -79,7 +79,7 @@ async function fetchBench() {
         },
         plugins: {
           legend: {
-            position: "bottom"
+            position: "right"
           }
         }
       },
