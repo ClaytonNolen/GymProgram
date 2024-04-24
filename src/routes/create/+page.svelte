@@ -8,7 +8,6 @@
     import { Dropdown, DropdownItem, DropdownDivider, DropdownHeader } from 'flowbite-svelte';
     
     let workoutName: string
-    let exercise: string = 'Select Workout:'
     let showExerciseInfo: boolean = false;
     let sets: number[] = []
     let reps: number[] = []
@@ -18,16 +17,17 @@
     let numExercises = 0
     let workoutDate: Date
     let workoutNotes: string = ""
-    let selectedExercise: {id: number, text: string} | {id: 0, text: 'Select Workout'}
 
     let currentUser: User | null = null;
     authStore.subscribe((value) => {
         currentUser = value.user;
     });
+
+    let selectedExercise: {id: number, text: string} | null = null
     
     // exercise options
     let exerciseName = [
-        {id: 0, text:'Select Workout:'},
+        {id: 0, text:'Select Exercise:'},
         {id: 1, text:'Ab Bench'},
         {id: 2, text:'Abdominal Crunch'},
         {id: 3, text:'Back Extension'},
@@ -51,38 +51,39 @@
         {id: 21, text:'Shoulder Press'},
         {id: 22, text:'Tricep Press'},
     ];
+    let exercise = exerciseName[0].text;
+
 
     function handleWorkoutSelection() {
-            if (exercise !== 'Select Workout:'){
+            if (exercise !== 'Select Exercise:'){
                 showExerciseInfo = true;
                 selectedExercise = exercises.find(exercise => exercise.text === exercise) || null;
             } else {
                 showExerciseInfo = false;
+                selectedExercise = null;
             }
         }
 
     function addExercise() {
-        if (exercise === "Select Workout:")
+        if (exercise == 'Select Exercise:'){
             return alert('Please select an exercise');
-        if (sets[numExercises] === undefined)
-            return alert('Please enter number of sets');
-        if (reps[numExercises] === undefined)
-            return alert('Please enter number of reps');
-        if (weight[numExercises] === undefined)
-            return alert('Please enter weight');
+        }
+        if (sets[numExercises] <= 0 || reps[numExercises] <= 0 || weight[numExercises] <= 0){
+            return alert('Sets, Reps, and Weight must be a positive number');
+        }
         displayEx[numExercises] = [exercise, sets[numExercises], reps[numExercises], weight[numExercises]];
         exercises[numExercises] = exercise;
-        exercise="Select Workout:"
+        exercise="Select exercise:"
         numExercises = numExercises + 1
     }
 
     async function createWorkout() {
             if (workoutName === undefined)
                 return alert('Please name workout');
-            if (numExercises <= 0)
-                return alert('Please add at least one exercise');
-            if (workoutDate === undefined)
-                return alert('Please enter date');
+
+            // if (workoutNotes === undefined)
+            //     return alert('Please add notes');
+
             const workoutInfo = {
                 workoutName: workoutName,
                 exercises: exercises,
@@ -97,92 +98,125 @@
             try {
                 const gymRef = doc(db, 'workoutTest3', workoutName);
                 setDoc(gymRef, workoutInfo, { merge: true });
-                goto('/profile');
+                goto('/workouts');
             } catch (error) {
                 return alert(`An error ocuured while creating a document ${error}`);
             }
         }
 </script>
 
-<main class="mx-auto">
-    <h1 class="text-center text-white">
-        New Workout
-    </h1>
-    <div class=" bg-secondary rounded-lg mx-auto">
-        <input
-            class="my-2"
-            bind:value={workoutName}
-            placeholder="Workout Name"
-        />
-        <h2 class="text-white">
-            Exercises
-        </h2>
-        {#each displayEx as ex}
-            <div class="flex flex-col text-white">
-                {ex}
+<main class="text-gray-100 mx-auto mt-10 flex flex-col items-center">  
+    <div>
+        <div class= "max-w-4xl mx-auto bg-secondary rounded-lg p-5">
+            <h1 class="text-center text-white text-2xl">New Workout</h1>
+
+            <div class ="flex flex-col my-4">
+                <input
+                    bind:value={workoutName}
+                    placeholder="Workout Name"
+                    class="py-4 pl-5 pr-24 bg-transparent border border-borderclr"
+                />
             </div>
-        {/each}
-        <div>
-            <label for="exercise"></label>
-            <select bind:value={exercise} on:change={handleWorkoutSelection} id = "exercise">
-                {#each exerciseName as ex}
-                <option value={ex.text}>  
-                    {ex.text}
-                </option>
+
+            <style>
+                .default-option {
+                    color: gray;
+                }
+                select {
+                    color: white;
+                }
+                select option {
+                    color: white;
+                    background-color: #171717;
+                }
+            </style>
+            
+            <div class ="flex flex-col my-4">
+                <h2 class="text-white">Exercises</h2>
+                
+                {#each displayEx as ex}
+                    {ex}
                 {/each}
-            </select>
-            <input
-                class="my-2"
-                bind:value={sets[numExercises]}
-                placeholder="Sets"
-            />
-            <input
-                class="my-2"
-                bind:value={reps[numExercises]}
-                placeholder="Reps"
-            />
-            <input
-                class="my-2"
-                bind:value={weight[numExercises]}
-                placeholder="Weight"
-            />
-        </div>
-        <div>
+
+                <div class="flex flex-row my-4 w-full">
+                    <div class = "flex flex-col w-2/3 pr-3">
+                        <select 
+                            bind:value={exercise} 
+                            on:change={handleWorkoutSelection} 
+                            class = "py-4 pl-5 pr-20 bg-transparent border border-borderclr"
+                            id = "exercise">
+                            {#each exerciseName as ex}
+                                <option value={ex.text}>{ex.text}</option>
+                            {/each}
+                        </select>
+                    </div>
+                    <div class = "flex flex-col w-1/6 pr-3">
+                        <input
+                            bind:value={sets[numExercises]}
+                            placeholder="Sets"
+                            class = "py-4 pl-5 bg-transparent border border-borderclr"
+                        />
+                    </div>
+                    <div class = "flex flex-col w-1/6 pr-3">
+                        <input
+                            bind:value={reps[numExercises]}
+                            placeholder="Reps"
+                            class = "py-4 pl-5 bg-transparent border border-borderclr"
+                        />
+                    </div>
+                    <div class = "flex flex-col w-1/6 ">
+                        <input
+                            bind:value={weight[numExercises]}
+                            placeholder="Weight"
+                            class = "py-4 pl-5 bg-transparent border border-borderclr"/>
+                    </div>
+                </div>
+            </div>
+
+            <div>
+                <button
+                    class="bg-black text-white rounded-lg p-2"
+                    on:click={() => addExercise()}>
+                    Add Exercise
+                </button>
+            </div>
+            <div class="flex flex-col my-4 text-white">
+                <label for="workout-date">Date</label>
+                <input
+                    id="workout-date" 
+                    type="date"
+                    bind:value={workoutDate}
+                    placeholder="Date"
+                    class = "py-4 pl-5 bg-transparent border border-borderclr"/>
+            </div>
+            <div class="flex flex-col my-4">
+                <label for="workout-notes">Notes</label>
+                <textarea 
+                    id="workout-notes" 
+                    bind:value={workoutNotes}
+                    placeholder="Additional workout notes...
+
+100 push-ups
+100 sit-ups
+100 squats
+10 km run"
+                    class="py-4 pl-5 pr-24 bg-24 bg-transparent border border-borderclr"
+                ></textarea>
+            </div>
             <button
-                class="bg-black text-white rounded-lg p-1"
-                on:click={() => addExercise()}>
-                Add Exercise
-            </button>
+                class="bg-black text-white rounded-lg p-2"
+                on:click={() => createWorkout()}>
+                Create Workout
+                
         </div>
-        <div class="flex flex-col my-4">
-            <label for="workout-date">Date</label>
-            <input
-                id="workout-date" 
-                type="date"
-                bind:value={workoutDate}
-                placeholder="Date"
-                class="my-2"
-            />
-        </div>
-        <div class="flex flex-col text-white my-4">
-            <label for="workout-notes">Notes</label>
-            <textarea 
-                id="workout-notes" 
-                bind:value={workoutNotes}
-                placeholder="Notes"
-                class="py-4 pl-5 pr-24 bg-24 bg-transparent border border-borderclr"
-            ></textarea>
-        </div>
-        <button
-            class="bg-black text-white rounded-lg p-1"
-            on:click={() => createWorkout()}>
-            Create Workout
     </div>
 </main>
 
 <style>
     main {
         text-align: center;
+        justify-content: center;
+
         width: 50%;
     }
 
