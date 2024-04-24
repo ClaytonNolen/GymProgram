@@ -42,7 +42,9 @@ async function fetchBench() {
   }
 }
 
+
 // Code for title card for chart and legend position from https://www.youtube.com/watch?v=NySBh_DIRlg
+// Link for Math.max: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/max
   let canvas: HTMLCanvasElement;
   onMount(async () => {
     await fetchBench(); // Fetch data from Firebase before initializing the chart
@@ -72,6 +74,8 @@ async function fetchBench() {
         scales: {
           y: {
             beginAtZero: true,
+            // Takes the max in the data array and adds 50 to scale normally
+            suggestedMax: Math.max(...benchData) + 50,
           },
           x: {
             offset: true,
@@ -79,7 +83,7 @@ async function fetchBench() {
         },
         plugins: {
           legend: {
-            position: "bottom"
+            position: "right"
           }
         }
       },
@@ -87,7 +91,7 @@ async function fetchBench() {
   });
 </script>
 
-<!--Adds ttitle and line above chart while connecting it to the canvas -->
+<!--Adds title and line above chart while connecting it to the canvas -->
 <div class="col-8 ring-offset-2">
   <div class="card">
       <div class="card-body">
