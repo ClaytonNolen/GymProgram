@@ -21,7 +21,7 @@
 <!-- If the click does not work check the pt2 at 44min. -->
 <article
 on:keydown={() => {}}
-    class="bg-secondary p-8 rounded-lg">
+    class="bg-secondary p-8 rounded-lg text-cream">
         <div class="flex flex-col">
             <!-- <p>UserID: {userID}</p> -->
             <h1 class = "capitalize text-3xl font-bold tracking-widest"> {workoutName}</h1>
