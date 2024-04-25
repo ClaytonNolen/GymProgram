@@ -30,7 +30,7 @@
     The Robertson Gym Equipment
 </h2>
 
-<div class="text-white mx-4">
+<div class="text-white bg-black mx-4">
     <row class="flex">
         <columnLeft>
             <h1>
@@ -438,8 +438,10 @@
 <style>
     h1 {
         font-size: 38px;
+        font-weight: bold;
         text-align: center;
-        background: black;
+        color: black;
+        background: yellow;
         border-bottom: solid;
         border: 2;
         border: white -500px;
@@ -448,7 +450,7 @@
     div {
         font-size: 24px;
         margin-top: 10px;
-        border-bottom: dashed;
+        border-bottom: solid;
         border: 2;
         border: white -500px;
         height: 44.3%;

@@ -105,16 +105,16 @@
 </script>
 
 <main class="mx-auto">
-    <h1 class="text-center text-white">
+    <h1 class="text-center text-white text-3xl font-bold">
         New Workout
     </h1>
-    <div class=" bg-secondary rounded-lg mx-auto">
+    <div class="bg-black rounded-lg mx-auto">
         <input
             class="my-2"
             bind:value={workoutName}
             placeholder="Workout Name"
         />
-        <h2 class="text-white">
+        <h2 class="text-white text-xl">
             Exercises
         </h2>
         {#each displayEx as ex}
@@ -132,7 +132,7 @@
                 {/each}
             </select>
             <input
-                class="my-2"
+                class="my-2 mx-2"
                 bind:value={sets[numExercises]}
                 placeholder="Sets"
             />
@@ -142,29 +142,29 @@
                 placeholder="Reps"
             />
             <input
-                class="my-2"
+                class="my-2 ml-2"
                 bind:value={weight[numExercises]}
                 placeholder="Weight"
             />
         </div>
         <div>
             <button
-                class="bg-black text-white rounded-lg p-1"
+                class="text-black text-xl rounded-lg p-1"
                 on:click={() => addExercise()}>
                 Add Exercise
             </button>
         </div>
-        <div class="flex flex-col my-4">
+        <div class="flex flex-col text-white text-xl my-4 mx-2">
             <label for="workout-date">Date</label>
             <input
                 id="workout-date" 
                 type="date"
                 bind:value={workoutDate}
                 placeholder="Date"
-                class="my-2"
+                class="text-black my-2"
             />
         </div>
-        <div class="flex flex-col text-white my-4">
+        <div class="flex flex-col text-white text-xl my-4 mx-2">
             <label for="workout-notes">Notes</label>
             <textarea 
                 id="workout-notes" 
@@ -174,7 +174,7 @@
             ></textarea>
         </div>
         <button
-            class="bg-black text-white rounded-lg p-1"
+            class="text-black text-xl rounded-lg p-1 mb-2"
             on:click={() => createWorkout()}>
             Create Workout
     </div>
@@ -184,6 +184,10 @@
     main {
         text-align: center;
         width: 50%;
+    }
+
+    button {
+        background-color: #FFCD00;
     }
 
     textarea {
