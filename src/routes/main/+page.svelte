@@ -8,21 +8,21 @@
     <div class="flex justify-center items-center h-screen"> 
         <div class="text-center"> 
             <img src={picName} alt="logo" class=" mx-auto w-3/4 lg:w-3/4 mb-6" />
-            <h1 class="text-[40px] font-bold text-white lg:w-[710px]"> <!--Title-->
+            <h1 class="text-[40px] font-bold text-cream lg:w-[710px]"> <!--Title-->
                 Welcome to The Gym Program
             </h1>
-            <p class= "text-[20px] text-black lg:w-[710px] mt-4"> <!--Description of the app-->
+            <p class= "text-[20px] text-cream lg:w-[710px] mt-4"> <!--Description of the app-->
                 Here, you can track your workouts at the Robertson Center and keep track of your progress over time.
             </p>
             <div class="flex flex-col px-10 sm:flex-row mt-10 gap-14">
                 <!--Buttons and how they are navigated to different pages with "on:click"-->
                 <button 
                 on:click={() => goto("/create")} 
-                class="py-[23px] px-[86px] bg-black text-xl text-white w-[299px] hover:bg-white hover:text-black duration-300 transittion-colors">
+                class="py-[23px] px-[86px] bg-black text-xl text-cream w-[299px] hover:bg-cream hover:text-black duration-300 transittion-colors">
                     CREATE</button>
                 <button 
                 on:click={() => goto("/eventlist")}
-                class="py-[23px] px-[86px] bg-black text-xl text-white w-[299px] hover:bg-white hover:text-black duration-300 transittion-colors">
+                class="py-[23px] px-[86px] bg-black text-xl text-cream w-[299px] hover:bg-cream hover:text-black duration-300 transittion-colors">
                     Track Your Progress</button>
             </div>
         </div>

@@ -33,7 +33,7 @@
             class="rounded-full h-12 w-12"
             />
             <div class="flex flex-col">
-                <p><span class="text-purple-500 italic font-bold">{currentUser?.displayName}</span></p>
+                <p><span class="text-sugold italic font-bold">{currentUser?.displayName}</span></p>
             </div>
             <button on:click={authHandlers.logout} class="bg-white p-2 rounded-full text-black">LOG OUT</button>
         </div>

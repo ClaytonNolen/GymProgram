@@ -59,9 +59,9 @@ async function fetchBench() {
             label: 'Max Weight',
             data: benchData,
             backgroundColor: 'rgba(255,205,0,1)',
-            borderColor: 'rgba(255,159,64,1)',
+            borderColor: '#FFCD00',
             borderWidth: 2,
-            pointBorderColor: "white"
+            pointBorderColor: "#f8f1e5"
           },
         ],
       },
@@ -72,6 +72,26 @@ async function fetchBench() {
         scales: {
           y: {
             beginAtZero: true,
+            // Takes the max in the data array and adds 50 to scale normally
+            suggestedMax: Math.max(...benchData) + 50,
+            grid: {
+              color: '#121212',
+              tickColor: '#f8f1e5'
+            },
+            ticks: {
+              color: '#f8f1e5',
+            }
+          },
+          x: {
+            offset: true,
+            grid: {
+              color: '#121212',
+              tickColor: '#f8f1e5'
+            },
+            ticks: {
+              color: '#f8f1e5',
+            }
+
           },
           x: {
             offset: true,
@@ -79,6 +99,11 @@ async function fetchBench() {
         },
         plugins: {
           legend: {
+            position: "top",
+            labels: {
+              color: '#f8f1e5'
+            }
+
             position: "bottom"
           }
         }
@@ -91,7 +116,7 @@ async function fetchBench() {
 <div class="col-8 ring-offset-2">
   <div class="card">
       <div class="card-body">
-        <h5 class= "text-white"> Bench Press Progress </h5>
+        <h5 class= "text-cream text-left mb-2"> Bench Press Progress </h5>
         <hr>
         <canvas bind:this={canvas}></canvas> 
       </div>
