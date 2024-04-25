@@ -298,7 +298,7 @@
                 disabled={loading}
                 on:click={createBench}
                 class="py-[23px] px-[86px] bg-primary text-xl text-cream w-[299px] hover:bg-cream hover:text-secondary duration-300 transittion-colors">
-                ADD BENCH
+                ADD
             </button>
             </div>
         </div>
@@ -334,7 +334,7 @@
             disabled={loading}
             on:click={createSquat}
             class="py-[23px] px-[86px] bg-primary text-xl text-cream w-[299px] hover:bg-cream hover:text-secondary duration-300 transittion-colors">
-            ADD SQUAT 
+            ADD
         </button>
         </div>
         <div>
@@ -369,7 +369,7 @@
             disabled={loading}
             on:click={createDeadLift}
             class="py-[23px] px-[86px] bg-primary text-xl text-cream w-[299px] hover:bg-cream hover:text-secondary duration-300 transittion-colors">
-            ADD DEADLIFT 
+            ADD 
         </button>
         </div>
     </div>
@@ -405,7 +405,7 @@
                 disabled={loading}
                 on:click={createPowerClean}
                 class="py-[23px] px-[86px] bg-primary text-xl text-cream w-[299px] hover:bg-cream hover:text-secondary duration-300 transittion-colors">
-                ADD POWER CLEAN 
+                ADD
             </button>
             </div>
         </div>

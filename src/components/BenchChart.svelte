@@ -95,7 +95,10 @@ async function fetchBench() {
         },
         plugins: {
           legend: {
-            position: "bottom"
+            position: "top",
+            labels: {
+              color: '#f8f1e5'
+            }
           }
         }
       },
@@ -107,7 +110,7 @@ async function fetchBench() {
 <div class="col-8 ring-offset-2">
   <div class="card">
       <div class="card-body">
-        <h5 class= "text-white"> Bench Press Progress </h5>
+        <h5 class= "text-cream text-left"> Bench Press Progress </h5>
         <hr>
         <canvas bind:this={canvas}></canvas> 
       </div>

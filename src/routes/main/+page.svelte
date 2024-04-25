@@ -18,11 +18,11 @@
                 <!--Buttons and how they are navigated to different pages with "on:click"-->
                 <button 
                 on:click={() => goto("/create")} 
-                class="py-[23px] px-[86px] bg-black text-xl text-cream w-[299px] hover:bg-cream hover:text-black duration-300 transittion-colors">
-                    CREATE</button>
+                class="py-[23px] px-[86px] rounded-lg bg-secondary text-xl text-cream w-[299px] hover:bg-cream hover:text-black duration-300 transittion-colors">
+                    Create Workout</button>
                 <button 
                 on:click={() => goto("/eventlist")}
-                class="py-[23px] px-[86px] bg-black text-xl text-cream w-[299px] hover:bg-cream hover:text-black duration-300 transittion-colors">
+                class="py-[23px] px-[86px] rounded-lg bg-secondary text-xl text-cream w-[299px] hover:bg-cream hover:text-black duration-300 transittion-colors">
                     Track Your Progress</button>
             </div>
         </div>

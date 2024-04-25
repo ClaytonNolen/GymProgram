@@ -10,11 +10,11 @@
     let workoutPage = false;
 </script>
 
-<main class="flex-col text-center text-2xl text-white my-4">
+<main class="flex-col text-center text-2xl text-cream my-4">
     <!--button with toggle functionality that displays workouts page-->
     <button 
         on:click={() => goto("/workouts")}
-        class="p-4 bg-black rounded-lg mt-12 font-bold w-400px hover:bg-slate-800 hover:scale-110 duration-300 transistion-all cursor-pointer]">
+        class="p-4 bg-secondary rounded-lg mt-12 font-bold w-400px hover:bg-cream hover:text-secondary hover:scale-110 duration-300 transistion-all cursor-pointer]">
         Workout History
     </button>
 

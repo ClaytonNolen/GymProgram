@@ -54,13 +54,13 @@ to implement onMount-->
           labels: cleanDate, // x-axis label for date
           datasets: [
             {
-              label: 'Max Weight',
-              data: cleanData,
-              backgroundColor: 'rgba(255,205,0,1)',
-              borderColor: 'rgba(255,159,64,1)',
-              borderWidth: 2,
-              pointBorderColor: "white"
-            },
+            label: 'Max Weight',
+            data: cleanData,
+            backgroundColor: 'rgba(255,205,0,1)',
+            borderColor: '#FFCD00',
+            borderWidth: 2,
+            pointBorderColor: "#f8f1e5"
+          },
           ],
         },
         options: {
@@ -72,30 +72,30 @@ to implement onMount-->
               // Takes the max in the data array and adds 50 to scale normally
               suggestedMax: Math.max(...cleanData) + 50,
               grid: {
-              tickColor: 'white'
+              color: '#121212',
+              tickColor: '#f8f1e5'
             },
             ticks: {
-              color: 'white',
+              color: '#f8f1e5',
             }
           },
           x: {
             offset: true,
             grid: {
-              color: 'black',
-              tickColor: 'white'
+              color: '#121212',
+              tickColor: '#f8f1e5'
             },
             ticks: {
-              color: 'white',
+              color: '#f8f1e5',
             }
-          }
           },
-          plugins: {
-            // Alters details about the line label for max weight
-            legend: {
-              position: "right",
-              labels: {
-                color: 'white'
-              }
+        },
+        plugins: {
+          legend: {
+            position: "top",
+            labels: {
+              color: '#f8f1e5'
+            }
             }
           }
         },
@@ -107,7 +107,7 @@ to implement onMount-->
   <div class="col-8 ring-offset-2 my-5">
     <div class="card">
         <div class="card-body">
-          <h5 class= "text-white"> Power Clean Progress </h5>
+          <h5 class= "text-cream text-left"> Power Clean Progress </h5>
           <hr>
           <canvas class = "mt-4 mb-10" bind:this={canvas}></canvas> 
         </div>
