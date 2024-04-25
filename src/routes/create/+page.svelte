@@ -95,7 +95,7 @@
             };
 
             try {
-                const gymRef = doc(db, 'workoutTest3', workoutName);
+                const gymRef = doc(db, 'usersWorkouts', workoutName);
                 setDoc(gymRef, workoutInfo, { merge: true });
                 goto('/profile');
             } catch (error) {

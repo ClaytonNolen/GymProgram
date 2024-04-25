@@ -109,7 +109,7 @@ to implement onMount-->
         <div class="card-body">
           <h5 class= "text-white"> Dead Lift Progress </h5>
           <hr>
-          <canvas bind:this={canvas}></canvas> 
+          <canvas class = "mt-4 mb-10" bind:this={canvas}></canvas> 
         </div>
     </div>
   </div>

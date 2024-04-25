@@ -8,7 +8,7 @@
     })
 </script>
 
-<header class="bg-secondary p-4 flex justify-between items-center text-inputclr">
+<header class="bg-secondary p-4 flex justify-between items-center text-cream">
     <h1 class="font-bold text-lg md:text-2xl tracking-widest">
         <a href="/main"> The Gym Program </a>
     </h1>
@@ -33,9 +33,9 @@
             class="rounded-full h-12 w-12"
             />
             <div class="flex flex-col">
-                <p><span class="text-purple-500 italic font-bold">{currentUser?.displayName}</span></p>
+                <p><span class="text-sugold italic font-bold">{currentUser?.displayName}</span></p>
             </div>
-            <button on:click={authHandlers.logout} class="bg-white p-2 rounded-full text-black">LOG OUT</button>
+            <button on:click={authHandlers.logout} class="bg-cream p-2 rounded-full text-black">LOG OUT</button>
         </div>
     {/if}
 </header>

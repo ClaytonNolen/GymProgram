@@ -17,6 +17,7 @@
     })
 </script>
 
+<!--Once logged in, routes user to the main page-->
 {#if currentUser}
     <Main />
 
@@ -24,9 +25,9 @@
     <main class="flex flex-col items-center justify-center">
         <div class="mt-12">
             <h1 class="text-2xl text-white font-bold">Login</h1>
-            <button on:click = { authHandlers.loginWithGoogle } class="p-4 bg-white rounded-lg mt-12 font-bold">
+            <button on:click = { authHandlers.loginWithGoogle } class="p-4 bg-cream rounded-lg mt-12 font-bold">
                 <i class="fa-brands fa-google fa-xl" style="color: #FFD43B;"></i>
-                Sign In with Google
+                Sign in with Google
             </button>
         <div/>
     </main>
