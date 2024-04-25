@@ -8,6 +8,7 @@
     })
 </script>
 
+<header class="bg-secondary p-4 flex justify-between items-center text-cream">
 <header class="p-4 flex justify-between items-center text-black">
     <h1 class="font-bold text-lg md:text-2xl tracking-widest">
         <a href="/main"> The Gym Program </a>
@@ -33,7 +34,7 @@
             class="rounded-full h-12 w-12"
             />
             <div class="flex flex-col">
-                <p><span class="text-purple-500 italic font-bold">{currentUser?.displayName}</span></p>
+                <p><span class="text-sugold italic font-bold">{currentUser?.displayName}</span></p>
             </div>
             <button on:click={authHandlers.logout} class="bg-black p-2 rounded-full text-white font-bold">LOG OUT</button>
         </div>

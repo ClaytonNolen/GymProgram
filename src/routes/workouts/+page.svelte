@@ -12,7 +12,7 @@
     });
 
     let workouts : TEvents[] = []
-    const q = query(collection(db, "workoutTest3"))
+    const q = query(collection(db, "usersWorkouts"))
     const unsubscribe = onSnapshot(q, (querySnapshot) => {
         querySnapshot.forEach(doc => {
             workouts.push(doc.data() as TEvents)

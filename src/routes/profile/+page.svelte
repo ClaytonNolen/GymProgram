@@ -9,11 +9,11 @@
     let workoutPage = false;
 </script>
 
-<main class="flex-col text-center text-2xl text-white my-4">
+<main class="flex-col text-center text-2xl text-cream my-4">
     <!--button with toggle functionality that displays workouts page-->
     <button 
         on:click={() => (workoutPage = !workoutPage)}
-        class="p-4 bg-black rounded-lg mt-12 font-bold w-[200px]">
+        class="p-4 bg-black text-cream rounded-lg mt-12 font-bold w-[200px]">
         Workouts
     </button>
 

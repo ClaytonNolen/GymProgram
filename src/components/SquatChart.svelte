@@ -20,7 +20,7 @@ to implement onMount-->
   // Function to fetch data from Firebase
   // Lines 27 - 31 were developed by A.I. and helped us correctly store an array type in the data being fetched.
   // Line 78 was suggested by A.I. to help diaplay the graph.
-  async function fetchData() {
+  async function fetchSquat() {
     try {
       const querySnapshot = await getDocs(collection(db, 'users')); // Assuming 'users' is your collection name
       querySnapshot.forEach((doc) => {
@@ -44,12 +44,11 @@ to implement onMount-->
   // Code for title card for chart and legend position from https://www.youtube.com/watch?v=NySBh_DIRlg
     let canvas: HTMLCanvasElement;
     onMount(async () => {
-      await fetchData(); // Fetch data from Firebase before initializing the chart
+      await fetchSquat(); // Fetch data from Firebase before initializing the chart
       const ctx = canvas.getContext('2d');
       // Line below was given by AI to fix an error with ctx possibly having a null value
       if (!ctx) return;
         new Chart(ctx, {
-        // Need to edit later for styling
         type: 'line',
         data: {
           labels: squatDate, // Generate labels based on data length
@@ -72,14 +71,31 @@ to implement onMount-->
               beginAtZero: true,
               // Takes the max in the data array and adds 50 to scale normally
               suggestedMax: Math.max(...squatData) + 50,
+              grid: {
+              tickColor: 'white'
             },
-            x: {
+            ticks: {
+              color: 'white',
+            }
+          },
+          x: {
             offset: true,
+            grid: {
+              color: 'black',
+              tickColor: 'white'
+            },
+            ticks: {
+              color: 'white',
+            }
           }
           },
           plugins: {
+            // Alters details about the line label for max weight
             legend: {
-              position: "right"
+              position: "right",
+              labels: {
+                color: 'white'
+              }
             }
           }
         },
