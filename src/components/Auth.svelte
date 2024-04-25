@@ -12,7 +12,6 @@
      let currentUser : User | null
      authStore.subscribe((value) => {
          currentUser = value.user
-
     })
 </script>
 
