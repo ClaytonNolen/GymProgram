@@ -441,7 +441,7 @@
         font-weight: bold;
         text-align: center;
         color: black;
-        background: yellow;
+        background: #FFCD00 ;
         border-bottom: solid;
         border: 2;
         border: white -500px;
@@ -457,14 +457,14 @@
     }
 
     :global(columnLeft) {
-        border: double;
+        border: solid;
         border: 4;
         border: white -500px;
         width: 400%;
     }
 
     :global(columnRight) {
-        border: double;
+        border: solid;
         border: 4;
         border: white -500px;
     }

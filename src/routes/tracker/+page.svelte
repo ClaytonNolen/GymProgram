@@ -293,7 +293,7 @@
                 id="submit"
                 disabled={loading}
                 on:click={createBench}
-                class="py-[23px] px-[86px] bg-black text-xl text-white w-[299px] hover:bg-white hover:text-black duration-300 transittion-colors">
+                class="py-[23px] px-[86px] bg-sugold text-xl text-black w-[299px] hover:bg-white hover:text-black duration-300 transittion-colors">
                 {loading ? 'Uploading Test' : 'Upload Complete'} CLICK 
             </button>
             </div>
@@ -329,7 +329,7 @@
             id="submit"
             disabled={loading}
             on:click={createSquat}
-            class="py-[23px] px-[86px] bg-black text-xl text-white w-[299px] hover:bg-white hover:text-black duration-300 transittion-colors">
+            class="py-[23px] px-[86px] bg-sugold text-xl text-black w-[299px] hover:bg-white hover:text-black duration-300 transittion-colors">
             {loading ? 'Uploading Test' : 'Upload Complete'} CLICK 
         </button>
         </div>
@@ -364,7 +364,7 @@
             id="submit"
             disabled={loading}
             on:click={createDeadLift}
-            class="py-[23px] px-[86px] bg-black text-xl text-white w-[299px] hover:bg-white hover:text-black duration-300 transittion-colors">
+            class="py-[23px] px-[86px] bg-sugold text-xl text-black w-[299px] hover:bg-white hover:text-black duration-300 transittion-colors">
             {loading ? 'Uploading Test' : 'Upload Complete'} CLICK 
         </button>
         </div>
@@ -400,7 +400,7 @@
                 id="submit"
                 disabled={loading}
                 on:click={createPowerClean}
-                class="py-[23px] px-[86px] bg-black text-xl text-white w-[299px] hover:bg-white hover:text-black duration-300 transittion-colors">
+                class="py-[23px] px-[86px] bg-sugold text-xl text-black w-[299px] hover:bg-white hover:text-black duration-300 transittion-colors">
                 {loading ? 'Uploading Test' : 'Upload Complete'} CLICK 
             </button>
             </div>
