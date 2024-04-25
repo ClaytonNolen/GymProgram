@@ -13,7 +13,7 @@
     <!--button with toggle functionality that displays workouts page-->
     <button 
         on:click={() => (workoutPage = !workoutPage)}
-        class="p-4 bg-black text-cream rounded-lg mt-12 font-bold w-[200px]">
+        class="p-4 bg-sugold text-black rounded-lg mt-12 font-bold w-[200px]">
         Workouts
     </button>
 

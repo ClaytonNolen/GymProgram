@@ -8,8 +8,8 @@
     })
 </script>
 
-<header class="bg-secondary p-4 flex justify-between items-center text-cream">
-    <h1 class="font-bold text-lg md:text-2xl tracking-widest">
+<header class="p-4 flex justify-between items-center text-black">
+    <h1 class="font-bold text-lg md:text-3xl tracking-widest">
         <a href="/main"> The Gym Program </a>
     </h1>
     <!-- Links -->
@@ -33,9 +33,15 @@
             class="rounded-full h-12 w-12"
             />
             <div class="flex flex-col">
-                <p><span class="text-sugold italic font-bold">{currentUser?.displayName}</span></p>
+                <p><span class="text-black italic font-bold">{currentUser?.displayName}</span></p>
             </div>
-            <button on:click={authHandlers.logout} class="bg-cream p-2 rounded-full text-black">LOG OUT</button>
+            <button on:click={authHandlers.logout} class="bg-black p-2 rounded-full text-white font-bold">LOG OUT</button>
         </div>
     {/if}
 </header>
+
+<style>
+    header {
+        background-color: #FFCD00;
+    }
+</style>
