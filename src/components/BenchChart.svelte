@@ -112,7 +112,7 @@ async function fetchBench() {
 <div class="col-8 ring-offset-2">
   <div class="card">
       <div class="card-body">
-        <h5 class= "text-cream ml-2 mb-2"> Bench Press Progress </h5>
+        <h5 class= "text-cream text-left mb-2"> Bench Press Progress </h5>
         <hr>
         <canvas bind:this={canvas}></canvas> 
       </div>

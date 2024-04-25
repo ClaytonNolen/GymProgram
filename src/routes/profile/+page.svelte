@@ -24,19 +24,19 @@
 
     <!--Used https://www.chartjs.org/docs/latest/configuration/responsive.html to increase chart size and responsiveness-->
     <!-- Tailwind margin code (mt and mb): https://tailwindcss.com/docs/margin-->
-    <div class="chart-container mt-10 mb-80" style ="position: relative; height:30vh; width:60vw">   <!--Centers the chart-->
+    <div class="chart-container mb-96" style ="position: relative; height:30vh; width:60vw">   <!--Centers the chart-->
         <BenchChart />
     </div>
     
-    <div class="chart-container mb-80" style ="position: relative; height:30vh; width:60vw">
+    <div class="chart-container mb-96" style ="position: relative; height:30vh; width:60vw">
         <SquatChart />
     </div>
 
-    <div class="chart-container mb-80" style ="position: relative; height:30vh; width:60vw">
+    <div class="chart-container mb-96" style ="position: relative; height:30vh; width:60vw">
         <DeadChart />
     </div>
 
-    <div class="chart-container mb-80" style ="position: relative; height:30vh; width:60vw">
+    <div class="chart-container mb-96" style ="position: relative; height:30vh; width:60vw">
         <CleanChart />
     </div>
     

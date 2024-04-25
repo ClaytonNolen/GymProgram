@@ -9,7 +9,6 @@
 </script>
 
 <header class="bg-secondary p-4 flex justify-between items-center text-cream">
-<header class="p-4 flex justify-between items-center text-black">
     <h1 class="font-bold text-lg md:text-2xl tracking-widest">
         <a href="/main"> The Gym Program </a>
     </h1>
@@ -36,13 +35,7 @@
             <div class="flex flex-col">
                 <p><span class="text-sugold italic font-bold">{currentUser?.displayName}</span></p>
             </div>
-            <button on:click={authHandlers.logout} class="bg-black p-2 rounded-full text-white font-bold">LOG OUT</button>
+            <button on:click={authHandlers.logout} class="bg-cream p-2 rounded-full text-black">LOG OUT</button>
         </div>
     {/if}
 </header>
-
-<style>
-    header {
-        background-color: #FFCD00;
-    }
-</style>
