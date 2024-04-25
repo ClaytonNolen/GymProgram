@@ -4,6 +4,7 @@
     import SquatChart from "../../components/SquatChart.svelte";
     import DeadChart from "../../components/DeadChart.svelte";
     import CleanChart from "../../components/CleanChart.svelte";
+	import { goto } from '$app/navigation';
 
     // Used to redirect to workout page when the button is pressed
     let workoutPage = false;
@@ -12,9 +13,9 @@
 <main class="flex-col text-center text-2xl text-white my-4">
     <!--button with toggle functionality that displays workouts page-->
     <button 
-        on:click={() => (workoutPage = !workoutPage)}
-        class="p-4 bg-black rounded-lg mt-12 font-bold w-[200px]">
-        Workouts
+        on:click={() => goto("/workouts")}
+        class="p-4 bg-black rounded-lg mt-12 font-bold w-400px hover:bg-slate-800 hover:scale-110 duration-300 transistion-all cursor-pointer]">
+        Workout History
     </button>
 
     {#if workoutPage === true}
