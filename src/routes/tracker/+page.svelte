@@ -265,6 +265,10 @@
                 BENCHMARK ENTRY
             </h1>
 
+            <p class= "text-[20px] text-cream lg:w-[710px] mt-2 mb-4"> <!--Description of tracker-->
+                Add bench press, squat, deadlift, and power clean exercies to track overall strength progress:
+            </p>
+
             <div>
                 <!-- input box -->
                 <div class="max-w-4xl mx-auto bg-secondary rounded-lg flex flex-col p-5">
@@ -282,7 +286,7 @@
             </div>
                     <!-- Gym Name -->
                     <div class="flex flex-col my-4 text-cream">
-                        <label for="benchStr">BENCH MAX WEIGHT</label>
+                        <label for="benchStr">Max Weight</label>
                         <input
                             id="benchStr" 
                             type="text" 
@@ -318,7 +322,7 @@
                 />
                 <!-- Gym Name -->
                 <div class="flex flex-col my-4">
-                    <label for="squatStr">SQUAT ENTRY</label>
+                    <label for="squatStr">Max Weight</label>
                     <input 
                         id="squarStr" 
                         type="text"
@@ -353,7 +357,7 @@
                 />
                 <!-- Gym Name -->
                 <div class="flex flex-col my-4">
-                    <label for="deadLiftStr">DEADLIFT ENTRY</label>
+                    <label for="deadLiftStr">Max Weight</label>
                     <input 
                         id="deadLiftStr" 
                         type="text"
@@ -389,9 +393,9 @@
                 />
                     <!-- Gym Name -->
                     <div class="flex flex-col my-4">
-                        <label for="benchStr">POWER CLEAN ENTRY</label>
+                        <label for="powerCleanStr">Max Weight</label>
                         <input 
-                            id="benchStr" 
+                            id="powerCleanStr" 
                             type="text"
                             bind:value={powerCleanStr}
                             placeholder="integers only"

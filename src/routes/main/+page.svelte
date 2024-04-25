@@ -21,7 +21,7 @@
                 class="py-[23px] px-[86px] rounded-lg bg-secondary text-xl text-cream w-[299px] hover:bg-cream hover:text-secondary duration-300 transittion-colors">
                     Create Workout</button>
                 <button 
-                on:click={() => goto("/eventlist")}
+                on:click={() => goto("/tracker")}
                 class="py-[23px] px-[86px] rounded-lg bg-secondary text-xl text-cream w-[299px] hover:bg-cream hover:text-secondary duration-300 transittion-colors">
                     Track Your Progress</button>
             </div>

@@ -111,7 +111,7 @@
                 <input
                     bind:value={workoutName}
                     placeholder="Workout Name"
-                    class="py-4 pl-5 pr-24 bg-transparent border border-borderclr text-cream"
+                    class="py-4 pl-5 pr-24 bg-transparent border border-borderclr text-cream placeholder-cream"
                 />
             </div>
 
@@ -128,7 +128,7 @@
                 }
             </style>
             
-            <div class ="flex flex-col my-4">
+            <div class ="flex flex-col my-4 text-cream">
                 <h2 class="text-cream">Exercises</h2>
                 
                 {#each displayEx as ex}
@@ -151,21 +151,21 @@
                         <input
                             bind:value={sets[numExercises]}
                             placeholder="Sets"
-                            class = "py-4 pl-5 bg-transparent border border-borderclr text-cream"
+                            class = "py-4 pl-5 bg-transparent border border-borderclr text-cream placeholder-cream"
                         />
                     </div>
                     <div class = "flex flex-col w-1/6 pr-3">
                         <input
                             bind:value={reps[numExercises]}
                             placeholder="Reps"
-                            class = "py-4 pl-5 bg-transparent border border-borderclr text-cream" 
+                            class = "py-4 pl-5 bg-transparent border border-borderclr text-cream placeholder-cream" 
                         />
                     </div>
-                    <div class = "flex flex-col w-1/6 ">
+                    <div class = "flex flex-col w-1/6 pr-3">
                         <input
                             bind:value={weight[numExercises]}
                             placeholder="Weight"
-                            class = "py-4 pl-5 bg-transparent border border-borderclr text-cream"/>
+                            class = "py-4 pl-5 bg-transparent border border-borderclr text-cream placeholder-cream"/>
                     </div>
                 </div>
             </div>
@@ -197,7 +197,7 @@
 100 sit-ups
 100 squats
 10 km run"
-                    class="py-4 pl-5 pr-24 bg-24 bg-transparent border border-borderclr text-cream"
+                    class="py-4 pl-5 pr-24 bg-24 bg-transparent border border-borderclr text-cream placeholder-cream"
                 ></textarea>
             </div>
             <button
