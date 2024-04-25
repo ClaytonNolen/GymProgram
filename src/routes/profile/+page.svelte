@@ -4,17 +4,18 @@
     import SquatChart from "../../components/SquatChart.svelte";
     import DeadChart from "../../components/DeadChart.svelte";
     import CleanChart from "../../components/CleanChart.svelte";
+	import { goto } from '$app/navigation';
 
     // Used to redirect to workout page when the button is pressed
     let workoutPage = false;
 </script>
 
-<main class="flex-col text-center text-2xl text-cream my-4">
+<main class="flex-col text-center text-2xl text-white my-4">
     <!--button with toggle functionality that displays workouts page-->
     <button 
-        on:click={() => (workoutPage = !workoutPage)}
-        class="p-4 bg-sugold text-black rounded-lg mt-12 font-bold w-[200px]">
-        Workouts
+        on:click={() => goto("/workouts")}
+        class="p-4 bg-black rounded-lg mt-12 font-bold w-400px hover:bg-slate-800 hover:scale-110 duration-300 transistion-all cursor-pointer]">
+        Workout History
     </button>
 
     {#if workoutPage === true}
@@ -24,19 +25,19 @@
 
     <!--Used https://www.chartjs.org/docs/latest/configuration/responsive.html to increase chart size and responsiveness-->
     <!-- Tailwind margin code (mt and mb): https://tailwindcss.com/docs/margin-->
-    <div class="chart-container mb-96" style ="position: relative; height:30vh; width:60vw">   <!--Centers the chart-->
+    <div class="chart-container mt-10 mb-80" style ="position: relative; height:30vh; width:60vw">   <!--Centers the chart-->
         <BenchChart />
     </div>
     
-    <div class="chart-container mb-96" style ="position: relative; height:30vh; width:60vw">
+    <div class="chart-container mb-80" style ="position: relative; height:30vh; width:60vw">
         <SquatChart />
     </div>
 
-    <div class="chart-container mb-96" style ="position: relative; height:30vh; width:60vw">
+    <div class="chart-container mb-80" style ="position: relative; height:30vh; width:60vw">
         <DeadChart />
     </div>
 
-    <div class="chart-container mb-96" style ="position: relative; height:30vh; width:60vw">
+    <div class="chart-container mb-80" style ="position: relative; height:30vh; width:60vw">
         <CleanChart />
     </div>
     

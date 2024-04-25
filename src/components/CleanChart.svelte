@@ -25,7 +25,7 @@ to implement onMount-->
       const querySnapshot = await getDocs(collection(db, 'users')); // Assuming 'users' is your collection name
       querySnapshot.forEach((doc) => {
         if (doc.id === currentUser?.uid) {
-          const data = doc.data().powerCleanInput; // Assuming 'testInput' is the field where your data is stored
+          const data = doc.data().powerCleanInput; // Assuming 'powerCleanInput' is the field where your data is stored
           const time = doc.data().powerCleanTimeInput;
           if (Array.isArray(data)) {
             cleanData.push(...data); // Push data into cleanData array

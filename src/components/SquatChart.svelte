@@ -22,21 +22,25 @@ to implement onMount-->
   // Line 78 was suggested by A.I. to help diaplay the graph.
   async function fetchSquat() {
     try {
-      const querySnapshot = await getDocs(collection(db, 'users')); // Assuming 'users' is your collection name
+      // Assuming 'users' is your collection name.
+      const querySnapshot = await getDocs(collection(db, 'users'));
+      // For each doc in the query snapshot...
       querySnapshot.forEach((doc) => {
         if (doc.id === currentUser?.uid) {
-          const data = doc.data().squatInput; // Input of max squat weight
+          // Input of max squat weight.
+          const data = doc.data().squatInput;
+          // Input of date of squat entry.
           const time = doc.data().squatTimeInput;
-          if (Array.isArray(data)) {
+          if (Array.isArray(data)) {  // If array has data.
             squatData.push(...data); // Push data into squatData array
             squatDate.push(...time); // Push data into squatData array
-          } else {
+          } else {  // Display error message in console.
             console.error('Invalid data format:', data);
             console.error('Invalid data format:', time);
           }
         }    
       });
-    } catch (error) {
+    } catch (error) { // Catch error and message in console.
       console.error('Error fetching data from Firebase:', error);
     }
   }

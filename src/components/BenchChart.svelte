@@ -42,9 +42,7 @@ async function fetchBench() {
   }
 }
 
-
 // Code for title card for chart and legend position from https://www.youtube.com/watch?v=NySBh_DIRlg
-// Link for Math.max: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/max
   let canvas: HTMLCanvasElement;
   onMount(async () => {
     await fetchBench(); // Fetch data from Firebase before initializing the chart
@@ -52,6 +50,7 @@ async function fetchBench() {
     // Line below was given by AI to fix an error with ctx possibly having a null value
     if (!ctx) return;
     new Chart(ctx, {
+      // Need to edit later for styling
       type: 'line',
       data: {
         labels: benchDate, // x-axis label for date
@@ -92,15 +91,20 @@ async function fetchBench() {
             ticks: {
               color: '#f8f1e5',
             }
+
+          },
+          x: {
+            offset: true,
           }
         },
         plugins: {
-          // Alters details about the line label for max weight
           legend: {
             position: "top",
             labels: {
               color: '#f8f1e5'
             }
+
+            position: "bottom"
           }
         }
       },
@@ -108,7 +112,7 @@ async function fetchBench() {
   });
 </script>
 
-<!--Adds title and line above chart while connecting it to the canvas -->
+<!--Adds ttitle and line above chart while connecting it to the canvas -->
 <div class="col-8 ring-offset-2">
   <div class="card">
       <div class="card-body">
