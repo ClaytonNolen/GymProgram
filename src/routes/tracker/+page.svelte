@@ -50,22 +50,26 @@
             const docSnap = await getDoc(userDocRef);
             // The If/Else statements below were created by A.I.
             if (docSnap.exists()) {
-                const existingBenchData = docSnap.data().benchInput || []; // If benchInput doesn't exist, initialize as empty array.
+                // If benchInput does exist, initialize as empty array.
+                const existingBenchData = docSnap.data().benchInput || [];
                 const existingBenchTime = docSnap.data().benchTimeInput || []
 
+                // Append the new input to the existing array.
                 const formattedBenchDateStr = formatDate(benchDate);
-                const newBenchData = [...existingBenchData, benchStr]; // Append the new input to the existing array.
+                const newBenchData = [...existingBenchData, benchStr];
                 const newBenchTime = [...existingBenchTime, formattedBenchDateStr];
-
-                await setDoc(userDocRef, { benchInput: newBenchData }, { merge: true }); // Update the document with the updated array.
+                
+                // Update the document with the updated array.
+                await setDoc(userDocRef, { benchInput: newBenchData }, { merge: true });
                 await setDoc(userDocRef, { benchTimeInput: newBenchTime }, { merge: true });
             } else {
+                // If document doesn't exist, create it with the new input as the first element of the array.
                 const formattedBenchDateStr = formatDate(benchDate);
-                await setDoc(userDocRef, { benchInput: [benchStr] }); // If document doesn't exist, create it with the new input as the first element of the array.
+                await setDoc(userDocRef, { benchInput: [benchStr] });
                 await setDoc(userDocRef, { benchTimeInput: [formattedBenchDateStr] });
             }
-            goto("/profile"); // Should be changed to the Profile page.
-        } catch (error) {
+            goto("/profile"); // After submitting the data, go to profile page.
+        } catch (error) {   // If error occurred, catch and display the error message in console.
             console.error('Error occurred while creating a document', error);
             alert('An error occurred while uploading data. Please try again later.');
         }

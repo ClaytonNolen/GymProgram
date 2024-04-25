@@ -12,15 +12,6 @@
      let currentUser : User | null
      authStore.subscribe((value) => {
          currentUser = value.user
-
-          // Bing AI Solution to fetching users workouts
-    //     if (currentUser) {
-    //     const q = query(collection(getFirestore(), 'users', currentUser.uid, 'workouts'));
-    //     const querySnapshot = await getDocs(q);
-    //     workouts = querySnapshot.docs.map(doc => doc.data());
-    //     // Now 'workouts' contains all the workout data for the logged-in user
-    // }
-
     })
 </script>
 
