@@ -130,9 +130,13 @@
             
             <div class ="flex flex-col my-4 text-cream">
                 <h2 class="text-cream">Exercises</h2>
-                
-                {#each displayEx as ex}
-                    {ex}
+            <!--{#each exercisesarray as e, index}
+                    <p>{e}: {setsarray[index]} sets of {repsarray[index]} at {weightarray[index]}</p>
+                {/each} -->
+                {#each displayEx as ex, index}
+                    <div class="flex flex-col text-cream">
+                        {exercises[index]}:     {sets[index]} set(s) of {reps[index]} at {weight[index]} lbs
+                    </div>
                 {/each}
 
                 <div class="flex flex-row my-4 w-full">
