@@ -102,34 +102,34 @@
         }
 </script>
 
-<main class="text-gray-100 mx-auto mt-10 flex flex-col items-center">  
+<main class="text-cream-100 mx-auto mt-10 flex flex-col items-center">  
     <div>
         <div class= "max-w-4xl mx-auto bg-secondary rounded-lg p-5">
-            <h1 class="text-center text-white text-2xl">New Workout</h1>
+            <h1 class="text-center text-cream text-2xl">New Workout</h1>
 
-            <div class ="flex flex-col my-4">
+            <div class ="flex flex-col my-4 text-cream">
                 <input
                     bind:value={workoutName}
                     placeholder="Workout Name"
-                    class="py-4 pl-5 pr-24 bg-transparent border border-borderclr"
+                    class="py-4 pl-5 pr-24 bg-transparent border border-borderclr text-cream"
                 />
             </div>
 
             <style>
                 .default-option {
-                    color: gray;
+                    color: #f8f1e5;
                 }
                 select {
-                    color: white;
+                    color: #f8f1e5;
                 }
                 select option {
-                    color: white;
+                    color: #f8f1e5;
                     background-color: #171717;
                 }
             </style>
             
             <div class ="flex flex-col my-4">
-                <h2 class="text-white">Exercises</h2>
+                <h2 class="text-cream">Exercises</h2>
                 
                 {#each displayEx as ex}
                     {ex}
@@ -140,7 +140,7 @@
                         <select 
                             bind:value={exercise} 
                             on:change={handleWorkoutSelection} 
-                            class = "py-4 pl-5 pr-20 bg-transparent border border-borderclr"
+                            class = "py-4 pl-5 pr-20 bg-transparent border border-borderclr text-cream"
                             id = "exercise">
                             {#each exerciseName as ex}
                                 <option value={ex.text}>{ex.text}</option>
@@ -151,44 +151,44 @@
                         <input
                             bind:value={sets[numExercises]}
                             placeholder="Sets"
-                            class = "py-4 pl-5 bg-transparent border border-borderclr"
+                            class = "py-4 pl-5 bg-transparent border border-borderclr text-cream"
                         />
                     </div>
                     <div class = "flex flex-col w-1/6 pr-3">
                         <input
                             bind:value={reps[numExercises]}
                             placeholder="Reps"
-                            class = "py-4 pl-5 bg-transparent border border-borderclr"
+                            class = "py-4 pl-5 bg-transparent border border-borderclr text-cream" 
                         />
                     </div>
                     <div class = "flex flex-col w-1/6 ">
                         <input
                             bind:value={weight[numExercises]}
                             placeholder="Weight"
-                            class = "py-4 pl-5 bg-transparent border border-borderclr"/>
+                            class = "py-4 pl-5 bg-transparent border border-borderclr text-cream"/>
                     </div>
                 </div>
             </div>
 
             <div>
                 <button
-                    class="bg-black text-white rounded-lg p-2"
+                    class="py-[23px] px-[86px] rounded-lg bg-primary text-xl text-cream w-[299px] hover:bg-cream hover:text-secondary duration-300 transittion-colors"
                     on:click={() => addExercise()}>
                     Add Exercise
                 </button>
             </div>
-            <div class="flex flex-col my-4 text-white">
+            <div class="flex flex-col my-4 text-cream">
                 <label for="workout-date">Date</label>
                 <input
                     id="workout-date" 
                     type="date"
                     bind:value={workoutDate}
                     placeholder="Date"
-                    class = "py-4 pl-5 bg-transparent border border-borderclr"/>
+                    class = "py-4 pl-5 bg-transparent border border-borderclr text-cream"/>
             </div>
-            <div class="flex flex-col my-4">
+            <div class="flex flex-col my-4 text-cream">
                 <label for="workout-notes">Notes</label>
-                <textarea 
+                <textarea
                     id="workout-notes" 
                     bind:value={workoutNotes}
                     placeholder="Additional workout notes...
@@ -197,11 +197,11 @@
 100 sit-ups
 100 squats
 10 km run"
-                    class="py-4 pl-5 pr-24 bg-24 bg-transparent border border-borderclr"
+                    class="py-4 pl-5 pr-24 bg-24 bg-transparent border border-borderclr text-cream"
                 ></textarea>
             </div>
             <button
-                class="bg-black text-white rounded-lg p-2"
+                class="py-[23px] px-[86px] rounded-lg bg-primary text-xl text-cream w-[299px] hover:bg-cream hover:text-secondary duration-300 transittion-colors"
                 on:click={() => createWorkout()}>
                 Create Workout
                 

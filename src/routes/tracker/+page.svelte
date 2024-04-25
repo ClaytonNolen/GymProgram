@@ -297,7 +297,7 @@
                 id="submit"
                 disabled={loading}
                 on:click={createBench}
-                class="py-[23px] px-[86px] bg-primary text-xl text-cream w-[299px] hover:bg-cream hover:text-secondary duration-300 transittion-colors">
+                class="py-[23px] px-[86px] rounded-lg bg-primary text-xl text-cream w-[299px] hover:bg-cream hover:text-secondary duration-300 transittion-colors">
                 ADD
             </button>
             </div>
@@ -333,7 +333,7 @@
             id="submit"
             disabled={loading}
             on:click={createSquat}
-            class="py-[23px] px-[86px] bg-primary text-xl text-cream w-[299px] hover:bg-cream hover:text-secondary duration-300 transittion-colors">
+            class="py-[23px] px-[86px] rounded-lg bg-primary text-xl text-cream w-[299px] hover:bg-cream hover:text-secondary duration-300 transittion-colors">
             ADD
         </button>
         </div>
@@ -368,7 +368,7 @@
             id="submit"
             disabled={loading}
             on:click={createDeadLift}
-            class="py-[23px] px-[86px] bg-primary text-xl text-cream w-[299px] hover:bg-cream hover:text-secondary duration-300 transittion-colors">
+            class="py-[23px] px-[86px] rounded-lg bg-primary text-xl text-cream w-[299px] hover:bg-cream hover:text-secondary duration-300 transittion-colors">
             ADD 
         </button>
         </div>
@@ -404,7 +404,7 @@
                 id="submit"
                 disabled={loading}
                 on:click={createPowerClean}
-                class="py-[23px] px-[86px] bg-primary text-xl text-cream w-[299px] hover:bg-cream hover:text-secondary duration-300 transittion-colors">
+                class="py-[23px] px-[86px] rounded-lg bg-primary text-xl text-cream w-[299px] hover:bg-cream hover:text-secondary duration-300 transittion-colors">
                 ADD
             </button>
             </div>
