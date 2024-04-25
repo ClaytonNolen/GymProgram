@@ -26,11 +26,11 @@
     import image25 from '$lib/assets/Triceps Press.png'
 </script>
 
-<h2 class="mt-4 mb-4 text-center text-4xl font-bold text-white">
+<h2 class="mt-4 mb-4 text-center text-4xl font-bold text-cream">
     The Robertson Gym Equipment
 </h2>
 
-<div class="text-white bg-black mx-4">
+<div class="text-cream bg-primary mx-4">
     <row class="flex">
         <columnLeft>
             <h1>
@@ -434,14 +434,21 @@
         </columnRight>
     </row>
 </div>
-
+<!--
+    Tailwind color reference
+   primary: '#3a3a3c',
+        secondary: '#1c1c1e',
+        sugold: '#FFCD00',
+        borderclr: '#B3B3B3',
+        cream: "#f8f1e5" 
+-->
 <style>
     h1 {
         font-size: 38px;
         font-weight: bold;
         text-align: center;
-        color: black;
-        background: #FFCD00 ;
+        color: #f8f1e5;
+        background: #1c1c1e ;
         border-bottom: solid;
         border: 2;
         border: white -500px;

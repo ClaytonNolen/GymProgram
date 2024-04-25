@@ -35,7 +35,7 @@
             <div class="flex flex-col">
                 <p><span class="text-sugold italic font-bold">{currentUser?.displayName}</span></p>
             </div>
-            <button on:click={authHandlers.logout} class="bg-white p-2 rounded-full text-black">LOG OUT</button>
+            <button on:click={authHandlers.logout} class="bg-cream p-2 rounded-full text-secondary">LOG OUT</button>
         </div>
     {/if}
 </header>

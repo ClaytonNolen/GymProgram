@@ -261,34 +261,34 @@
         <!--Main Page - template for page with tailwind css code is from https://www.youtube.com/watch?v=fTsVYwxjyS4-->
     <div class="flex justify-center items-center"> 
         <div class="text-center"> 
-            <h1 class="text-center text-[40px] font-bold text-white lg:w-[710px]"> <!--Title-->
+            <h1 class="text-center text-[40px] font-bold text-cream lg:w-[710px]"> <!--Title-->
                 BENCHMARK ENTRY
             </h1>
 
             <div>
                 <!-- input box -->
                 <div class="max-w-4xl mx-auto bg-secondary rounded-lg flex flex-col p-5">
-                    <h1 class="text-center text-white text-2xl">BENCH PRESS</h1>
+                    <h1 class="text-center text-cream text-2xl">BENCH PRESS</h1>
                                     <!-- Workout Date -->
-             <div class="flex flex-col my-4 text-white">
+             <div class="flex flex-col my-4 text-cream">
                 <label for="workout-date">Workout Date</label>
                 <input 
                     id="workout-date" 
                     type="date" 
                     bind:value={benchDate}
                     placeholder="Enter Date"
-                    class="py-4 pl-5 pr-24 bg-24 bg-transparent border border-borderclr text-white"
+                    class="py-4 pl-5 pr-24 bg-24 bg-transparent border border-borderclr text-cream"
                 />
             </div>
                     <!-- Gym Name -->
-                    <div class="flex flex-col my-4 text-white">
+                    <div class="flex flex-col my-4 text-cream">
                         <label for="benchStr">BENCH MAX WEIGHT</label>
                         <input
                             id="benchStr" 
                             type="text" 
                             bind:value={benchStr}
                             placeholder="integers only"
-                            class="py-4 pl-5 pr-24 bg-24 bg-transparent border border-borderclr text-white placeholder-white"
+                            class="py-4 pl-5 pr-24 bg-24 bg-transparent border border-borderclr text-cream placeholder-cream"
                         />
                     </div>
             <div class="text-center gap-14">
@@ -297,15 +297,15 @@
                 id="submit"
                 disabled={loading}
                 on:click={createBench}
-                class="py-[23px] px-[86px] bg-sugold text-xl text-black w-[299px] hover:bg-white hover:text-black duration-300 transittion-colors">
-                {loading ? 'Uploading Test' : 'Upload Complete'} CLICK 
+                class="py-[23px] px-[86px] bg-primary text-xl text-cream w-[299px] hover:bg-cream hover:text-secondary duration-300 transittion-colors">
+                ADD BENCH
             </button>
             </div>
         </div>
         <div>
             <!-- input box -->
-            <div class="max-w-4xl mx-auto bg-secondary rounded-lg flex flex-col p-5 text-white">
-                <h1 class="text-center text-white text-2xl">SQUAT</h1>
+            <div class="max-w-4xl mx-auto bg-secondary rounded-lg flex flex-col p-5 text-cream">
+                <h1 class="text-center text-cream text-2xl">SQUAT</h1>
             <!-- Workout Date -->
              <div class="flex flex-col my-4">
                 <label for="workout-date">Workout Date</label>
@@ -324,7 +324,7 @@
                         type="text"
                         bind:value={squatStr}
                         placeholder="integers only"
-                        class="py-4 pl-5 pr-24 bg-24 bg-transparent border border-borderclr text-white placeholder-white"
+                        class="py-4 pl-5 pr-24 bg-24 bg-transparent border border-borderclr text-cream placeholder-cream"
                     />
                 </div>
         <div class="text-center gap-14">
@@ -333,14 +333,14 @@
             id="submit"
             disabled={loading}
             on:click={createSquat}
-            class="py-[23px] px-[86px] bg-sugold text-xl text-black w-[299px] hover:bg-white hover:text-black duration-300 transittion-colors">
-            {loading ? 'Uploading Test' : 'Upload Complete'} CLICK 
+            class="py-[23px] px-[86px] bg-primary text-xl text-cream w-[299px] hover:bg-cream hover:text-secondary duration-300 transittion-colors">
+            ADD SQUAT 
         </button>
         </div>
         <div>
             <!-- input box -->
             <div class="max-w-4xl mx-auto bg-secondary rounded-lg flex flex-col p-5">
-                <h1 class="text-center text-white text-2xl">DEAD LIFT</h1>
+                <h1 class="text-center text-cream text-2xl">DEADLIFT</h1>
             <!-- Workout Date -->
              <div class="flex flex-col my-4">
                 <label for="workout-date">Workout Date</label>
@@ -353,13 +353,13 @@
                 />
                 <!-- Gym Name -->
                 <div class="flex flex-col my-4">
-                    <label for="deadLiftStr">DEAD LIFT ENTRY</label>
+                    <label for="deadLiftStr">DEADLIFT ENTRY</label>
                     <input 
                         id="deadLiftStr" 
                         type="text"
                         bind:value={deadLiftStr}
                         placeholder="integers only"
-                        class="py-4 pl-5 pr-24 bg-24 bg-transparent border border-borderclr text-white placeholder-white"
+                        class="py-4 pl-5 pr-24 bg-24 bg-transparent border border-borderclr text-cream placeholder-cream"
                     />
                 </div>
         <div class="text-center gap-14">
@@ -368,15 +368,15 @@
             id="submit"
             disabled={loading}
             on:click={createDeadLift}
-            class="py-[23px] px-[86px] bg-sugold text-xl text-black w-[299px] hover:bg-white hover:text-black duration-300 transittion-colors">
-            {loading ? 'Uploading Test' : 'Upload Complete'} CLICK 
+            class="py-[23px] px-[86px] bg-primary text-xl text-cream w-[299px] hover:bg-cream hover:text-secondary duration-300 transittion-colors">
+            ADD DEADLIFT 
         </button>
         </div>
     </div>
     <div>
             <!-- input box -->
             <div class="max-w-4xl mx-auto bg-secondary rounded-lg flex flex-col p-5">
-                <h1 class="text-center text-white text-2xl">POWER CLEAN</h1>
+                <h1 class="text-center text-cream text-2xl">POWER CLEAN</h1>
             <!-- Workout Date -->
              <div class="flex flex-col my-4">
                 <label for="workout-date">Workout Date</label>
@@ -395,7 +395,7 @@
                             type="text"
                             bind:value={powerCleanStr}
                             placeholder="integers only"
-                            class="py-4 pl-5 pr-24 bg-24 bg-transparent border border-borderclr text-white placeholder-white"
+                            class="py-4 pl-5 pr-24 bg-24 bg-transparent border border-borderclr text-cream placeholder-cream"
                         />
                     </div>
             <div class="text-center gap-14">
@@ -404,8 +404,8 @@
                 id="submit"
                 disabled={loading}
                 on:click={createPowerClean}
-                class="py-[23px] px-[86px] bg-sugold text-xl text-black w-[299px] hover:bg-white hover:text-black duration-300 transittion-colors">
-                {loading ? 'Uploading Test' : 'Upload Complete'} CLICK 
+                class="py-[23px] px-[86px] bg-primary text-xl text-cream w-[299px] hover:bg-cream hover:text-secondary duration-300 transittion-colors">
+                ADD POWER CLEAN 
             </button>
             </div>
         </div>
