@@ -21,6 +21,7 @@
 <!-- If the click does not work check the pt2 at 44min. -->
 <article
 on:keydown={() => {}}
+    class="bg-secondary p-8 rounded-lg text-cream">
     class="bg-secondary p-8 rounded-lg">
         <!-- Formating for the workout cards-->
         <div class="flex flex-col">
