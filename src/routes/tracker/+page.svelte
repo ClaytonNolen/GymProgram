@@ -108,8 +108,16 @@
                 // If benchInput does exist, initialize as empty array.
                 const existingBenchData = docSnap.data().benchInput || [];
                 const existingBenchTime = docSnap.data().benchTimeInput || [];
+                // Need to delete last array here
+                const newBenchData = existingBenchData.pop();
+                const newBenchTime = existingBenchTime.pop();
+                // Updating documnet to have deleted data
+                const formattedBenchDateStr = formatDate(benchDate);
+                await setDoc(userDocRef, { benchInput: newBenchData }, { merge: true });
+                await setDoc(userDocRef, { benchTimeInput: newBenchTime }, { merge: true });
             } 
-            // Need to delete last array here
+            goto("/profile");
+
         }
         catch (error) {
             console.error('Error occurred while creating a document', error);
@@ -327,6 +335,13 @@
                 on:click={createBench}
                 class="py-[23px] px-[86px] rounded-lg bg-primary text-xl text-cream w-[299px] hover:bg-cream hover:text-secondary duration-300 transittion-colors">
                 ADD
+            </button>
+            <button 
+                id="submit"
+                disabled={loading}
+                on:click={deleteBench}
+                class="py-[23px] px-[86px] rounded-lg bg-primary text-xl text-cream w-[299px] hover:bg-cream hover:text-secondary duration-300 transittion-colors">
+                DELETE
             </button>
             </div>
         </div>
