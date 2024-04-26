@@ -94,6 +94,30 @@
         loading = false;
     }
 
+    async function deleteBench() {
+        if (!currentUser) {
+            return alert('User not logged in');
+        }
+
+        try {
+            const userDocRef = doc(db, 'users', currentUser.uid);
+            // Get the existing document data
+            const docSnap = await getDoc(userDocRef);
+            // The If/Else statements below were created by A.I.
+            if (docSnap.exists()) {
+                // If benchInput does exist, initialize as empty array.
+                const existingBenchData = docSnap.data().benchInput || [];
+                const existingBenchTime = docSnap.data().benchTimeInput || [];
+            } 
+            // Need to delete last array here
+        }
+        catch (error) {
+            console.error('Error occurred while creating a document', error);
+            alert('An error occurred while uploading data. Please try again later.');
+            }
+
+    }
+
     async function createSquat() {
         if (!currentUser) {
             return alert('User not logged in');
