@@ -70,7 +70,7 @@
             if (docSnap.exists()) {
                 // If benchInput does exist, initialize as empty array.
                 const existingBenchData = docSnap.data().benchInput || [];
-                const existingBenchTime = docSnap.data().benchTimeInput || []
+                const existingBenchTime = docSnap.data().benchTimeInput || [];
 
                 // Append the new input to the existing array.
                 const formattedBenchDateStr = formatDate(benchDate);
@@ -99,22 +99,30 @@
             return alert('User not logged in');
         }
 
+        loading = true;
+
         try {
             const userDocRef = doc(db, 'users', currentUser.uid);
             // Get the existing document data
             const docSnap = await getDoc(userDocRef);
             // The If/Else statements below were created by A.I.
             if (docSnap.exists()) {
-                // If benchInput does exist, initialize as empty array.
-                const existingBenchData = docSnap.data().benchInput || [];
-                const existingBenchTime = docSnap.data().benchTimeInput || [];
-                // Need to delete last array here
-                const newBenchData = existingBenchData.pop();
-                const newBenchTime = existingBenchTime.pop();
-                // Updating documnet to have deleted data
-                const formattedBenchDateStr = formatDate(benchDate);
-                await setDoc(userDocRef, { benchInput: newBenchData }, { merge: true });
-                await setDoc(userDocRef, { benchTimeInput: newBenchTime }, { merge: true });
+                // Store the existing data so that the last element can be deleted
+                const deletedBenchData = docSnap.data().benchInput || [];
+                const deletedBenchTime = docSnap.data().benchTimeInput || [];
+                
+                // remove last element from the max weight and date data
+                if(deletedBenchData.length > 0 && deletedBenchTime.length > 0) {
+                    // remove last element from the max weight and date data
+                    deletedBenchData.pop();
+                    deletedBenchTime.pop();
+
+                    // Update the document with the updated array.
+                    await setDoc(userDocRef, { benchInput: deletedBenchData}, { merge: true });
+                    await setDoc(userDocRef, { benchTimeInput: deletedBenchTime}, { merge: true });
+                } else {
+                    return alert('There is no data to delete.');
+                }
             } 
             goto("/profile");
 
@@ -123,7 +131,7 @@
             console.error('Error occurred while creating a document', error);
             alert('An error occurred while uploading data. Please try again later.');
             }
-
+        loading = false;
     }
 
     async function createSquat() {
@@ -279,7 +287,7 @@
                 await setDoc(userDocRef, { powerCleanInput: [powerCleanStr] }); // If document doesn't exist, create it with the new input as the first element of the array.
                 await setDoc(userDocRef, { powerCleanTimeInput: [formattedPowerCleanDateStr] });
             }
-            goto("/profile"); // Should be changed to the Profile page.
+            goto("/profile");
         } catch (error) {
             console.error('Error occurred while creating a document', error);
             alert('An error occurred while uploading data. Please try again later.');
@@ -331,14 +339,12 @@
                 <!--Buttons and how they are navigated to different pages with "on:click"-->
             <button 
                 id="submit"
-                disabled={loading}
                 on:click={createBench}
                 class="py-[23px] px-[86px] rounded-lg bg-primary text-xl text-cream w-[299px] hover:bg-cream hover:text-secondary duration-300 transittion-colors">
                 ADD
             </button>
             <button 
-                id="submit"
-                disabled={loading}
+                id="delete"
                 on:click={deleteBench}
                 class="py-[23px] px-[86px] rounded-lg bg-primary text-xl text-cream w-[299px] hover:bg-cream hover:text-secondary duration-300 transittion-colors">
                 DELETE
