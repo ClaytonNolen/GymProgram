@@ -1,4 +1,5 @@
 <script>
+    // Images of the Robertson gym
     import image1 from '$lib/assets/Ab Bench.png';
     import image2 from '$lib/assets/Abdominal Crunch.png'
     import image3 from '$lib/assets/Back Extension.png'
@@ -31,23 +32,28 @@
 </h2>
 
 <div class="text-cream bg-primary mx-4">
+    <!--Formating for all equipment in Rob-->
     <row class="flex">
         <columnLeft>
+            <!--Header with exercise name appears at the top row of the left column-->
             <h1>
                 Ab Crunch
             </h1>
             <!--description from:
             https://www.verywellfit.com/how-to-do-a-perfect-abdominal-crunch-1229513#:~:text=Brace%20your%20core.,t%20relax%20all%20the%20way.
+            Description appears in the left column below header
             -->
             <div>
                 DESCRIPTION: Brace your core. Crunch your ribs toward your pelvis using your abdominal muscles to initiate and complete 
                 the movement. Exhale as you crunch and keep your neck straight, chin up. Hold at the bottom of the movement for a few 
                 seconds, breathing continuously. slowly allow the machine to pull you back up.
             </div>
+            <!--Muscle groups appear in the left column below description-->
             <div>
                 MUSCLE GROUP: rectus abdominis, internal and external obliques, transversus abdominis, iliopsoas and rectus femoris.
             </div>
         </columnLeft>
+        <!--Images of equipment appear to the right of the left column-->
         <columnRight>
             <img src={image2} alt="ab crunch" class="mx-auto w-1/1 lg:w-1/1" />
         </columnRight>
@@ -422,7 +428,7 @@
                 Tricep Press
             </h1>
             <!--description from: 
-                https://www.sportskeeda.com/health-and-fitness/how-to-use-a-triceps-press-machine-tips-technique-correct-form-benefits-and-common-mistakes-->
+            https://www.sportskeeda.com/health-and-fitness/how-to-use-a-triceps-press-machine-tips-technique-correct-form-benefits-and-common-mistakes-->
             <div>
                 DESCRIPTION: In the seat, have your back straight and knees at a 90 degree angle. 
                 Keep the elbows close to the body and push down on the handles until the arms are 
@@ -501,6 +507,7 @@
         cream: "#f8f1e5" 
 -->
 <style>
+    /**Formating for headers*/
     h1 {
         font-size: 38px;
         font-weight: bold;
@@ -511,7 +518,7 @@
         border: 2;
         border: white -500px;
     }
-
+    /**Formating for div*/
     div {
         font-size: 24px;
         margin-top: 10px;
@@ -520,14 +527,14 @@
         border: white -500px;
         height: 44.3%;
     }
-
+    /**Formating for left column containing header, description, and muscle group*/
     :global(columnLeft) {
         border: solid;
         border: 4;
         border: white -500px;
         width: 400%;
     }
-
+    /**Formating for right column containing image*/
     :global(columnRight) {
         border: solid;
         border: 4;
