@@ -406,10 +406,10 @@
                 Smith Machine
             </h1>
             <div>
-                DESCRIPTION: Will probably need to update this machine with one of the benchmarks
+                DESCRIPTION: A rack with rail-supported, counter-balanced barbell. This machine can used for numerous exercises.
             </div>
             <div>
-                MUSCLE GROUP:
+                MUSCLE GROUP: N/A
             </div>
         </columnLeft>
         <columnRight>
@@ -434,6 +434,61 @@
         </columnLeft>
         <columnRight>
             <img src={image25} alt="tricep press" class="mx-auto w-1/1 lg:w-1/1" />
+        </columnRight>
+    </row>
+    <row class="flex">
+        <columnLeft>
+            <h1>
+                Rear Squat
+            </h1>
+            <div>
+                DESCRIPTION: Stand under the bar and place it on the shelf of your back. Lift the bar and take a step back from the rack.
+                Keep your feet shoulder width apart with your toes pointing slightly outward. Bend your knees and push your hips back, 
+                as if sitting in a chair, until your thighs are parallel with the floor. Stand back up to complete a rep.
+            </div>
+            <div>
+                MUSCLE GROUP: lower back, glutes, and hamstrings.
+            </div>
+        </columnLeft>
+        <columnRight>
+            <img src={image24} alt="squat rack" class="mx-auto w-1/1 lg:w-1/1" />
+        </columnRight>
+    </row>
+    <row class="flex">
+        <columnLeft>
+            <h1>
+                Deadlift
+            </h1>
+            <div>
+                DESCRIPTION: Place the hex-bar or barbell on the ground. Position your feet underneath the bar a shoulder width. If 
+                you're using a barbell, a reverse grip with palms facing opposite dirrections can be used for a better grip. Keep your 
+                back straight and shoulders back. Push your hips forward as you stand up. Please don't drop the bar afterwards like a 
+                douchebag.
+            </div>
+            <div>
+                MUSCLE GROUP: glutes, hamstrings, core, back, and trapezius.
+            </div>
+        </columnLeft>
+        <columnRight>
+            <img src={image24} alt="squat rack" class="mx-auto w-1/1 lg:w-1/1" />
+        </columnRight>
+    </row>
+    <row class="flex">
+        <columnLeft>
+            <h1>
+                Power Clean
+            </h1>
+            <div>
+                DESCRIPTION: Place the bar on the ground. Stand with your feet under the bar at shoulder width. Place your hands on 
+                the bar, palms down. Keep your back straight and shoulders back. The power clean can be described as three different
+                exercises combined: a deadlift, shrug, and hang clean.
+            </div>
+            <div>
+                MUSCLE GROUP: posterior chain, shoulders, core.
+            </div>
+        </columnLeft>
+        <columnRight>
+            <img src={image24} alt="squat rack" class="mx-auto w-1/1 lg:w-1/1" />
         </columnRight>
     </row>
 </div>
