@@ -1,4 +1,6 @@
 <script>
+// @ts-nocheck -- giving a warning but necessary for our functionality
+
     import Workouts from '../workouts/+page.svelte';
     import BenchChart from "../../components/BenchChart.svelte";
     import SquatChart from "../../components/SquatChart.svelte";
@@ -25,7 +27,8 @@
 
     <!--Used https://www.chartjs.org/docs/latest/configuration/responsive.html to increase chart size and responsiveness-->
     <!-- Tailwind margin code (mt and mb): https://tailwindcss.com/docs/margin-->
-    <div class="chart-container mt-10 mb-80" style ="position: relative; height:30vh; width:60vw">   <!--Centers the chart-->
+    <!--All four benchmark charts displayed in vertical order and resize when the page becomes smaler-->
+    <div class="chart-container mt-10 mb-80" style ="position: relative; height:30vh; width:60vw"> 
         <BenchChart />
     </div>
     
@@ -43,8 +46,8 @@
     
 
 </main>
-
-<style>
+<!--Page is centered and adjusts sizing-->
+<style> 
     main {
         display: flex;
         justify-content: center;
