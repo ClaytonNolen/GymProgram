@@ -8,6 +8,7 @@
     import { formatDate } from "../../helper/formatDate";
     import { wholeCheck } from "../../helper/wholeCheck";
 
+    // Input variables for max weight lifted for each benchmark exercise
     let benchStr: string;
     let squatStr: string;
     let deadLiftStr: string;
@@ -33,14 +34,10 @@
     });
 
     
-    // Creating function to check for a whole number
-    // async function checkWhole() {}
-    
     async function createBench() {
         if (!currentUser) {
             return alert('User not logged in');
         }
-
 
         // if there is no bench input for date, max weight, or both
         // This trim was made with AI. 
@@ -86,7 +83,7 @@
                 await setDoc(userDocRef, { benchInput: [benchStr] });
                 await setDoc(userDocRef, { benchTimeInput: [formattedBenchDateStr] });
             }
-            goto("/profile"); // After submitting the data, go to profile page.
+            goto("/profile"); // After submitting the data, go to profile page to see chart progress
         } catch (error) {   // If error occurred, catch and display the error message in console.
             console.error('Error occurred while creating a document', error);
             alert('An error occurred while uploading data. Please try again later.');
@@ -460,7 +457,7 @@
                     />
                 </div>
             <div class="text-center gap-14">
-                <!--Buttons and how they are navigated to different pages with "on:click"-->
+                <!--Buttons and how they are navigated to their respective functions with "on:click"-->
             <button 
                 id="submit"
                 on:click={createBench}
@@ -501,7 +498,7 @@
                     />
                 </div>
         <div class="text-center gap-14">
-            <!--Buttons and how they are navigated to different pages with "on:click"-->
+            <!--Buttons and how they are navigated to their respective functions with "on:click"-->
             <button 
                 id="submit"
                 disabled={loading}
@@ -542,7 +539,7 @@
                     />
                 </div>
         <div class="text-center gap-14">
-            <!--Buttons and how they are navigated to different pages with "on:click"-->
+            <!--Buttons and how they are navigated to their respective functions with "on:click"-->
             <button 
                 id="submit"
                 disabled={loading}
@@ -584,7 +581,7 @@
                         />
                     </div>
         <div class="text-center gap-14">
-                <!--Buttons and how they are navigated to different pages with "on:click"-->
+                <!--Buttons and how they are navigated to their respective functions with "on:click"-->
             <button 
                 id="submit"
                 disabled={loading}
