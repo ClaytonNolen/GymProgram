@@ -1,11 +1,8 @@
 <script lang="ts">
     import { doc, setDoc } from 'firebase/firestore';
-    import { db, storage } from '$lib/firebase';
     import type { User } from 'firebase/auth';
     import { authStore } from '$lib/assets/gym/gym';
-    import { ref, uploadBytes, getDownloadURL } from 'firebase/storage';
     import { goto } from '$app/navigation';
-    import { Dropdown, DropdownItem, DropdownDivider, DropdownHeader } from 'flowbite-svelte';
     
     let workoutName: string
     let showExerciseInfo: boolean = false;

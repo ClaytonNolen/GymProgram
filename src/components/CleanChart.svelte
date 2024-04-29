@@ -1,6 +1,7 @@
 <!--Code partly from: https://www.chartjs.org/docs/latest/getting-started/ and adapted with https://www.youtube.com/watch?v=JvYK-X2Tf8E
 to implement onMount-->
 <!--Link for HTML Canvas: https://www.w3schools.com/html/html5_canvas.asp-->
+<!-- For more information on the help we recieved for the front-end and back-end, please see the README. -->
 <script lang="ts">
     import { onMount } from 'svelte';
     import Chart from 'chart.js/auto';
@@ -18,8 +19,8 @@ to implement onMount-->
     let cleanDate: number[] = []; // Initialize cleanDate array
 
   // Function to fetch data from Firebase
-  // Lines 27 - 31 were developed by A.I. and helped us correctly store an array type in the data being fetched.
-  // Line 78 was suggested by A.I. to help diaplay the graph.
+  // Lines 29 - 34 were developed by A.I. and helped us correctly store an array type in the data being fetched.
+  // Line 35 - 37 and 113 was suggested by A.I. to help diaplay the graph.
   async function fetchClean() {
     try {
       const querySnapshot = await getDocs(collection(db, 'users')); // Assuming 'users' is your collection name
@@ -113,5 +114,3 @@ to implement onMount-->
         </div>
     </div>
   </div>
-  
-  <!-- <canvas bind:this={canvas}></canvas> -->

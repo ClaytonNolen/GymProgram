@@ -1,3 +1,5 @@
+// This file creates new variable types that our used in other files of our code.
+// For more information on the help we recieved for the front-end and back-end, please see the README.
 export type TEvents = {
     workoutName: string;
     exercises: string[];

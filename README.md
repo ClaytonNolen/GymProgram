@@ -3,9 +3,14 @@
 Everything you need to build a Svelte project, powered by [`create-svelte`](https://github.com/sveltejs/kit/tree/main/packages/create-svelte).
 
 ## Creating a project
+At the time of development, Svelte has been a useful language, but hard to find documentation for.
+To learn more about our projects inital development, check out these two videos. The first is a front-end 
+tutorial and how to set up the project from your machines terminal. The second is the back-end tutorial that
+includes how to set up Firebase and bind variables.
 
-If you're seeing this, you've probably already done this step. Congrats!
-
+    1. START UP & FRONTEND: https://www.youtube.com/watch?v=fTsVYwxjyS4&t=832s
+    2. FIREBASE CONNECTION & BACKEND: https://www.youtube.com/watch?v=3Q4fK1NdNMQ&t=1238s
+    
 ```bash
 # create a new project in the current directory
 npm create svelte@latest

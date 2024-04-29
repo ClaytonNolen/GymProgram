@@ -1,3 +1,4 @@
+<!-- For more information on the help we recieved for the front-end and back-end, please see the README. -->
 <script lang="ts">
 	import type { User } from "firebase/auth";
     import { formatDate } from "../helper/formatDate";
