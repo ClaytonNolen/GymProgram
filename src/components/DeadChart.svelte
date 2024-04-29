@@ -10,12 +10,12 @@ to implement onMount-->
     import { authStore } from '$lib/assets/gym/gym';
   
     let currentUser : User | null
-    authStore.subscribe((value) => {
+    authStore.subscribe((value) => { // Ensures that the logged in user has their data tied to them
       currentUser = value.user
     })
   
     let deadData: number[] = []; // Initialize deadData array
-    let deadDate: number[] = [];
+    let deadDate: number[] = []; // Initialize deadDate array
 
   // Function to fetch data from Firebase
   // Lines 27 - 31 were developed by A.I. and helped us correctly store an array type in the data being fetched.
@@ -25,9 +25,9 @@ to implement onMount-->
       const querySnapshot = await getDocs(collection(db, 'users')); // Assuming 'users' is your collection name
       querySnapshot.forEach((doc) => {
         if (doc.id === currentUser?.uid) {
-          const data = doc.data().deadLiftInput; // Assuming 'testInput' is the field where your data is stored
-          const time = doc.data().deadLiftTimeInput;
-          if (Array.isArray(data)) {
+          const data = doc.data().deadLiftInput; // input of max deadlift
+          const time = doc.data().deadLiftTimeInput; // input date of deadlift
+          if (Array.isArray(data)) { // If array has data
             deadData.push(...data); // Push data into deadData array
             deadDate.push(...time);
           } else {
@@ -55,7 +55,7 @@ to implement onMount-->
           datasets: [
             {
             label: 'Max Weight',
-            data: deadData,
+            data: deadData, // Data that is stored on the chart
             backgroundColor: 'rgba(255,205,0,1)',
             borderColor: '#FFCD00',
             borderWidth: 2,
@@ -64,11 +64,11 @@ to implement onMount-->
           ],
         },
         options: {
-          responsive: true,
+          responsive: true, // allows hovering to show the actual number on the data point
           maintainAspectRatio: true,
           scales: {
             y: {
-              beginAtZero: true,
+              beginAtZero: true, // Starts the y-axis at 0
               // Takes the max in the data array and adds 50 to scale normally
               suggestedMax: Math.max(...deadData) + 50,
               grid: {
@@ -80,7 +80,7 @@ to implement onMount-->
             }
           },
           x: {
-            offset: true,
+            offset: true, // Starts the graph line in the middle and expands out as points are added
             grid: {
               color: '#121212',
               tickColor: '#f8f1e5'
