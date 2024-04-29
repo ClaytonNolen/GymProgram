@@ -1,4 +1,5 @@
 <script>
+    // Images of the Robertson gym
     import image1 from '$lib/assets/Ab Bench.png';
     import image2 from '$lib/assets/Abdominal Crunch.png'
     import image3 from '$lib/assets/Back Extension.png'
@@ -31,20 +32,28 @@
 </h2>
 
 <div class="text-cream bg-primary mx-4">
+    <!--Formating for all equipment in Rob-->
     <row class="flex">
         <columnLeft>
+            <!--Header with exercise name appears at the top row of the left column-->
             <h1>
                 Ab Crunch
             </h1>
             <!--description from:
-            https://www.bodybuilding.com/exercises/ab-crunch-machine#:~:text=The%20machine%20crunch%20is%20a,curl%20up%20torward%20the%20torso.-->
+            https://www.verywellfit.com/how-to-do-a-perfect-abdominal-crunch-1229513#:~:text=Brace%20your%20core.,t%20relax%20all%20the%20way.
+            Description appears in the left column below header
+            -->
             <div>
-                DESCRIPTION: sit upright in the machine. Curl your torso down toward your legs.
+                DESCRIPTION: Brace your core. Crunch your ribs toward your pelvis using your abdominal muscles to initiate and complete 
+                the movement. Exhale as you crunch and keep your neck straight, chin up. Hold at the bottom of the movement for a few 
+                seconds, breathing continuously. slowly allow the machine to pull you back up.
             </div>
+            <!--Muscle groups appear in the left column below description-->
             <div>
                 MUSCLE GROUP: rectus abdominis, internal and external obliques, transversus abdominis, iliopsoas and rectus femoris.
             </div>
         </columnLeft>
+        <!--Images of equipment appear to the right of the left column-->
         <columnRight>
             <img src={image2} alt="ab crunch" class="mx-auto w-1/1 lg:w-1/1" />
         </columnRight>
@@ -97,10 +106,13 @@
                 Bicep Curl
             </h1>
             <!--description from: 
-                https://www.exercise.com/exercises/machine-bicep-curl/-->
+                https://www.verywellfit.com/how-to-do-the-biceps-arm-curl-3498604
+            -->
             <div>
-                DESCRIPTION: Move arms extended behind the handles and curl 
-                the handles up to your shoulders and back down.
+                DESCRIPTION: Keep your abdominal muscles engaged. Let your arms relax down at the sides of your body with palms facing forward.
+                Keep your upper arms stable and shoulders relaxed, bend at the elbow and lift the weight so that your hands approach
+                your shoulders. Exhale while lifting. Your elbows should stay tucked in close to your body. Lower the weights to the 
+                starting position.
             </div>
             <div>
                 MUSCLE GROUP: biceps brachii, brachialis and brachioradialis.
@@ -135,7 +147,7 @@
             </h1>
             <div>
                 DESCRIPTION: Sit in the chair with your back firmly against the chair. Grab the handles and extend your arms
-                until they are straigh. Bend your arms until they are at a 90 degree angle. This is one rep. 
+                until they are straight. Exhale as you push. Bend your arms until they are at a 90 degree angle. This is one rep. 
             </div>
             <div>
                 MUSCLE GROUP: pectoralis major, anterior deltoids, triceps brachii, biceps brachii.
@@ -151,9 +163,8 @@
                 Glute Machine
             </h1>
             <div>
-                DESCRIPTION: Stand on the bottom of the machine and place your arms on the pads and 
-                put one leg at a time of the foot pad. Extend your leg and back while keeping the rest 
-                of the body still
+                DESCRIPTION: Stand on the bottom of the machine and place your arms on the pads. Place one leg at a time on the foot pad. 
+                Extend your legs and back while keeping the rest of the body still.
             </div>
             <div>
                 MUSCLE GROUP: gluteal maximus, gluteal medius, gluteal minimus.
@@ -209,7 +220,7 @@
             <div>
                 DESCRIPTION: Grab handles with each hand and have your elbow near the back of the pad. 
                 Push out and up with your ams to make them parallel to your shoulders and hold for a second. 
-                Then move arms slowly back down.
+                Then move your arms slowly back down.
             </div>
             <div>
                 MUSCLE GROUP: lateral deltoid, anterior deltoid, serratus anterior.
@@ -245,7 +256,7 @@
             <div>
                 DESCRIPTION: Adjust the chair so that your legs are at 90 degrees in the staring position. Sit firmly in the chair
                 and place your feet on the platform at a slight outward angle. Fully extend your legs and slowly return to starting
-                position to complete rep.
+                position to complete a rep.
             </div>
             <div>
                 MUSCLE GROUP: quadriceps muscles, gluteal muscles, hamstrings, calves.
@@ -261,9 +272,9 @@
                 Pec Fly
             </h1>
             <div>
-                DESCRIPTION: Place arms behind the pads with elbows parallel with your shoulders. 
-                Grab the handles and move your arms in until they are in front of your shoulders. 
-                Try to keep your upper back on the machine and return back to the staring position slowly.
+                DESCRIPTION: Place your arms behind the pads with your elbows parallel with your shoulders. 
+                Grab the handles and move your arms inward until they are in front of your shoulders. 
+                Keep your upper back on the machine. Slowly return to the staring position.
             </div>
             <div>
                 MUSCLE GROUP: pectoralis major, pectoralis minor, deltoids, triceps, biceps.
@@ -324,9 +335,8 @@
             <!--description from: 
                 https://www.exercise.com/exercises/torso-rotation-machine/-->
             <div>
-                DESCRIPTION: Set your kness on the pads and grab the handles. Only rotate torso 
-                and move it to one direction and back to center. When going to the side, go as far 
-                as your range of motion will allow.
+                DESCRIPTION: Set your kness on the pads and grab the handles. Only rotate your torso and move in one direction, then 
+                back to center. When rotating, go as far as your range of motion will allow.
             </div>
             <div>
                 MUSCLE GROUP: obliques, quadratus lumborum.
@@ -344,10 +354,9 @@
             <!--description from: 
                 https://us.myprotein.com/thezone/training/hamstring-seated-leg-curl-exercise-technique-common-mistakes/-->
             <div>
-                DESCRIPTION: When in the seat, place the upper bar just above the knees 
-                on your thighs. Place your feet right above the bottom bar. To complete the 
-                exercise, only move your legs and move the bar as close to your body as possible. Move 
-                back to starting position to complete the rep.
+                DESCRIPTION: When in the seat, place the upper bar just above the knees on your thighs. Place your feet right above the 
+                bottom bar. To complete the exercise, only move your legs and move the bar as close to your body as possible. Return 
+                to starting position to complete the rep.
             </div>
             <div>
                 MUSCLE GROUP: hamstrings, glutes, hip flexors.
@@ -403,10 +412,10 @@
                 Smith Machine
             </h1>
             <div>
-                DESCRIPTION: Will probably need to update this machine with one of the benchmarks
+                DESCRIPTION: A rack with rail-supported, counter-balanced barbell. This machine can used for numerous exercises.
             </div>
             <div>
-                MUSCLE GROUP:
+                MUSCLE GROUP: N/A
             </div>
         </columnLeft>
         <columnRight>
@@ -419,7 +428,7 @@
                 Tricep Press
             </h1>
             <!--description from: 
-                https://www.sportskeeda.com/health-and-fitness/how-to-use-a-triceps-press-machine-tips-technique-correct-form-benefits-and-common-mistakes-->
+            https://www.sportskeeda.com/health-and-fitness/how-to-use-a-triceps-press-machine-tips-technique-correct-form-benefits-and-common-mistakes-->
             <div>
                 DESCRIPTION: In the seat, have your back straight and knees at a 90 degree angle. 
                 Keep the elbows close to the body and push down on the handles until the arms are 
@@ -433,6 +442,61 @@
             <img src={image25} alt="tricep press" class="mx-auto w-1/1 lg:w-1/1" />
         </columnRight>
     </row>
+    <row class="flex">
+        <columnLeft>
+            <h1>
+                Rear Squat
+            </h1>
+            <div>
+                DESCRIPTION: Stand under the bar and place it on the shelf of your back. Lift the bar and take a step back from the rack.
+                Keep your feet shoulder width apart with your toes pointing slightly outward. Bend your knees and push your hips back, 
+                as if sitting in a chair, until your thighs are parallel with the floor. Stand back up to complete a rep.
+            </div>
+            <div>
+                MUSCLE GROUP: lower back, glutes, and hamstrings.
+            </div>
+        </columnLeft>
+        <columnRight>
+            <img src={image24} alt="squat rack" class="mx-auto w-1/1 lg:w-1/1" />
+        </columnRight>
+    </row>
+    <row class="flex">
+        <columnLeft>
+            <h1>
+                Deadlift
+            </h1>
+            <div>
+                DESCRIPTION: Place the hex-bar or barbell on the ground. Position your feet underneath the bar a shoulder width. If 
+                you're using a barbell, a reverse grip with palms facing opposite dirrections can be used for a better grip. Keep your 
+                back straight and shoulders back. Push your hips forward as you stand up. Please don't drop the bar afterwards like a 
+                douchebag.
+            </div>
+            <div>
+                MUSCLE GROUP: glutes, hamstrings, core, back, and trapezius.
+            </div>
+        </columnLeft>
+        <columnRight>
+            <img src={image24} alt="squat rack" class="mx-auto w-1/1 lg:w-1/1" />
+        </columnRight>
+    </row>
+    <row class="flex">
+        <columnLeft>
+            <h1>
+                Power Clean
+            </h1>
+            <div>
+                DESCRIPTION: Place the bar on the ground. Stand with your feet under the bar at shoulder width. Place your hands on 
+                the bar, palms down. Keep your back straight and shoulders back. The power clean can be described as three different
+                exercises combined: a deadlift, shrug, and hang clean.
+            </div>
+            <div>
+                MUSCLE GROUP: posterior chain, shoulders, core.
+            </div>
+        </columnLeft>
+        <columnRight>
+            <img src={image24} alt="squat rack" class="mx-auto w-1/1 lg:w-1/1" />
+        </columnRight>
+    </row>
 </div>
 <!--
     Tailwind color reference
@@ -443,6 +507,7 @@
         cream: "#f8f1e5" 
 -->
 <style>
+    /**Formating for headers*/
     h1 {
         font-size: 38px;
         font-weight: bold;
@@ -453,7 +518,7 @@
         border: 2;
         border: white -500px;
     }
-
+    /**Formating for div*/
     div {
         font-size: 24px;
         margin-top: 10px;
@@ -462,14 +527,14 @@
         border: white -500px;
         height: 44.3%;
     }
-
+    /**Formating for left column containing header, description, and muscle group*/
     :global(columnLeft) {
         border: solid;
         border: 4;
         border: white -500px;
         width: 400%;
     }
-
+    /**Formating for right column containing image*/
     :global(columnRight) {
         border: solid;
         border: 4;

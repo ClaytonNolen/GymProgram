@@ -11,12 +11,12 @@ to implement onMount-->
     import { authStore } from '$lib/assets/gym/gym';
   
     let currentUser : User | null
-    authStore.subscribe((value) => {
+    authStore.subscribe((value) => { // Ensures that the logged in user has their data tied to them
       currentUser = value.user
     })
   
     let squatData: number[] = []; // Initialize squatData array
-    let squatDate: string[] = [];
+    let squatDate: string[] = []; // Initialize squatDate array
 
   // Function to fetch data from Firebase
   // Lines 30 - 34 were developed by A.I. and helped us correctly store an array type in the data being fetched.
@@ -28,20 +28,18 @@ to implement onMount-->
       // For each doc in the query snapshot...
       querySnapshot.forEach((doc) => {
         if (doc.id === currentUser?.uid) {
-          // Input of max squat weight.
-          const data = doc.data().squatInput;
-          // Input of date of squat entry.
-          const time = doc.data().squatTimeInput;
+          const data = doc.data().squatInput; // Input of max squat weight.
+          const time = doc.data().squatTimeInput; // Input date of squat
           if (Array.isArray(data)) {  // If array has data.
             squatData.push(...data); // Push data into squatData array
             squatDate.push(...time); // Push data into squatData array
-          } else {  // Display error message in console.
+          } else {
             console.error('Invalid data format:', data);
             console.error('Invalid data format:', time);
           }
         }    
       });
-    } catch (error) { // Catch error and message in console.
+    } catch (error) { 
       console.error('Error fetching data from Firebase:', error);
     }
   }
@@ -60,7 +58,7 @@ to implement onMount-->
           datasets: [
             {
             label: 'Max Weight',
-            data: squatData,
+            data: squatData, // Data that is stored on the chart
             backgroundColor: 'rgba(255,205,0,1)',
             borderColor: '#FFCD00',
             borderWidth: 2,
@@ -69,11 +67,11 @@ to implement onMount-->
           ],
         },
         options: {
-          responsive: true,
+          responsive: true, // allows hovering to show the actual number on the data point
           maintainAspectRatio: true,
           scales: {
             y: {
-              beginAtZero: true,
+              beginAtZero: true, // Starts the y-axis at 0
               // Takes the max in the data array and adds 50 to scale normally
               suggestedMax: Math.max(...squatData) + 50,
               grid: {
@@ -85,7 +83,7 @@ to implement onMount-->
             }
           },
           x: {
-            offset: true,
+            offset: true, // Starts the graph line in the middle and expands out as points are added
             grid: {
               color: '#121212',
               tickColor: '#f8f1e5'

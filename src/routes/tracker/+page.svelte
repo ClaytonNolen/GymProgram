@@ -13,6 +13,7 @@
     import { formatDate } from "../../helper/formatDate";
     import { wholeCheck } from "../../helper/wholeCheck";
 
+    // Input variables for max weight lifted for each benchmark exercise
     let benchStr: string;
     let squatStr: string;
     let deadLiftStr: string;
@@ -38,14 +39,10 @@
     });
 
     
-    // Creating function to check for a whole number
-    // async function checkWhole() {}
-    
     async function createBench() {
         if (!currentUser) {
             return alert('User not logged in');
         }
-
 
         // if there is no bench input for date, max weight, or both
         // This trim was made with AI. 
@@ -75,7 +72,7 @@
             if (docSnap.exists()) {
                 // If benchInput does exist, initialize as empty array.
                 const existingBenchData = docSnap.data().benchInput || [];
-                const existingBenchTime = docSnap.data().benchTimeInput || []
+                const existingBenchTime = docSnap.data().benchTimeInput || [];
 
                 // Append the new input to the existing array.
                 const formattedBenchDateStr = formatDate(benchDate);
@@ -91,11 +88,52 @@
                 await setDoc(userDocRef, { benchInput: [benchStr] });
                 await setDoc(userDocRef, { benchTimeInput: [formattedBenchDateStr] });
             }
-            goto("/profile"); // After submitting the data, go to profile page.
+            goto("/profile"); // After submitting the data, go to profile page to see chart progress
         } catch (error) {   // If error occurred, catch and display the error message in console.
             console.error('Error occurred while creating a document', error);
             alert('An error occurred while uploading data. Please try again later.');
         }
+        loading = false;
+    }
+
+    // Delete the latest max weight and date entry for bench press
+    async function deleteBench() {
+        if (!currentUser) {
+            return alert('User not logged in');
+        }
+
+        loading = true;
+
+        try {
+            const userDocRef = doc(db, 'users', currentUser.uid);
+            // Get the existing document data
+            const docSnap = await getDoc(userDocRef);
+            // The If/Else statements below were created by A.I.
+            if (docSnap.exists()) {
+                // Store the existing data so that the last element can be deleted
+                const deletedBenchData = docSnap.data().benchInput || [];
+                const deletedBenchTime = docSnap.data().benchTimeInput || [];
+                
+                // remove last element from the max weight and date data
+                if(deletedBenchData.length > 0 && deletedBenchTime.length > 0) {
+                    // remove last element from the max weight and date data
+                    deletedBenchData.pop();
+                    deletedBenchTime.pop();
+
+                    // Update the document with the updated array.
+                    await setDoc(userDocRef, { benchInput: deletedBenchData}, { merge: true });
+                    await setDoc(userDocRef, { benchTimeInput: deletedBenchTime}, { merge: true });
+                } else {
+                    return alert('There is no data to delete.');
+                }
+            } 
+            goto("/profile");
+
+        }
+        catch (error) {
+            console.error('Error occurred while creating a document', error);
+            alert('An error occurred while uploading data. Please try again later.');
+            }
         loading = false;
     }
 
@@ -153,6 +191,47 @@
         loading = false;
     }
 
+    // Delete the latest max weight and date entry for squat
+    async function deleteSquat() {
+        if (!currentUser) {
+            return alert('User not logged in');
+        }
+
+        loading = true;
+
+        try {
+            const userDocRef = doc(db, 'users', currentUser.uid);
+            // Get the existing document data
+            const docSnap = await getDoc(userDocRef);
+            // The If/Else statements below were created by A.I.
+            if (docSnap.exists()) {
+                // Store the existing data so that the last element can be deleted
+                const deletedSquatData = docSnap.data().squatInput || [];
+                const deletedSquatTime = docSnap.data().squatTimeInput || [];
+                
+                // remove last element from the max weight and date data
+                if(deletedSquatData.length > 0 && deletedSquatTime.length > 0) {
+                    // remove last element from the max weight and date data
+                    deletedSquatData.pop();
+                    deletedSquatTime.pop();
+
+                    // Update the document with the updated array.
+                    await setDoc(userDocRef, { SquatInput: deletedSquatData}, { merge: true });
+                    await setDoc(userDocRef, { squatTimeInput: deletedSquatTime}, { merge: true });
+                } else {
+                    return alert('There is no data to delete.');
+                }
+            } 
+            goto("/profile");
+
+        }
+        catch (error) {
+            console.error('Error occurred while creating a document', error);
+            alert('An error occurred while uploading data. Please try again later.');
+            }
+        loading = false;
+    }
+
     async function createDeadLift() {
         if (!currentUser) {
             return alert('User not logged in');
@@ -207,6 +286,47 @@
         loading = false;
     }
 
+    // Delete the latest max weight and date entry for deadlift
+    async function deleteDeadLift() {
+        if (!currentUser) {
+            return alert('User not logged in');
+        }
+
+        loading = true;
+
+        try {
+            const userDocRef = doc(db, 'users', currentUser.uid);
+            // Get the existing document data
+            const docSnap = await getDoc(userDocRef);
+            // The If/Else statements below were created by A.I.
+            if (docSnap.exists()) {
+                // Store the existing data so that the last element can be deleted
+                const deletedDeadData = docSnap.data().deadLiftInput || [];
+                const deletedDeadTime = docSnap.data().deadLiftTimeInput || [];
+                
+                // remove last element from the max weight and date data
+                if(deletedDeadData.length > 0 && deletedDeadTime.length > 0) {
+                    // remove last element from the max weight and date data
+                    deletedDeadData.pop();
+                    deletedDeadTime.pop();
+
+                    // Update the document with the updated array.
+                    await setDoc(userDocRef, { deadLiftInput: deletedDeadData}, { merge: true });
+                    await setDoc(userDocRef, { deadLiftTimeInput: deletedDeadTime}, { merge: true });
+                } else {
+                    return alert('There is no data to delete.');
+                }
+            } 
+            goto("/profile");
+
+        }
+        catch (error) {
+            console.error('Error occurred while creating a document', error);
+            alert('An error occurred while uploading data. Please try again later.');
+            }
+        loading = false;
+    }
+
     async function createPowerClean() {
         if (!currentUser) {
             return alert('User not logged in');
@@ -252,11 +372,52 @@
                 await setDoc(userDocRef, { powerCleanInput: [powerCleanStr] }); // If document doesn't exist, create it with the new input as the first element of the array.
                 await setDoc(userDocRef, { powerCleanTimeInput: [formattedPowerCleanDateStr] });
             }
-            goto("/profile"); // Should be changed to the Profile page.
+            goto("/profile");
         } catch (error) {
             console.error('Error occurred while creating a document', error);
             alert('An error occurred while uploading data. Please try again later.');
         }
+        loading = false;
+    }
+
+    // Delete the latest max weight and date entry for power clean
+    async function deletePowerClean() {
+        if (!currentUser) {
+            return alert('User not logged in');
+        }
+
+        loading = true;
+
+        try {
+            const userDocRef = doc(db, 'users', currentUser.uid);
+            // Get the existing document data
+            const docSnap = await getDoc(userDocRef);
+            // The If/Else statements below were created by A.I.
+            if (docSnap.exists()) {
+                // Store the existing data so that the last element can be deleted
+                const deletedPowerData = docSnap.data().powerCleanInput || [];
+                const deletedPowerTime = docSnap.data().powerCleanTimeInput || [];
+                
+                // remove last element from the max weight and date data
+                if(deletedPowerData.length > 0 && deletedPowerTime.length > 0) {
+                    // remove last element from the max weight and date data
+                    deletedPowerData.pop();
+                    deletedPowerTime.pop();
+
+                    // Update the document with the updated array.
+                    await setDoc(userDocRef, { powerCleanInput: deletedPowerData}, { merge: true });
+                    await setDoc(userDocRef, { powerCleanTimeInput: deletedPowerTime}, { merge: true });
+                } else {
+                    return alert('There is no data to delete.');
+                }
+            } 
+            goto("/profile");
+
+        }
+        catch (error) {
+            console.error('Error occurred while creating a document', error);
+            alert('An error occurred while uploading data. Please try again later.');
+            }
         loading = false;
     }
 
@@ -289,25 +450,30 @@
                     class="py-4 pl-5 pr-24 bg-24 bg-transparent border border-borderclr text-cream"
                 />
             </div>
-                    <!-- Gym Name -->
-                    <div class="flex flex-col my-4 text-cream">
-                        <label for="benchStr">Max Weight</label>
-                        <input
-                            id="benchStr" 
-                            type="text" 
-                            bind:value={benchStr}
-                            placeholder="integers only"
-                            class="py-4 pl-5 pr-24 bg-24 bg-transparent border border-borderclr text-cream placeholder-cream"
-                        />
-                    </div>
+                <!-- Gym Name -->
+                <div class="flex flex-col my-4 text-cream">
+                    <label for="benchStr">Max Weight</label>
+                    <input
+                        id="benchStr" 
+                        type="text" 
+                        bind:value={benchStr}
+                        placeholder="integers only"
+                        class="py-4 pl-5 pr-24 bg-24 bg-transparent border border-borderclr text-cream placeholder-cream"
+                    />
+                </div>
             <div class="text-center gap-14">
-                <!--Buttons and how they are navigated to different pages with "on:click"-->
+                <!--Buttons and how they are navigated to their respective functions with "on:click"-->
             <button 
                 id="submit"
-                disabled={loading}
                 on:click={createBench}
-                class="py-[23px] px-[86px] rounded-lg bg-primary text-xl text-cream w-[299px] hover:bg-cream hover:text-secondary duration-300 transittion-colors">
+                class="py-[23px] px-[100px] rounded-lg bg-primary text-lg text-cream w-[299px] hover:bg-cream hover:text-secondary duration-300 transittion-colors">
                 ADD
+            </button>
+            <button 
+                id="delete"
+                on:click={deleteBench}
+                class="py-[23px] px-[100px] rounded-lg bg-primary text-lg text-cream hover:bg-cream hover:text-secondary duration-300 transittion-colors">
+                DELETE LATEST
             </button>
             </div>
         </div>
@@ -337,14 +503,19 @@
                     />
                 </div>
         <div class="text-center gap-14">
-            <!--Buttons and how they are navigated to different pages with "on:click"-->
-        <button 
-            id="submit"
-            disabled={loading}
-            on:click={createSquat}
-            class="py-[23px] px-[86px] rounded-lg bg-primary text-xl text-cream w-[299px] hover:bg-cream hover:text-secondary duration-300 transittion-colors">
-            ADD
-        </button>
+            <!--Buttons and how they are navigated to their respective functions with "on:click"-->
+            <button 
+                id="submit"
+                on:click={createSquat}
+                class="py-[23px] px-[100px] rounded-lg bg-primary text-lg text-cream w-[299px] hover:bg-cream hover:text-secondary duration-300 transittion-colors">
+                ADD
+            </button>
+            <button 
+                id="delete"
+                on:click={deleteSquat}
+                class="py-[23px] px-[100px] rounded-lg bg-primary text-lg text-cream hover:bg-cream hover:text-secondary duration-300 transittion-colors">
+                DELETE LATEST
+            </button>
         </div>
         <div>
             <!-- input box -->
@@ -372,14 +543,19 @@
                     />
                 </div>
         <div class="text-center gap-14">
-            <!--Buttons and how they are navigated to different pages with "on:click"-->
-        <button 
-            id="submit"
-            disabled={loading}
-            on:click={createDeadLift}
-            class="py-[23px] px-[86px] rounded-lg bg-primary text-xl text-cream w-[299px] hover:bg-cream hover:text-secondary duration-300 transittion-colors">
-            ADD 
-        </button>
+            <!--Buttons and how they are navigated to their respective functions with "on:click"-->
+            <button 
+                id="submit"
+                on:click={createDeadLift}
+                class="py-[23px] px-[100px] rounded-lg bg-primary text-lg text-cream w-[299px] hover:bg-cream hover:text-secondary duration-300 transittion-colors">
+                ADD 
+            </button>
+            <button 
+                id="delete"
+                on:click={deleteDeadLift}
+                class="py-[23px] px-[100px] rounded-lg bg-primary text-lg text-cream hover:bg-cream hover:text-secondary duration-300 transittion-colors">
+                DELETE LATEST
+            </button>
         </div>
     </div>
     <div>
@@ -407,14 +583,19 @@
                             class="py-4 pl-5 pr-24 bg-24 bg-transparent border border-borderclr text-cream placeholder-cream"
                         />
                     </div>
-            <div class="text-center gap-14">
-                <!--Buttons and how they are navigated to different pages with "on:click"-->
+        <div class="text-center gap-14">
+                <!--Buttons and how they are navigated to their respective functions with "on:click"-->
             <button 
                 id="submit"
-                disabled={loading}
                 on:click={createPowerClean}
-                class="py-[23px] px-[86px] rounded-lg bg-primary text-xl text-cream w-[299px] hover:bg-cream hover:text-secondary duration-300 transittion-colors">
+                class="py-[23px] px-[100px] rounded-lg bg-primary text-lg text-cream w-[299px] hover:bg-cream hover:text-secondary duration-300 transittion-colors">
                 ADD
+            </button>
+            <button 
+                id="delete"
+                on:click={deletePowerClean}
+                class="py-[23px] px-[100px] rounded-lg bg-primary text-lg text-cream hover:bg-cream hover:text-secondary duration-300 transittion-colors">
+                DELETE LATEST
             </button>
             </div>
         </div>
