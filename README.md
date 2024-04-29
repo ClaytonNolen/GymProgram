@@ -28,10 +28,23 @@ If you can access a local host great - you are ready to continue.
 
 ## Installations
 
-https://tailwindcss.com/docs/guides/sveltekit
+Node.js: https://nodejs.org/en/download
 
+Firebase: https://firebase.google.com/docs/web/setup
+npm install firebase
+
+TypeScript: https://www.npmjs.com/package/typescript
+npm install -D typescript
+
+Vite: https://vitejs.dev/guide/
+npm create vite@latest
+
+https://tailwindcss.com/docs/guides/sveltekit
 npm install -D tailwindcss postcss autoprefixer
-npx tailwindcss init -p
+npm tailwindcss init -p
+
+Chart.js with Svelte: https://www.npmjs.com/package/svelte-chartjs
+npm i svelte-chartjs chart.js
 
 
 ## Building
