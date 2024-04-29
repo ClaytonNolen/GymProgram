@@ -1,9 +1,14 @@
+<!-- 
+    Page that allows users to create, store, and track
+    their workouts. 
+-->
 <script lang="ts">
     import { doc, setDoc } from 'firebase/firestore';
     import type { User } from 'firebase/auth';
     import { authStore } from '$lib/assets/gym/gym';
     import { goto } from '$app/navigation';
-    
+    import { db } from '$lib/firebase'; // Import Firebase db instance
+
     let workoutName: string
     let showExerciseInfo: boolean = false;
     let sets: number[] = []
