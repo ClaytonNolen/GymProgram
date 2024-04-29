@@ -1,3 +1,8 @@
+<!--
+    Workout history page for displaying a users
+    saved workouts over time.
+-->
+
 <script lang="ts">
     import EventCard from '../../components/EventCard.svelte';
     import { collection, query, where, onSnapshot } from 'firebase/firestore';
