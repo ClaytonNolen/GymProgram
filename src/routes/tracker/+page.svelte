@@ -1,3 +1,8 @@
+<!-- This file is responsible for the input of data to each benchmark workout. -->
+<!-- Parts of this were developed by A.I. while the beginning and set up of this file were made from the information you can find in the README. -->
+<!-- Authors: Daniel Haley & Clayton Nolen -->
+<!-- Last Modified: April 28, 2024-->
+
 <script lang="ts">
     import { goto } from "$app/navigation";
     import { doc, getDoc, setDoc } from 'firebase/firestore';

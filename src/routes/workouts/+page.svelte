@@ -10,6 +10,7 @@
     authStore.subscribe((value) => {
         currentUser = value.user;
     });
+    
     /**
      * Queries the whole database for every document under 
      * usersWorkouts, takes a snapshot, then saves under workouts
