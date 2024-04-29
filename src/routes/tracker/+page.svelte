@@ -501,7 +501,6 @@
             <!--Buttons and how they are navigated to their respective functions with "on:click"-->
             <button 
                 id="submit"
-                disabled={loading}
                 on:click={createSquat}
                 class="py-[23px] px-[100px] rounded-lg bg-primary text-lg text-cream w-[299px] hover:bg-cream hover:text-secondary duration-300 transittion-colors">
                 ADD
@@ -542,7 +541,6 @@
             <!--Buttons and how they are navigated to their respective functions with "on:click"-->
             <button 
                 id="submit"
-                disabled={loading}
                 on:click={createDeadLift}
                 class="py-[23px] px-[100px] rounded-lg bg-primary text-lg text-cream w-[299px] hover:bg-cream hover:text-secondary duration-300 transittion-colors">
                 ADD 
@@ -584,7 +582,6 @@
                 <!--Buttons and how they are navigated to their respective functions with "on:click"-->
             <button 
                 id="submit"
-                disabled={loading}
                 on:click={createPowerClean}
                 class="py-[23px] px-[100px] rounded-lg bg-primary text-lg text-cream w-[299px] hover:bg-cream hover:text-secondary duration-300 transittion-colors">
                 ADD

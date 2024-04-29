@@ -22,7 +22,6 @@
 <article
 on:keydown={() => {}}
     class="bg-secondary p-8 rounded-lg text-cream">
-    class="bg-secondary p-8 rounded-lg">
         <!-- Formating for the workout cards-->
         <div class="flex flex-col">
             <h1 class = "capitalize text-3xl font-bold tracking-widest"> {workoutName}</h1>
